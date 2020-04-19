@@ -24,3 +24,7 @@ Route::get('/producto', function () {
 Route::get('/contacto', function () {
     return view('contacto');
 })->name('contacto');
+
+Route::get('/welcome', function () {
+    return view('timeregister');
+})->name('welcome');

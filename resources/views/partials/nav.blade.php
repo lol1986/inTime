@@ -13,7 +13,7 @@
       </ul>
       <ul class="navbar-nav">
           <li class="nav-item">
-              <a class="btn btn-success" href="#">Acceder</a>
+              <a class="btn btn-success" href="{{route('welcome')}}">Acceder</a>
           </li>
       </ul>
     </div>
