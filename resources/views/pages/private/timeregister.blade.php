@@ -10,7 +10,7 @@
 <div class="row col-lg-12  col-md-12">
   
   @include('privatePartials.leftmenu')
-  @include('privatePartials.content')
+  @include('pages.content')
   
 </div>
 

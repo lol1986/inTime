@@ -1,10 +1,11 @@
-<nav class="sidebar navbar-light bg-light">
-    <div class="sidebar-collapse">
-      <ul class="sidebar-nav p-0">
-          <li class="nav-item">
-              <a class="navbar-brand" href="#">Menú gestión</a>
-          </li>    
-          <li class="nav-item">
+<nav class="navbar-light bg-light p-0">
+  <a class="navbar-brand" href="#">Menú gestión</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#adminMenu" aria-controls="adminMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse show navbar-collapse" id="adminMenu">
+      <ul class="navbar-nav">
+          <li class="nav-item active">
               <a class="nav-link" href="#">Gestionar empleados</a>
           </li>
           <li class="nav-item">

@@ -1,35 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <title>inTime Registro horario</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-  <link href="{{ asset('js/app.js') }}" rel="stylesheet">
-</head>
-<body>
 
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
-  <div class="navbar-collapse">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-          <a class="navbar-brand" href="{{route('index')}}">Inicio</a>
-      </li>    
-      <li class="nav-item active">
-        <a class="nav-link" href="{{route('producto')}}">Producto</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('contacto')}}">Contacto</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav">
-    	<li class="nav-item">
-        	<a class="btn btn-success" href="#">Acceder</a>
-        </li>
-    </ul>
-  </div>
-</nav>
+@include('partials.header')
+
+<body>
+@include('partials.nav')
 
 <div class="jumbotron text-center">
   <div class='overlay'>
@@ -102,21 +77,6 @@
   </div>
 </section>
 
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-8 col-sm-12">
-        <ul>
-          <li><a href="{{route('index')}}">Inicio</a></li>
-          <li><a href="{{route('contacto')}}">Producto</a></li>
-          <li><a href="{{route('contacto')}}">Contacto</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-12">
-        <p>Copyright &copy;2020, All Rights Reserved</p>
-      </div>
-    </div>
-  </div>
-</footer>
+@include ('partials.footer')
 </body>
 </html>
