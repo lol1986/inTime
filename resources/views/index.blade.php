@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-
-@include('partials.header')
-
-<body>
-@include('partials.nav')
-
+@extends('layouts.public.app')
+@section('content')
 <div class="jumbotron text-center">
   <div class='overlay'>
     <div class="container">
@@ -76,7 +70,4 @@
     </div>
   </div>
 </section>
-
-@include ('partials.footer')
-</body>
-</html>
+@endsection

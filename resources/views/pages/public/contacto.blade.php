@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
+@extends('layouts.public.app')
 
-@include('partials.header')
-
-<body>
-@include ('partials.nav')
-
+@section('content')
 <section id="middle">
   <div class="container">
     <h2>Te atendemos de forma personalizada</h2>
@@ -50,7 +45,4 @@
     </form>
   </div>
 </section>
-
-@include('partials.footer')
-</body>
-</html>
+@endsection
