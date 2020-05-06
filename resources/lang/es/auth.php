@@ -17,4 +17,5 @@ return [
     'throttle' => 'Demasiados intentos. Por favor inténtelo de nuevo en :seconds segundos.',
     'remember' => 'Recordar usuario.',
     'password_help' => '¿Ha olvidado su contraseña?',
+    'loginHeader' => 'Acceso a área privada',
 ];

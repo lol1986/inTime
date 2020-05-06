@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">{{ __('auth.loginHeader') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -54,8 +54,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-8 offset-md-4">
+                        <div class="form-group justify-content-center row mb-0">
+                            <div class="text-align-center">
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('auth.password_help') }}

@@ -16,4 +16,6 @@ return [
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'remember' => 'Remember me.',
+    'password_help' => 'Forgot Your Password?',
+    'loginHeader' => 'Access to private area',
 ];
