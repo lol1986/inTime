@@ -16,5 +16,5 @@ return [
     'failed' => 'Las credenciales no son correctas.',
     'throttle' => 'Demasiados intentos. Por favor inténtelo de nuevo en :seconds segundos.',
     'remember' => 'Recordar usuario.',
-    'password_help' => '¿Olvidó su contraseña?',
+    'password_help' => '¿Ha olvidado su contraseña?',
 ];
