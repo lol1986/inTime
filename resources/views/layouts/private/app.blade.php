@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    @include('partials.public.header')
+    @include('partials.private.header')
 <body>
-    @include('partials.public.nav')
+    @include('partials.private.nav')
         <main class="py-4">
             @yield('content')
         </main>

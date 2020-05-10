@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 
-@include('partials.header')
-@include('privatePartials.header')
+@include('partials.public.header')
+@include('partials.private.header')
 
 <body>
-@include('privatePartials.nav')
+@include('partials.private.nav')
 
 <div class="row col-lg-12  col-md-12">
   
-  @include('privatePartials.leftmenu')
-  @include('pages.content')
+  @include('partials.private.leftmenu')
+  @include('partials.public.content')
   
 </div>
 
