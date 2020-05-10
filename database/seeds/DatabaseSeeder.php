@@ -46,5 +46,32 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('30987774z'),
             'company'=>'1'
         ]);
+
+        DB::table('roles')->insert([
+            'name'=> "superadmin",
+        ]);
+
+        DB::table('roles')->insert([
+            'name'=> "admin",
+        ]);
+
+        DB::table('roles')->insert([
+            'name'=> "user",
+        ]);
+
+        DB::table('has_role')->insert([
+            'user'=> "1",
+            'role'=> "1",
+        ]);
+
+        DB::table('has_role')->insert([
+            'user'=> "2",
+            'role'=> "2",
+        ]);
+
+        DB::table('has_role')->insert([
+            'user'=> "3",
+            'role'=> "3",
+        ]);
     }
 }
