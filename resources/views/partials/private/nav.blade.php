@@ -22,10 +22,16 @@
             <a class="navbar-brand" href="{{route('index')}}">Bienvenido <b>Francisco Álvarez García</b></a>
         </li>    
       </ul>
-      <ul class="navbar-nav">
-          <li class="nav-item">
-              <a class="btn btn-danger" href="#">Logout</a>
-          </li>
+      <ul class="navbar-nav">        
+        <a class="btn btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); 
+            document.getElementById('logout-form').submit();">
+            {{ __('Logout') }}
+        </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          @csrf
+        </form>
+      </div>
       </ul>
     </div>
 </nav>
