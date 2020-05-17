@@ -113,8 +113,8 @@ return [
     'starts_with' => ':attribute debe comenzar por uno de los siguientes valores: :values.',
     'string' => ':attribute debe ser una cadena.',
     'timezone' => ':attribute debe ser una zona válida.',
-    'unique' => ':attribute ya se ha usado.',
-    'uploaded' => ':attribute no se pudo cargar.',
+    'unique' => ':attribute ya ha sido usado.',
+    'uploaded' => 'El :attribute no se pudo cargar.',
     'url' => 'El formato de :attribute no es válido.',
     'uuid' => ':attribute debe ser un UUID válido.',
 
