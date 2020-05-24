@@ -36,4 +36,3 @@ Route::get('/unauthorized', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('users', 'UserController');
-Route::get('/users', 'UserController@index')->name('users');

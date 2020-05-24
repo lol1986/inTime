@@ -15,8 +15,9 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('admin', ['only' => 'update']);
-        $this->middleware('admin', ['only' => 'destroy']);
+        $this->middleware('superadmin', ['only' => 'update']);
+        $this->middleware('superadmin', ['only' => 'destroy']);
+        $this->middleware('admin', ['only' => 'show']);
         //$this->middleware('superadmin', ['only' => 'activate']);
     }
 
@@ -27,7 +28,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::orderBy('active', 'desc')->get();
         return view ('private.users.view', compact('users'));
     }
 
