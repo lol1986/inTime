@@ -47,11 +47,6 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class)->withTimestamps();
     }
 
-    public function getRoles()
-    {
-        return User::with('dni')->find('30987776z');
-    }
-
     public function getPrintable()
     {
         return $this->printable;
