@@ -29,6 +29,10 @@ Route::get('/welcome', function () {
     return view('private.timeregister');
 })->name('welcome');
 
+Route::get('/unauthorized', function () {
+    return view('private.unauthorized');
+})->name('unauthorized')->middleware('auth');;
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('users', 'UserController');

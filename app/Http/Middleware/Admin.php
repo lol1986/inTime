@@ -7,8 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use App\Role;
 
-
-class Superadmin
+class Admin
 {
     /**
      * Handle an incoming request.
@@ -26,7 +25,7 @@ class Superadmin
 
        foreach ($roles as $rol)
         {
-            if($rol->name == 'superadmin'){
+            if($rol->name == 'superadmin' || $rol->name =='admin'){
                 $validRole = true;
             }
         }

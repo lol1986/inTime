@@ -6,7 +6,7 @@
     <div class="collapse show navbar-collapse" id="adminMenu">
       <ul class="navbar-nav">
           <li class="nav-item active">
-              <a class="nav-link" href="#">Gestionar empleados</a>
+              <a class="nav-link" href={{route('users')}}>Gestionar empleados</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="#">Gestionar horarios</a>

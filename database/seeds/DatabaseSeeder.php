@@ -24,28 +24,28 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'dni'=> "30987776z",
-            'name' => "Super Admin",
+            'dni'=> "11111111A",
+            'name' => "Usuario superadmin",
             'email' => 'superadmin@gmail.com',
-            'password' => Hash::make('30987776z'),
+            'password' => Hash::make('11111111A'),
             'company'=>'1',
             'active'=>'1'
         ]);
 
         DB::table('users')->insert([
-            'dni'=> "30987775z",
-            'name' => "Admin",
+            'dni'=> "11111111B",
+            'name' => "Usuario administrador",
             'email' => 'admin@gmail.com',
-            'password' => Hash::make('30987775z'),
+            'password' => Hash::make('11111111B'),
             'company'=>'1',
             'active'=>'1'
         ]);
         
         DB::table('users')->insert([
-            'dni'=> "30987774z",
-            'name' => "User",
+            'dni'=> "11111111C",
+            'name' => "Usuario genérico",
             'email' => 'user@gmail.com',
-            'password' => Hash::make('30987774z'),
+            'password' => Hash::make('11111111C'),
             'company'=>'1',
             'active'=>'1'
         ]);

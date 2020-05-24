@@ -15,6 +15,9 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('admin', ['only' => 'update']);
+        $this->middleware('admin', ['only' => 'destroy']);
+        //$this->middleware('superadmin', ['only' => 'activate']);
     }
 
     /**
@@ -153,6 +156,6 @@ class UserController extends Controller
         $usuario = User::find($id);
         $usuario->active ='1';
         $usuario->save();
-        return redirect('/users')->with('success', '¡Usuario activado!');
+        return redirect('/users')->with('success', '¡Usuario active!');
     }
 }
