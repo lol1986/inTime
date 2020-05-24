@@ -18,6 +18,7 @@ class UserController extends Controller
         $this->middleware('superadmin', ['only' => 'update']);
         $this->middleware('superadmin', ['only' => 'destroy']);
         $this->middleware('admin', ['only' => 'show']);
+        $this->middleware('admin', ['only' => 'index']);
         //$this->middleware('superadmin', ['only' => 'activate']);
     }
 
