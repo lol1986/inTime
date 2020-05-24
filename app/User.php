@@ -20,6 +20,10 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    protected $printable = ['company','dni',
+    'name', 'email',
+    ];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -47,4 +51,10 @@ class User extends Authenticatable
     {
         return User::with('dni')->find('30987776z');
     }
+
+    public function getPrintable()
+    {
+        return $this->printable;
+    }
+    
 }

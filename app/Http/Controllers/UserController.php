@@ -28,6 +28,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        $this->getPrintable();
         $users = User::orderBy('active', 'desc')->get();
         return view ('private.users.view', compact('users'));
     }
@@ -158,5 +159,10 @@ class UserController extends Controller
         $usuario->active ='1';
         $usuario->save();
         return redirect('/users')->with('success', '¡Usuario active!');
+    }
+
+    public function getPrintable(){
+        $usuario = new User;
+        return $usuario->getPrintable();
     }
 }
