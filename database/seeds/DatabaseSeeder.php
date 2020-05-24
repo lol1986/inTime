@@ -28,7 +28,8 @@ class DatabaseSeeder extends Seeder
             'name' => "Super Admin",
             'email' => 'superadmin@gmail.com',
             'password' => Hash::make('30987776z'),
-            'company'=>'1'
+            'company'=>'1',
+            'active'=>'1'
         ]);
 
         DB::table('users')->insert([
@@ -36,7 +37,8 @@ class DatabaseSeeder extends Seeder
             'name' => "Admin",
             'email' => 'admin@gmail.com',
             'password' => Hash::make('30987775z'),
-            'company'=>'1'
+            'company'=>'1',
+            'active'=>'1'
         ]);
         
         DB::table('users')->insert([
@@ -44,7 +46,8 @@ class DatabaseSeeder extends Seeder
             'name' => "User",
             'email' => 'user@gmail.com',
             'password' => Hash::make('30987774z'),
-            'company'=>'1'
+            'company'=>'1',
+            'active'=>'1'
         ]);
 
         DB::table('roles')->insert([

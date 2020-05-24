@@ -3,9 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UserController extends Controller
 {
+   /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,9 +24,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $usuarios = User::all();
-        
-        return view ('index', compact(''));
+        $users = User::all();
+        return view ('private.users.view', compact('users'));
     }
 
     /**
@@ -25,7 +35,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view ('create');
+        return view ('private.users.create');
     }
 
     /**
@@ -52,7 +62,7 @@ class UserController extends Controller
     
         $cliente->save();
     
-        return redirect('/usuarios')->with('success', '¡Usuario guardado!');
+        return redirect('/users')->with('success', '¡Usuario guardado!');
     }
 
     /**
@@ -75,7 +85,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $usuario = User::find($id);
-        return view('edit', compact('user'));
+        return view('private.users.edit', compact('usuario'));
     }
 
     /**
@@ -87,31 +97,62 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'dni' => ['regex:/^[0-9]{8}[a-zA-Z]|[XYZxyz][0-9]{7}[a-zA-z]$/','unique:users'],
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        ]);
+        $action = $request->get('action');
+
+        switch ($action){
+            case 'update':
+                $request->validate([
+                    'dni' => ['regex:/^[0-9]{8}[a-zA-Z]|[XYZxyz][0-9]{7}[a-zA-z]$/','unique:users'],
+                    'name' => ['required', 'string', 'max:255'],
+                    'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                ]);
+               
+                $usuario = User::find($id);
+                $usuario->company =  $request->get('company');
+                $usuario->dni =  $request->get('dni');
+                $usuario->name = $request->get('name');
+                $usuario->email = $request->get('email');
+                $usuario->active = $request->get('active');
+                $usuario->save();
+         
+                return redirect('/users')->with('success', '¡Usuario actualizado!');
+            break;
+            
+            case 'activate':
+                $request->validate([
+                    'active' => ['required', 'string'],
+                ]);
+
+                $usuario = User::find($id);
+                $usuario->active = $request->get('active');
+                $usuario->save();
+
+                return redirect('/users')->with('success', '¡Usuario activado!');   
+            break;
+
+        }
         
-        $producto = User::find($id);
-        $producto->dni =  $request->get('dni');
-        $producto->name = $request->get('name');
-        $producto->email = $request->get('email');
-        $producto->save();
-        
-        return redirect('/usuarios')->with('success', '¡Usuario actualizado!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http$usuario->email\Response
      */
     public function destroy($id)
     {
         $usuario = User::find($id);
-        $usuario->delete();
-        return redirect('/usuarios')->with('success', '¡Usuario borrado!');
+        $usuario->active ='0';
+        $usuario->save();
+        return redirect('/users')->with('success', '¡Usuario desactivado!');
+    }
+
+    public function activate($id)
+    {
+        $usuario = User::find($id);
+        $usuario->active ='1';
+        $usuario->save();
+        return redirect('/users')->with('success', '¡Usuario activado!');
     }
 }

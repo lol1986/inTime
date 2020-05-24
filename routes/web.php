@@ -18,16 +18,18 @@ Route::get('/', function () {
 })->name('index');
 
 Route::get('/producto', function () {
-    return view('pages.public.producto');
+    return view('public.producto');
 })->name('producto');
 
 Route::get('/contacto', function () {
-    return view('pages.public.contacto');
+    return view('public.contacto');
 })->name('contacto');
 
 Route::get('/welcome', function () {
-    return view('pages.private.timeregister');
+    return view('private.timeregister');
 })->name('welcome');
-Auth::routes();
 
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('users', 'UserController');
+Route::get('/users', 'UserController@index')->name('users');

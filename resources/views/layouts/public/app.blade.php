@@ -6,7 +6,6 @@
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
-@include ('partials.public.footer')
+    @include ('partials.public.footer')
 </body>
 </html>
