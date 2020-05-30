@@ -80,7 +80,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('private.users.edit', compact('user'));
+        return view('private.users.show', compact('user'));
     }
 
     /**
@@ -92,7 +92,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('private.users.edit', compact('user'));
+        return view('private.users.edit') ->with('user', $user);;
     }
 
     /**

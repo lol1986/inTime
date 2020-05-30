@@ -11,19 +11,19 @@
         <table class='table table-striped'>
           <thead>
             
-            @for($i=0; $i<count($objeto[0]->getPrintable()); $i++)
-            <th>{{__($class.'.'.$objeto[0]->getPrintable()[$i])}}</th>
+            @for($i=0; $i<count($object[0]->getPrintable()); $i++)
+            <th>{{__($class.'.'.$object[0]->getPrintable()[$i])}}</th>
             @endfor
           </thead>
           <tbody>
-            @foreach($objeto as $item)
+            @foreach($object as $item)
             @if ($item->active !="1")
               <tr class ='table-danger'>
             @else
               <tr>
             @endif
-              @for($i=0; $i<count($objeto[0]->getPrintable()); $i++)
-              <td>{{$item->getAttribute($objeto[0]->getPrintable()[$i])}}</td>
+              @for($i=0; $i<count($object[0]->getPrintable()); $i++)
+              <td>{{$item->getAttribute($object[0]->getPrintable()[$i])}}</td>
               @endfor
               <td>
                 <div class ="row justify-content-lg-end pr-4">

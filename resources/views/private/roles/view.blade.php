@@ -1,5 +1,5 @@
       @php       
       $class ='roles'; 
-      $objeto = $roles;
+      $object = $roles;
       @endphp
       @include('layouts.private.panels.list')

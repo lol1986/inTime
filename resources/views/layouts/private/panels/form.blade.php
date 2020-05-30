@@ -8,17 +8,17 @@
           {{ session()->get('success') }}
         </div>
       @endif
-      <form method="POST" action="{{ route($class.'.update', $objeto->id)}}">
+      <form method="POST" action="{{ route($class.'.update', $object->id)}}">
         @method('PATCH')
         @csrf
         @php
-          $params=$objeto->getPrintable()
+          $params=$object->getPrintable()
         @endphp
         @foreach($params as $param)
           <div class="form-group row">
             <label for="{{$param}}" class="col-md-4 col-form-label text-md-right">{{ __($class.'.'.$param) }}</label>
             <div class="col-md-6">
-              <input id={{$param}} type="text" class="form-control @error($param) is-invalid @enderror" name="{{$param}}" value="{{ old($param) }}" required autocomplete="{{$param}}" autofocus>
+              <input id={{$param}} type="text" class="form-control @error($param) is-invalid @enderror" name="{{$param}}" value="{{ $object->$param }}" required autocomplete="{{$param}}" autofocus>
                 @error($param)
                   <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
