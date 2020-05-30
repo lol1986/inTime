@@ -18,6 +18,7 @@ class CreateCompaniesTable extends Migration
             $table->string('cif')->unique();
             $table->string('name');
             $table->string('address');
+            $table->string('active');
             $table->timestamps();
         });
     }

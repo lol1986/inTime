@@ -26,20 +26,14 @@
               <td>{{$item->getAttribute($objeto[0]->getPrintable()[$i])}}</td>
               @endfor
               <td>
-                <div class ="row justify-content-md-end pr-4">
-                  <a href="{{ route($class.'.edit', $item->id)}}" class='btn btn-primary'><img width='15px' src="/images/info.png"></a>
+                <div class ="row justify-content-lg-end pr-4">
+                  <a href="{{ route($class.'.show', $item->id)}}" class='btn btn-primary'><img width='15px' src="/images/info.png"></a>
+                  <a href="{{ route($class.'.edit', $item->id)}}" class='btn btn-warning'><img width='15px' src="/images/edit.png"></a>
                   <form action="{{ route($class.'.destroy', $item->id)}}" method='post'>
                     @csrf
                     @method('DELETE')
-                    <button class='btn btn-warning' type='submit'><img width='15px' src="/images/edit.png"></button>
-                  </form>
-                  <form action="{{ route($class.'.update', $item->id)}}" method='post'>
-                    @csrf
-                    @method('PATCH')
-                    <input id="active" name="active" type="hidden" value="1">
-                    <input id="action" name="action" type="hidden" value="deactivate">
                     <button class='btn btn-danger' type='submit'><img width='15px' src="/images/delete.png"></button>
-                </form>
+                  </form>
                 </div>
               </td>
             </tr>

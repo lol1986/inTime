@@ -79,7 +79,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view('private.users.edit', compact('user'));
     }
 
     /**
@@ -90,8 +91,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $usuario = User::find($id);
-        return view('private.users.edit', compact('usuario'));
+        $user = User::find($id);
+        return view('private.users.edit', compact('user'));
     }
 
     /**
@@ -108,17 +109,15 @@ class UserController extends Controller
         switch ($action){
             case 'update':
                 $request->validate([
-                    'dni' => ['regex:/^[0-9]{8}[a-zA-Z]|[XYZxyz][0-9]{7}[a-zA-z]$/','unique:users'],
                     'name' => ['required', 'string', 'max:255'],
                     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 ]);
                
                 $usuario = User::find($id);
                 $usuario->company =  $request->get('company');
-                $usuario->dni =  $request->get('dni');
                 $usuario->name = $request->get('name');
                 $usuario->email = $request->get('email');
-                $usuario->active = $request->get('active');
+                $usuario->active = $usuario->active;
                 $usuario->save();
          
                 return redirect('/users')->with('success', '¡Usuario actualizado!');

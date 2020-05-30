@@ -14,15 +14,18 @@ class DatabaseSeeder extends Seeder
         DB::table('companies')->insert([
             'cif'=> "B0457760",
             'name'=>'BSD',
-            'address'=>'Avenida del piloto'
+            'address'=>'Avenida del piloto',
+            'active'=>'1'
         ]);
 
         DB::table('calendars')->insert([
             'name'=> "Alicante",
+            'active'=>'1'
         ]);
 
         DB::table('calendars')->insert([
             'name'=> "Madrid",
+            'active'=>'1'
         ]);
 
         DB::table('holidays')->insert([
@@ -33,7 +36,8 @@ class DatabaseSeeder extends Seeder
         DB::table('companies')->insert([
             'cif'=> "B0455560",
             'name'=>'BSD2',
-            'address'=>'Avenida del segundo piloto'
+            'address'=>'Avenida del segundo piloto',
+            'active'=>'1'
         ]);
 
         DB::table('users')->insert([
@@ -68,14 +72,17 @@ class DatabaseSeeder extends Seeder
 
         DB::table('roles')->insert([
             'name'=> "superadmin",
+            'active'=>'1'
         ]);
 
         DB::table('roles')->insert([
             'name'=> "admin",
+            'active'=>'1'
         ]);
 
         DB::table('roles')->insert([
             'name'=> "user",
+            'active'=>'1'
         ]);
 
         DB::table('role_user')->insert([

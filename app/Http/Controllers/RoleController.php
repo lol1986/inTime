@@ -83,7 +83,8 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::find($id);
+        return view('private.roles.edit', compact('role'));
     }
 
     /**
@@ -95,7 +96,35 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $action = $request->get('action');
+
+        switch ($action){
+            case 'update':
+                $request->validate([
+                    'name' => ['required', 'string', 'max:255'],
+                ]);
+               
+                $role = Role::find($id);
+                $role->name =  $request->get('name');
+                $role->active = $role->active;
+                $role->save();
+         
+                return redirect('/roles')->with('success', '¡Rol actualizado!');
+            break;
+            
+            case 'activate':
+                $request->validate([
+                    'active' => ['required', 'string'],
+                ]);
+
+                $usuario = Role::find($id);
+                $usuario->active = $request->get('active');
+                $usuario->save();
+
+                return redirect('/roles')->with('success', '¡Usuario activado!');   
+            break;
+
+        }
     }
 
     /**
