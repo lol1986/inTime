@@ -25,7 +25,7 @@
       <ul class="navbar-nav">        
         <a class="btn btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); 
             document.getElementById('logout-form').submit();">
-            {{ __('Logout') }}
+            <img class="m-1" width='15px' src="/images/logout.png">
         </a>
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

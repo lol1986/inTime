@@ -6,7 +6,7 @@
           {{ session()->get('success') }}
         </div>
       @endif
-      <p><a href="{{ route($class.'.create')}}" class='btn btn-primary'>{{__('actions.add')}}</a></p>
+      <p><a href="{{ route($class.'.create')}}" class='btn btn-primary'>{{__('actions.add')}}<img class="ml-2" width='15px' src="/images/add.png"></a></p>
       <div class ='table-responsive'>
         <table class='table table-striped'>
           <thead>
@@ -25,22 +25,22 @@
               @for($i=0; $i<count($objeto[0]->getPrintable()); $i++)
               <td>{{$item->getAttribute($objeto[0]->getPrintable()[$i])}}</td>
               @endfor
-              <td><a href="{{ route($class.'.edit', $item->id)}}" class='btn btn-primary'>{{__('actions.edit')}}</a></td>
               <td>
-                <form action="{{ route($class.'.destroy', $item->id)}}" method='post'>
-                  @csrf
-                  @method('DELETE')
-                  <button class='btn btn-danger' type='submit'>{{__('actions.deactivate')}}</button>
+                <div class ="row justify-content-md-end pr-4">
+                  <a href="{{ route($class.'.edit', $item->id)}}" class='btn btn-primary'><img width='15px' src="/images/info.png"></a>
+                  <form action="{{ route($class.'.destroy', $item->id)}}" method='post'>
+                    @csrf
+                    @method('DELETE')
+                    <button class='btn btn-warning' type='submit'><img width='15px' src="/images/edit.png"></button>
+                  </form>
+                  <form action="{{ route($class.'.update', $item->id)}}" method='post'>
+                    @csrf
+                    @method('PATCH')
+                    <input id="active" name="active" type="hidden" value="1">
+                    <input id="action" name="action" type="hidden" value="deactivate">
+                    <button class='btn btn-danger' type='submit'><img width='15px' src="/images/delete.png"></button>
                 </form>
-              </td>
-              <td>
-                <form action="{{ route($class.'.update', $item->id)}}" method='post'>
-                  @csrf
-                  @method('PATCH')
-                  <input id="active" name="active" type="hidden" value="1">
-                  <input id="action" name="action" type="hidden" value="activate">
-                  <button class='btn btn-danger' type='submit'>{{__('actions.activate')}}</button>
-                </form>
+                </div>
               </td>
             </tr>
             @endforeach

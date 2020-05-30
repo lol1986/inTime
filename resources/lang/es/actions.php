@@ -8,6 +8,7 @@ return [
     |--------------------------------------------------------------------------
     */
     'add' => 'Añadir',
+    'show' => 'Mostrar',
     'edit' => 'Editar',
     'delete' => 'Borrar',
     'activate' => 'Activar',
