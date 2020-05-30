@@ -12,7 +12,8 @@
         @method('PATCH')
         @csrf
         @php
-          $params=$object->getPrintable()
+          $classObject = new $className;
+          $params=$classObject::getPrintable();
         @endphp
         @foreach($params as $param)
           <div class="form-group row">

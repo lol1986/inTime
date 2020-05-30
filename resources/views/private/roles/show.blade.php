@@ -1,5 +1,1 @@
-@php       
-$class ='roles'; 
-$object = $role;
-@endphp
-@include('layouts.private.components.form')
+@include ('layouts.private.crud.show')

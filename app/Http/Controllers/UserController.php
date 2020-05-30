@@ -14,6 +14,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
+        $this->className = get_class(new User());
         $this->middleware('auth');
         $this->middleware('superadmin', ['only' => 'update']);
         $this->middleware('superadmin', ['only' => 'destroy']);
@@ -29,9 +30,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $this->getPrintable();
-        $users = User::orderBy('active', 'desc')->get();
-        return view ('private.users.view', compact('users'));
+        $user = User::orderBy('active', 'desc')->get();
+        return view ('private.users.view')->with('object', $user)
+        ->with('className',$this->className);
     }
 
     /**
@@ -66,7 +67,7 @@ class UserController extends Controller
             'password' => $request->get('email'),
         ]);
     
-        $cliente->save();
+        $usuario->save();
     
         return redirect('/users')->with('success', '¡Usuario guardado!');
     }
@@ -80,12 +81,13 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        $print= $user->getPrintable();
+        $print= User::getPrintable();
         $readable=[];
         foreach ($print as $param){
             $readable[$param] = 'false';
         }
-        return view('private.users.show')->with('user', $user)->with('readable',$readable);;
+        return view('private.users.show')->with('object', $user)->with('readable',$readable)
+        ->with('className',$this->className);;
     }
 
     /**
@@ -97,8 +99,9 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $readable = $user->getReadable();
-        return view('private.users.edit') ->with('user', $user)->with('readable',$readable);;
+        $readable = User::getReadable();
+        return view('private.users.edit') ->with('object', $user)->with('readable',$readable)
+        ->with('className',$this->className);;
     }
 
     /**
@@ -162,8 +165,4 @@ class UserController extends Controller
         return redirect('/users')->with('success', '¡Usuario desactivado!');
     }
 
-    public function getPrintable(){
-        $usuario = new User;
-        return $usuario->getPrintable();
-    }
 }

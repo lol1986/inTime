@@ -1,5 +1,1 @@
-      @php       
-      $class ='users'; 
-      $object = $users;
-      @endphp
-      @include('layouts.private.components.list')
+@include ('layouts.private.crud.view')

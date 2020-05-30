@@ -29,7 +29,7 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        $this->getPrintable();
+        Calendar::getPrintable();
         $calendars = Calendar::orderBy('id', 'asc')->get();
         return view ('private.calendars.view', compact('calendars'));
     }
@@ -100,8 +100,4 @@ class CalendarController extends Controller
         //
     }
 
-    public function getPrintable(){
-        $company = new Calendar;
-        return $company->getPrintable();
-    }
 }

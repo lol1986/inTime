@@ -29,7 +29,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $this->getPrintable();
+        Company::getPrintable();
         $companies = Company::orderBy('cif', 'desc')->get();
         return view ('private.companies.view', compact('companies'));
     }
@@ -100,8 +100,4 @@ class CompanyController extends Controller
         //
     }
 
-    public function getPrintable(){
-        $company = new Company;
-        return $company->getPrintable();
-    }
 }

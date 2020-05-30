@@ -14,7 +14,7 @@ class Role extends Model
         return $this->belongsToMany(User::class)->withTimestamps();
     }
 
-    public function getPrintable()
+    public static function getPrintable()
     {
         return self::$printable;
     }

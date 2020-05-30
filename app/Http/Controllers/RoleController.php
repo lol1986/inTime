@@ -28,7 +28,6 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $this->getPrintable();
         $roles = Role::orderBy('name', 'desc')->get();
         return view ('private.roles.view', compact('roles'));
     }
@@ -138,11 +137,7 @@ class RoleController extends Controller
         $role = Role::find($id);
         $role->active ='0';
         $role->save();
-        return redirect('/users')->with('success', '¡Usuario desactivado!');
+        return redirect('/users')->with('success', '¡Rol desactivado!');
     }
 
-    public function getPrintable(){
-        $role = new Role;
-        return $role->getPrintable();
-    }
 }
