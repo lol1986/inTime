@@ -2,4 +2,4 @@
 $class ='users'; 
 $object = $user;
 @endphp
-@include('layouts.private.panels.form')
+@include('layouts.private.components.form')

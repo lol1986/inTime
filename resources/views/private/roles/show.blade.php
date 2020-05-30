@@ -2,4 +2,4 @@
 $class ='roles'; 
 $object = $role;
 @endphp
-@include('layouts.private.panels.form')
+@include('layouts.private.components.form')

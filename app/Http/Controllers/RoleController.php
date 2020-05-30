@@ -135,7 +135,10 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $role = Role::find($id);
+        $role->active ='0';
+        $role->save();
+        return redirect('/users')->with('success', '¡Usuario desactivado!');
     }
 
     public function getPrintable(){

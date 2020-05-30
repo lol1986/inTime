@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    protected $printable = ['name'];
+    protected static $printable = ['name'];
 
     public function users()
     {
@@ -16,7 +16,7 @@ class Role extends Model
 
     public function getPrintable()
     {
-        return $this->printable;
+        return self::$printable;
     }
     
 }

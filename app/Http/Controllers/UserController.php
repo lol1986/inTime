@@ -80,7 +80,12 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('private.users.show', compact('user'));
+        $print= $user->getPrintable();
+        $readable=[];
+        foreach ($print as $param){
+            $readable[$param] = 'false';
+        }
+        return view('private.users.show')->with('user', $user)->with('readable',$readable);;
     }
 
     /**
@@ -92,7 +97,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('private.users.edit') ->with('user', $user);;
+        $readable = $user->getReadable();
+        return view('private.users.edit') ->with('user', $user)->with('readable',$readable);;
     }
 
     /**
@@ -154,14 +160,6 @@ class UserController extends Controller
         $usuario->active ='0';
         $usuario->save();
         return redirect('/users')->with('success', '¡Usuario desactivado!');
-    }
-
-    public function activate($id)
-    {
-        $usuario = User::find($id);
-        $usuario->active ='1';
-        $usuario->save();
-        return redirect('/users')->with('success', '¡Usuario activado!');
     }
 
     public function getPrintable(){

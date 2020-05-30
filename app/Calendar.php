@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Calendar extends Model
 {
-    protected $printable = ['name'];
+    protected static $printable = ['name'];
 
-    public function getPrintable()
+    public static function getPrintable()
     {
-        return $this->printable;
+        return self::$printable;
     }
 }

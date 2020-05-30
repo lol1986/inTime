@@ -18,7 +18,7 @@
           <div class="form-group row">
             <label for="{{$param}}" class="col-md-4 col-form-label text-md-right">{{ __($class.'.'.$param) }}</label>
             <div class="col-md-6">
-              <input id={{$param}} type="text" class="form-control @error($param) is-invalid @enderror" name="{{$param}}" value="{{ $object->$param }}" required autocomplete="{{$param}}" autofocus>
+              <input id={{$param}} @if ($readable[$param] ?? ''=='false') readonly="readonly" @endif type="text" class="form-control @error($param) is-invalid @enderror" name="{{$param}}" value="{{ $object->$param }}" required autocomplete="{{$param}}" autofocus>
                 @error($param)
                   <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -27,14 +27,7 @@
             </div>
           </div>
         @endforeach
-        <input id="action" name="action" type="hidden" value="update">
-          <div class="form-group row mb-0">
-            <div class="col-md-6 offset-md-4">
-              <button type="submit" class="btn btn-primary">
-                {{ __('actions.save') }}
-              </button>
-            </div>
-          </div>
+        @yield('buttons')
       </form>          
    </div>
 @endsection

@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-    protected $printable = ['cif','name','address'];
+    protected static $printable = ['cif','name','address'];
 
-    public function getPrintable()
+    public static function getPrintable()
     {
-        return $this->printable;
+        return self::$printable;
     }
 }

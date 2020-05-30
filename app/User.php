@@ -16,12 +16,17 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['company','dni',
+    protected $fillable = ['dni','company',
         'name', 'email', 'password','active'
     ];
 
-    protected $printable = ['company','dni',
+    protected static $printable = ['dni','company',
     'name', 'email',
+    ];
+
+    protected static $readable = [
+        'dni' => 'false',
+        'company' => 'false',
     ];
 
     /**
@@ -47,9 +52,14 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class)->withTimestamps();
     }
 
-    public function getPrintable()
+    public static function getPrintable()
     {
-        return $this->printable;
+        return self::$printable;
+    }
+
+    public static function getReadable()
+    {
+        return self::$readable;
     }
     
 }

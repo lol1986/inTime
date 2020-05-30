@@ -2,4 +2,4 @@
       $class ='companies'; 
       $object = $companies;
       @endphp
-      @include('layouts.private.panels.list')
+      @include('layouts.private.components.list')
