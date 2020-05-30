@@ -13,5 +13,6 @@ return [
     'company' => 'Empresa',
     'dni' => 'Dni',
     'name' => 'Nombre',
+    'password' => 'Password',
     'email' => 'Email',
 ];

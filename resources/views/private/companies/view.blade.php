@@ -1,5 +1,5 @@
       @php       
       $class ='companies'; 
-      $objeto = $companies;
+      $object = $companies;
       @endphp
       @include('layouts.private.panels.list')

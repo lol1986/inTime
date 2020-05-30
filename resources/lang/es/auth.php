@@ -18,4 +18,6 @@ return [
     'remember' => 'Recordar usuario.',
     'password_help' => '¿Ha olvidado su contraseña?',
     'loginHeader' => 'Acceso a área privada',
+    'password_confirmation' => 'Confirmar Password',
+    'register'=> 'Registrar',
 ];

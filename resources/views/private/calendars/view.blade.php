@@ -1,5 +1,5 @@
       @php       
       $class ='calendars'; 
-      $objeto = $calendars;
+      $object = $calendars;
       @endphp
       @include('layouts.private.panels.list')

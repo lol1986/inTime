@@ -41,7 +41,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view ('private.users.create');
+        return view ('auth.register');
     }
 
     /**
@@ -108,12 +108,15 @@ class UserController extends Controller
 
         switch ($action){
             case 'update':
-                $request->validate([
-                    'name' => ['required', 'string', 'max:255'],
-                    'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                ]);
-               
                 $usuario = User::find($id);
+
+                $request->validate([
+                    'company'=> ['required','exists:companies,id','integer'],
+                    'name' => ['required', 'string', 'max:255'],
+                    'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'. $usuario->id],
+                    'active'=>['in:1,0'],
+                ]);
+
                 $usuario->company =  $request->get('company');
                 $usuario->name = $request->get('name');
                 $usuario->email = $request->get('email');
@@ -125,7 +128,7 @@ class UserController extends Controller
             
             case 'activate':
                 $request->validate([
-                    'active' => ['required', 'string'],
+                    'active' => ['required', 'string','in:0,1'],
                 ]);
 
                 $usuario = User::find($id);
@@ -158,7 +161,7 @@ class UserController extends Controller
         $usuario = User::find($id);
         $usuario->active ='1';
         $usuario->save();
-        return redirect('/users')->with('success', '¡Usuario active!');
+        return redirect('/users')->with('success', '¡Usuario activado!');
     }
 
     public function getPrintable(){
