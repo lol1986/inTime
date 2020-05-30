@@ -12,7 +12,7 @@
           <thead>
             
             @for($i=0; $i<count($objeto[0]->getPrintable()); $i++)
-            <td>{{__($class.'.'.$objeto[0]->getPrintable()[$i])}}</td>
+            <th>{{__($class.'.'.$objeto[0]->getPrintable()[$i])}}</th>
             @endfor
           </thead>
           <tbody>

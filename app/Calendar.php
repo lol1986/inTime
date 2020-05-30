@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Calendar extends Model
 {
-    protected $printable = ['id','name'];
+    protected $printable = ['name'];
 
     public function getPrintable()
     {
