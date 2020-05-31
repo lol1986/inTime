@@ -9,6 +9,8 @@ return [
     |
     | The following in the users view
     */
+    
+    'key'=> 'Calendario',
     'calendars'=> 'Calendarios',
     'name'=> 'Nombre',
     'id' => 'Id',

@@ -14,4 +14,8 @@ return [
     'delete' => 'Delete',
     'activate' => 'Activate',
     'deactivate' => 'Deactivate',
+    'update_success' => ' successfully updated!',
+    'store_success' => ' successfully created!',
+    'activate_success' => ' successfully reactivated!',
+    'deactivate_success' => ' successfully deleted!'
 ];

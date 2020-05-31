@@ -23,8 +23,4 @@ class CompanyController extends CrudController
         //$this->middleware('superadmin', ['only' => 'activate']);
     }
 
-   // public function getClassAlias(){
-   //     //dd(strtolower (substr(explode("\\",$this->className)[1],0,strlen(explode("\\",$this->className)[1])-1).'ies'));
-   //     return strtolower (substr(explode("\\",$this->className)[1],0,strlen(explode("\\",$this->className)[1])-1).'ies');
-   // }
 }

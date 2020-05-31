@@ -1,15 +1,8 @@
 @extends('layouts.private.app')
 @section('content')
-@php
-@endphp
     <div class="row justify-content-center">
         <div class="col-md-12">
           <h1 class='display-3'>{{__($class.'.'.$class)}}</h1>
-      @if(session()->get('success'))
-        <div class='alert alert-success'>
-          {{ session()->get('success') }}
-        </div>
-      @endif
       <form method="POST" action="{{ route($class.'.update', $object->id)}}">
         @method('PATCH')
         @csrf

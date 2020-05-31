@@ -9,6 +9,7 @@ return [
     |
     | The following in the users view
     */
+    'key'=> 'Role',
     'roles' => 'Roles',
     'name' => 'Name'
 ];

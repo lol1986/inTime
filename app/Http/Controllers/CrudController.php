@@ -61,7 +61,7 @@ abstract class CrudController extends Controller
         }
         $object->active = '1';
         $object->save();
-        return redirect('/'.$this->getClassAlias($this->regular))->with('success', '¡Rol guardado!');
+        return redirect('/'.$this->getClassAlias($this->regular))->with('success', 'store_success');
     }
 
     /**
@@ -88,7 +88,7 @@ abstract class CrudController extends Controller
                 $object->active = $object->active;
                 $object->save();
          
-                return redirect('/'.$this->getClassAlias($this->regular))->with('success', '¡Usuario actualizado!');
+                return redirect('/'.$this->getClassAlias($this->regular))->with('success', 'update_success');
             break;
             
             case 'activate':
@@ -100,7 +100,7 @@ abstract class CrudController extends Controller
                 $object->active = $request->get('active');
                 $object->save();
 
-                return redirect('/'.$this->getClassAlias($this->regular))->with('success', '¡Usuario activado!');   
+                return redirect('/'.$this->getClassAlias($this->regular))->with('success', 'activate_success');   
             break;
 
         }
@@ -122,7 +122,8 @@ abstract class CrudController extends Controller
         foreach ($print as $param){
             $readable[$param] = 'false';
         }
-        return view('private.'.$this->getClassAlias($this->regular).'.show')->with('object', $object)->with('readable',$readable);;
+        return view('private.'.$this->getClassAlias($this->regular).'.show')
+        ->with('object', $object)->with('readable',$readable) ->with('class',$this->getClassAlias($this->regular));;
     }
 
     /**
@@ -136,7 +137,8 @@ abstract class CrudController extends Controller
         $currentClass = $this->getCurrentClass();
         $object = $currentClass::find($id);
         $readable = $currentClass::getReadable();
-        return view('private.'.$this->getClassAlias($this->regular).'.edit') ->with('object', $object)->with('readable',$readable);;
+        return view('private.'.$this->getClassAlias($this->regular).'.edit') 
+        ->with('object', $object)->with('readable',$readable)->with('class',$this->getClassAlias($this->regular));;
     }
 
     /**
@@ -151,7 +153,7 @@ abstract class CrudController extends Controller
         $object = $currentClass::find($id);
         $object->active ='0';
         $object->save();
-        return redirect('/'.$this->getClassAlias($this->regular))->with('success', '¡Usuario desactivado!');
+        return redirect('/'.$this->getClassAlias($this->regular))->with('success', 'deactivate_success');
     }
 
 }

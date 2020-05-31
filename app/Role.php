@@ -48,7 +48,7 @@ class Role extends Model
     public function getUpdateValidations(){
 
         $updateValidations=[
-            'name' => ['required', 'string', 'max:255']
+            'name' => ['required', 'string', 'max:255','unique:roles,name,'. $this->id]
         ];
          return $updateValidations;
      }

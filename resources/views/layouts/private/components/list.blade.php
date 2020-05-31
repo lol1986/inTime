@@ -3,7 +3,10 @@
       <h1 class='display-3'>{{__($class.'.'.$class)}}</h1>
       @if(session()->get('success'))
         <div class='alert alert-success'>
-          {{ session()->get('success') }}
+          {{ 
+            __($class.'.key').
+            __('actions.'.session()->get('success')) 
+            }}
         </div>
       @endif
       <p><a href="{{ route($class.'.create')}}" class='btn btn-primary'>{{__('actions.add')}}<img class="ml-2" width='15px' src="/images/add.png"></a></p>

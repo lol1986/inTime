@@ -9,8 +9,8 @@ return [
     |
     | The following in the users view
     */
-    'companies'=> 'Companies',
-    'cif' => 'Cif',
-    'name' => 'Name',
-    'address' => 'Address'
+    'key'=> 'Calendar',
+    'calendars'=> 'Calendars',
+    'name'=> 'Name',
+    'id' => 'Id',
 ];

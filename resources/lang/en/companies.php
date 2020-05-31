@@ -9,6 +9,7 @@ return [
     |
     | The following in the users view
     */
+    'key'=> 'Companie',
     'companies'=> 'Companies',
     'cif' => 'Cif',
     'name' => 'Name',
