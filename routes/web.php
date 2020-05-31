@@ -40,3 +40,8 @@ Route::resource('tests', 'TestController');
 Route::resource('roles', 'RoleController');
 Route::resource('companies', 'CompanyController');
 Route::resource('calendars', 'CalendarController');
+Route::resource('holidays', 'HolidayController');
+Route::resource('leaves', 'LeaveController');
+
+Route::resource('users.holidays', 'UserHolidayController');
+

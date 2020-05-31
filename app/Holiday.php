@@ -2,20 +2,25 @@
 
 namespace App;
 
-use App\Company;
+use App\Holiday;
 use Illuminate\Database\Eloquent\Model;
 
-class Company extends Model
+class Holiday extends Model
 {
-    protected static $printable = ['cif','name','address'];
+    protected $fillable = ['calendar','date'];
 
-    protected $fillable = ['cif','name','address'];
+    protected static $printable = ['calendar','date'];
 
-    protected static $updatable = ['name','address'];
+    protected static $updatable = ['date'];
 
     protected static $readable = [];
 
-   // protected static $storeValidations =['name' => ['max:255','unique:companies']];
+   // protected static $storeValidations =['name' => ['max:255','unique:roles']];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class)->withTimestamps();
+    }
 
     public static function getPrintable()
     {
@@ -43,7 +48,7 @@ class Company extends Model
     public function getUpdateValidations(){
 
         $updateValidations=[
- //           'name' => ['required', 'string', 'max:255','unique:companies,name,'. $this->id]
+//            'name' => ['required', 'string', 'max:255','unique:roles,name,'. $this->id]
         ];
          return $updateValidations;
      }

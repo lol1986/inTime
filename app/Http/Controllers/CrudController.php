@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\{User,Role,Company,Calendar};
+use App\{User,Role,Company,Calendar,Holiday};
 
 abstract class CrudController extends Controller
 {

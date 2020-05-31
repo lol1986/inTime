@@ -20,6 +20,7 @@ class CreateLeavesTable extends Migration
             $table->date('end');
             $table->integer('days');
             $table->string('attachment')->nullable();
+            $table->string('active');
             $table->timestamps();
             $table->foreign('user')->references('id')->on('users');
         });

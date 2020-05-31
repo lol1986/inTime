@@ -19,6 +19,7 @@ class CreateTimeregistryTable extends Migration
             $table->date('date');
             $table->enum('type',['in','out','pin','pout']);
             $table->timestamps();
+            $table->string('active');
             $table->foreign('user')->references('id')->on('users');
         });
     }

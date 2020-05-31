@@ -17,6 +17,7 @@ class CreateHolidaysTable extends Migration
             $table->id();
             $table->unsignedBigInteger('calendar')->unsigned();
             $table->date('date');
+            $table->string('active');
             $table->timestamps();
             $table->foreign('calendar')->references('id')->on('calendars');
         });

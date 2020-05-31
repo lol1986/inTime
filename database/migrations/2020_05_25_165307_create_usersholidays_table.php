@@ -20,6 +20,7 @@ class CreateUsersholidaysTable extends Migration
             $table->date('end');
             $table->integer('days');
             $table->enum('status', ['pending', 'approved','denied']);
+            $table->string('active');
             $table->timestamps();
             $table->foreign('user')->references('id')->on('users');
         });

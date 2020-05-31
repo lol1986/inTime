@@ -7,10 +7,12 @@ return [
     | Users Language Lines
     |--------------------------------------------------------------------------
     |
-    | The following in the calendars view
+    | The following in the holidays view
     */
-    'key'=> 'Calendar',
-    'calendars'=> 'Calendars',
-    'name'=> 'Name',
-    'id' => 'Id',
+    'key'=> 'Ausencia',
+    'holidays' => 'Ausencias',
+    'user'=> 'Usuario',
+    'start'=> 'Inicio',
+    'end'=> 'Fin',
+    'days'=> 'Días'
 ];
