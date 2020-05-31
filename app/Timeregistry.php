@@ -15,12 +15,10 @@ class Timeregistry extends Model
 
     protected static $readable = [];
 
-//    protected static $storeValidations =['name' => ['max:255','unique:roles']];
-
-    public function user()
-    {
-        return $this->belongsTo('App\User', 'user')->get()[0];
-    }
+   // public function user()
+   // {
+     //   return $this->belongsTo('App\User', 'user');
+   // }
 
     public static function getPrintable()
     {
@@ -41,10 +39,6 @@ class Timeregistry extends Model
         return get_class($this);
     } 
 
-    public static function getStoreValidations(){
-        return self::$storeValidations;
-    }
-
     public function getUpdateValidations(){
 
         $updateValidations=[
@@ -53,4 +47,12 @@ class Timeregistry extends Model
          return $updateValidations;
      }
     
+     public function getStoreValidations($id){
+        $storeValidations =[
+            'user' => ['exists:users,id'],
+            'type' => ['in:in,out,pin,pout'],
+            'date'=> ['date_format:Y-m-d H:i:s']
+        ];
+        return $storeValidations;
+    }
 }

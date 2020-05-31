@@ -43,5 +43,6 @@
             @endforeach
           </tbody>
         </table>
+        {{$object->links()}}
       </div>
       @endsection

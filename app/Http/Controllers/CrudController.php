@@ -27,7 +27,7 @@ abstract class CrudController extends Controller
     public function index()
     {
         $currentClass = $this->getCurrentClass();
-        $object = $currentClass::orderBy('active', 'desc')->get();
+        $object = $currentClass::orderBy('active', 'desc')->paginate(5);
         return view ('private.'.$this->getClassAlias($this->regular).'.view')->with('object', $object)
         ->with('className',$this->className)->with('class',$this->getClassAlias($this->regular));
     }

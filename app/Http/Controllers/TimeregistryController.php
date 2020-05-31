@@ -23,4 +23,25 @@ class TimeregistryController extends CrudController
         //$this->middleware('superadmin', ['only' => 'activate']);
     }
 
+    
+     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request){
+        $currentClass = $this->getCurrentClass();
+        $object = new $currentClass;
+        $params=$object->getFillable();
+        $request->validate($object->getStoreValidations($request->get('id')));
+        foreach ($params as $param){
+            $object->$param =  $request->get($param);
+        }
+        $object->active = '1';
+        $object->save();
+        return redirect('/'.$this->getClassAlias($this->regular))->with('success', 'store_success');
+    }
+
+
 }

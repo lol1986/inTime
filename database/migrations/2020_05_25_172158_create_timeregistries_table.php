@@ -16,7 +16,7 @@ class CreateTimeregistriesTable extends Migration
         Schema::create('timeregistries', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user')->unsigned();
-            $table->date('date');
+            $table->dateTime('date');
             $table->enum('type',['in','out','pin','pout']);
             $table->timestamps();
             $table->string('active');

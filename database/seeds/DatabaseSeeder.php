@@ -180,7 +180,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('timeregistries')->insert([
             'user'=> "1",
-            'date'=> "2020-01-02 07:55:00",
+            'date'=> now(),
             'type'=> "in",
             'active'=>'1'
         ]);
