@@ -10,7 +10,7 @@ return [
     | The following in the holidays view
     */
     'key'=> 'Ausencia',
-    'holidays' => 'Ausencias',
+    'leaves' => 'Ausencias',
     'user'=> 'Usuario',
     'start'=> 'Inicio',
     'end'=> 'Fin',

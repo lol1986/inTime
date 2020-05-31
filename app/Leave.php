@@ -5,7 +5,7 @@ namespace App;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
-class Leaves extends Model
+class Leave extends Model
 {
     protected $fillable = ['user','start','end','days'];
 
