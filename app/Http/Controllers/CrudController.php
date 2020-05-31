@@ -7,8 +7,12 @@ use App\{User,Role,Company,Calendar};
 
 abstract class CrudController extends Controller
 {
-    public function getClassAlias(){
-        return strtolower (explode("\\",$this->className)[1].'s');
+    public function getClassAlias($regular = true){
+        if ($regular == 'true'){
+            return strtolower (explode("\\",$this->className)[1].'s');
+        }else{
+            return strtolower (substr(explode("\\",$this->className)[1],0,strlen(explode("\\",$this->className)[1])-1).'ies');
+        }
     }
 
     public function getCurrentClass(){
@@ -24,8 +28,8 @@ abstract class CrudController extends Controller
     {
         $currentClass = $this->getCurrentClass();
         $object = $currentClass::orderBy('active', 'desc')->get();
-        return view ('private.'.$this->getClassAlias().'.view')->with('object', $object)
-        ->with('className',$this->className);
+        return view ('private.'.$this->getClassAlias($this->regular).'.view')->with('object', $object)
+        ->with('className',$this->className)->with('class',$this->getClassAlias($this->regular));
     }
 
     /**
@@ -37,7 +41,8 @@ abstract class CrudController extends Controller
     {
         $currentClass = $this->getCurrentClass();
         $object = new $currentClass;
-        return view ('private.'.$this->getClassAlias().'.create')->with('object', $object);
+        return view ('private.'.$this->getClassAlias($this->regular).'.create')->with('object', $object)
+        ->with('class',$this->getClassAlias($this->regular));;
     }
 
      /**
@@ -56,7 +61,7 @@ abstract class CrudController extends Controller
         }
         $object->active = '1';
         $object->save();
-        return redirect('/'.$this->getClassAlias())->with('success', '¡Rol guardado!');
+        return redirect('/'.$this->getClassAlias($this->regular))->with('success', '¡Rol guardado!');
     }
 
     /**
@@ -83,7 +88,7 @@ abstract class CrudController extends Controller
                 $object->active = $object->active;
                 $object->save();
          
-                return redirect('/'.$this->getClassAlias())->with('success', '¡Usuario actualizado!');
+                return redirect('/'.$this->getClassAlias($this->regular))->with('success', '¡Usuario actualizado!');
             break;
             
             case 'activate':
@@ -95,7 +100,7 @@ abstract class CrudController extends Controller
                 $object->active = $request->get('active');
                 $object->save();
 
-                return redirect('/'.$this->getClassAlias())->with('success', '¡Usuario activado!');   
+                return redirect('/'.$this->getClassAlias($this->regular))->with('success', '¡Usuario activado!');   
             break;
 
         }
@@ -117,7 +122,7 @@ abstract class CrudController extends Controller
         foreach ($print as $param){
             $readable[$param] = 'false';
         }
-        return view('private.'.$this->getClassAlias().'.show')->with('object', $object)->with('readable',$readable);;
+        return view('private.'.$this->getClassAlias($this->regular).'.show')->with('object', $object)->with('readable',$readable);;
     }
 
     /**
@@ -131,7 +136,7 @@ abstract class CrudController extends Controller
         $currentClass = $this->getCurrentClass();
         $object = $currentClass::find($id);
         $readable = $currentClass::getReadable();
-        return view('private.'.$this->getClassAlias().'.edit') ->with('object', $object)->with('readable',$readable);;
+        return view('private.'.$this->getClassAlias($this->regular).'.edit') ->with('object', $object)->with('readable',$readable);;
     }
 
     /**
@@ -146,7 +151,7 @@ abstract class CrudController extends Controller
         $object = $currentClass::find($id);
         $object->active ='0';
         $object->save();
-        return redirect('/'.$this->getClassAlias())->with('success', '¡Usuario desactivado!');
+        return redirect('/'.$this->getClassAlias($this->regular))->with('success', '¡Usuario desactivado!');
     }
 
 }
