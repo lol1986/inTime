@@ -38,13 +38,56 @@ abstract class CrudController extends Controller
         return view ('private.'.$this->getClassAlias().'.create');
     }
 
-    /**
+     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public abstract function store(Request $request);
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $action = $request->get('action');
+        $currentClass = $this->getCurrentClass();
+
+        switch ($action){
+            case 'update':
+                $object = $currentClass::find($id);
+
+                $request->validate($object->getUpdateValidations());
+                $params=$object->getUpdatable();
+                foreach ($params as $param){
+                    $object->$param =  $request->get($param);
+                }
+                $object->active = $object->active;
+                $object->save();
+         
+                return redirect('/'.$this->getClassAlias())->with('success', '¡Usuario actualizado!');
+            break;
+            
+            case 'activate':
+                $request->validate([
+                    'active' => ['required', 'string','in:0,1'],
+                ]);
+
+                $object =  $currentClass::find($id);
+                $object->active = $request->get('active');
+                $object->save();
+
+                return redirect('/'.$this->getClassAlias())->with('success', '¡Usuario activado!');   
+            break;
+
+        }
+        
+    }
 
     /**
      * Display the specified resource.
@@ -77,15 +120,6 @@ abstract class CrudController extends Controller
         $readable = $currentClass::getReadable();
         return view('private.'.$this->getClassAlias().'.edit') ->with('object', $object)->with('readable',$readable);;
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public abstract function update(Request $request, $id);
 
     /**
      * Remove the specified resource from storage.

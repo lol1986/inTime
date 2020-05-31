@@ -32,12 +32,7 @@ class UserController extends CrudController
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'dni' => ['regex:/^[0-9]{8}[a-zA-Z]|[XYZxyz][0-9]{7}[a-zA-z]$/','unique:users'],
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        $request->validate(User::getStoreValidations());
     
         $usuario = new User([
             'dni' => $request->get('dni'),
@@ -51,51 +46,14 @@ class UserController extends CrudController
         return redirect('/users')->with('success', '¡Usuario guardado!');
     }
 
-
     /**
-     * Update the specified resource in storage.
+     * Show the form for creating a new resource.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function create()
     {
-        $action = $request->get('action');
-
-        switch ($action){
-            case 'update':
-                $usuario = User::find($id);
-
-                $request->validate([
-                    'company'=> ['required','exists:companies,id','integer'],
-                    'name' => ['required', 'string', 'max:255'],
-                    'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'. $usuario->id],
-                    'active'=>['in:1,0'],
-                ]);
-
-                $usuario->company =  $request->get('company');
-                $usuario->name = $request->get('name');
-                $usuario->email = $request->get('email');
-                $usuario->active = $usuario->active;
-                $usuario->save();
-         
-                return redirect('/users')->with('success', '¡Usuario actualizado!');
-            break;
-            
-            case 'activate':
-                $request->validate([
-                    'active' => ['required', 'string','in:0,1'],
-                ]);
-
-                $usuario = User::find($id);
-                $usuario->active = $request->get('active');
-                $usuario->save();
-
-                return redirect('/users')->with('success', '¡Usuario activado!');   
-            break;
-
-        }
-        
+        return view ('auth.register');
     }
+
 }

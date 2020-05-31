@@ -16,17 +16,22 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['dni','company',
-        'name', 'email', 'password','active'
-    ];
+    protected $fillable = ['dni','company','name', 'email', 'password','active'];
 
-    protected static $printable = ['dni','company',
-    'name', 'email',
-    ];
+    protected static $printable = ['dni','company','name', 'email'];
+
+    protected static $updatable = ['dni','company','name', 'email'];
 
     protected static $readable = [
         'dni' => 'false',
         'company' => 'false',
+    ];
+
+    protected static $storeValidations = [
+        'dni' => ['regex:/^[0-9]{8}[a-zA-Z]|[XYZxyz][0-9]{7}[a-zA-z]$/','unique:users'],
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        'password' => ['required', 'string', 'min:8', 'confirmed'],
     ];
 
     /**
@@ -62,8 +67,29 @@ class User extends Authenticatable
         return self::$readable;
     }
 
+    public static function getUpdatable()
+    {
+        return self::$updatable;
+    }
+
     public function getClassName(){
         return get_class($this);
     } 
+
+    public function getStoreValidations(){
+        return $storeValidations;
+    }
+    
+    
+    public function getUpdateValidations(){
+
+       $updateValidations=[
+           'company'=> ['required','exists:companies,id','integer'],
+           'name' => ['required', 'string', 'max:255'],
+           'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'. $this->id],
+           'active'=>['in:1,0'],
+       ];
+        return $updateValidations;
+    }
     
 }
