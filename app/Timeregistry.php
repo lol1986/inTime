@@ -19,7 +19,7 @@ class Timeregistry extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class)->withTimestamps();
+        return $this->belongsTo('App\User', 'user')->get()[0];
     }
 
     public static function getPrintable()

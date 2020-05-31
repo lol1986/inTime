@@ -14,6 +14,9 @@
           <li class="nav-item">
             <a class="nav-link" href={{route('leaves.index')}}>Gestionar ausencias</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href={{route('timeregistries.index')}}>Gestionar registros</a>
+          </li>
       </ul>
     </div>
   </nav>

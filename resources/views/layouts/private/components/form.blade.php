@@ -24,6 +24,7 @@
             </div>
           </div>
         @endforeach
+        <input id="action" name="action" type="hidden" value="update">
         @yield('buttons')
       </form>          
    </div>

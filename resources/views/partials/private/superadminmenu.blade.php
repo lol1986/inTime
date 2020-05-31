@@ -1,5 +1,5 @@
 <nav class="navbar-light bg-light p-0">
-  <a class="navbar-brand" href="#">Menú gestión</a>
+  <a class="navbar-brand" href="#">Menú Superadmin</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#adminMenu" aria-controls="adminMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
   </button>

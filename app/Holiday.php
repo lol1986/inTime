@@ -15,8 +15,6 @@ class Holiday extends Model
 
     protected static $readable = [];
 
-   // protected static $storeValidations =['name' => ['max:255','unique:roles']];
-
     public function user()
     {
         return $this->belongsTo(User::class)->withTimestamps();
@@ -41,8 +39,12 @@ class Holiday extends Model
         return get_class($this);
     } 
 
-    public static function getStoreValidations(){
-        return self::$storeValidations;
+    public function getStoreValidations($id){
+        $storeValidations =[
+            'calendar' => ['exists:calendars,id'],
+            'date'=> ['date_format:Y-m-d','unique:holidays,date,NULL,id,calendar,'.$id]
+        ];
+        return $storeValidations;
     }
 
     public function getUpdateValidations(){

@@ -43,6 +43,4 @@ Route::resource('calendars', 'CalendarController');
 Route::resource('holidays', 'HolidayController');
 Route::resource('leaves', 'LeaveController');
 Route::resource('timeregistries', 'TimeregistryController');
-
-Route::resource('users.holidays', 'UserHolidayController');
-
+Route::resource('calendars.holidays', 'HolidayController')->shallow();

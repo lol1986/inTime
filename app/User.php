@@ -57,6 +57,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class)->withTimestamps();
     }
 
+    public function timeregistries()
+    {
+        return $this->hasMany('App\Timeregistry', 'id', 'user');
+    }
+
     public static function getPrintable()
     {
         return self::$printable;
