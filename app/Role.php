@@ -7,7 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
+    protected $fillable = ['name','active'];
+
     protected static $printable = ['name'];
+
+    protected static $updatable = ['name'];
+
+    protected static $readable = [];
+
+    protected static $storeValidations =['name' => ['max:255','unique:roles']];
 
     public function users()
     {
@@ -24,8 +32,25 @@ class Role extends Model
         return self::$readable;
     }
 
+    public static function getUpdatable()
+    {
+        return self::$updatable;
+    }
+
     public function getClassName(){
         return get_class($this);
     } 
+
+    public static function getStoreValidations(){
+        return self::$storeValidations;
+    }
+
+    public function getUpdateValidations(){
+
+        $updateValidations=[
+            'name' => ['required', 'string', 'max:255']
+        ];
+         return $updateValidations;
+     }
     
 }

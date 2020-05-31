@@ -35,7 +35,9 @@ abstract class CrudController extends Controller
      */
     public function create()
     {
-        return view ('private.'.$this->getClassAlias().'.create');
+        $currentClass = $this->getCurrentClass();
+        $object = new $currentClass;
+        return view ('private.'.$this->getClassAlias().'.create')->with('object', $object);
     }
 
      /**
@@ -44,7 +46,18 @@ abstract class CrudController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public abstract function store(Request $request);
+    public function store(Request $request){
+        $currentClass = $this->getCurrentClass();
+        $object = new $currentClass;
+        $request->validate($currentClass::getStoreValidations());
+        $params=$object->getFillable();
+        foreach ($params as $param){
+            $object->$param =  $request->get($param);
+        }
+        $object->active = '1';
+        $object->save();
+        return redirect('/'.$this->getClassAlias())->with('success', '¡Rol guardado!');
+    }
 
     /**
      * Update the specified resource in storage.

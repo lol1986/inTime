@@ -10,8 +10,7 @@
           {{ session()->get('success') }}
         </div>
       @endif
-      <form method="POST" action="{{ route($class.'.update', $object->id)}}">
-        @method('PATCH')
+      <form method="POST" action="{{ route($class.'.store')}}">
         @csrf
         @php
           $className = $object->getClassName();
