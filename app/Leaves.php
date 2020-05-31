@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Holiday;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Leaves extends Model
@@ -15,7 +15,7 @@ class Leaves extends Model
 
     protected static $readable = [];
 
-    protected static $storeValidations =['name' => ['max:255','unique:roles']];
+//    protected static $storeValidations =['name' => ['max:255','unique:roles']];
 
     public function user()
     {
@@ -48,7 +48,7 @@ class Leaves extends Model
     public function getUpdateValidations(){
 
         $updateValidations=[
-            'name' => ['required', 'string', 'max:255','unique:roles,name,'. $this->id]
+  //          'name' => ['required', 'string', 'max:255','unique:roles,name,'. $this->id]
         ];
          return $updateValidations;
      }

@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Holiday;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Holiday extends Model

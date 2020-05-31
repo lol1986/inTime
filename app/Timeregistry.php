@@ -2,19 +2,25 @@
 
 namespace App;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
-class Calendar extends Model
+class Timeregistry extends Model
 {
-    protected static $printable = ['name'];
+    protected $fillable = ['user','date','type'];
 
-    protected $fillable = ['name'];
+    protected static $printable = ['user','date','type'];
 
-    protected static $updatable =['name'];
+    protected static $updatable = ['user','date','type'];
 
     protected static $readable = [];
 
-    protected static $storeValidations =['name' => ['max:255','unique:calendars']];
+//    protected static $storeValidations =['name' => ['max:255','unique:roles']];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class)->withTimestamps();
+    }
 
     public static function getPrintable()
     {
@@ -42,8 +48,9 @@ class Calendar extends Model
     public function getUpdateValidations(){
 
         $updateValidations=[
-            'name' => ['required', 'string', 'max:255','unique:calendars,name,'. $this->id]
+  //          'name' => ['required', 'string', 'max:255','unique:roles,name,'. $this->id]
         ];
          return $updateValidations;
      }
+    
 }

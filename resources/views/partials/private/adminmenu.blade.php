@@ -9,13 +9,10 @@
               <a class="nav-link" href={{route('users.index')}}>Gestionar empleados</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="#">Gestionar horarios</a>
+            <a class="nav-link" href={{route('usersholidays.index')}}>Gestionar vacaciones</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Gestionar vacaciones</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Gestionar ausencias</a>
+            <a class="nav-link" href={{route('leaves.index')}}>Gestionar ausencias</a>
           </li>
       </ul>
     </div>
