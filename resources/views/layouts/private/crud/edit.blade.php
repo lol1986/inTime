@@ -1,5 +1,5 @@
 @php             
-$class =strtolower (explode("\\",$className)[1]).'s'; 
+$class =strtolower (explode("\\",$object->getClassName())[1]).'s';
 @endphp
 @extends('layouts.private.components.form')
 @section('buttons')

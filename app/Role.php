@@ -18,5 +18,14 @@ class Role extends Model
     {
         return self::$printable;
     }
+
+    public static function getReadable()
+    {
+        return self::$readable;
+    }
+
+    public function getClassName(){
+        return get_class($this);
+    } 
     
 }

@@ -29,7 +29,7 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::orderBy('name', 'desc')->get();
-        return view ('private.roles.view', compact('roles'));
+        return view ('private.roles.view')->with('object', $roles);
     }
 
     /**
@@ -71,7 +71,13 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        $role = Role::find($id);
+        $print= Role::getPrintable();
+        $readable=[];
+        foreach ($print as $param){
+            $readable[$param] = 'false';
+        }
+        return view('private.roles.show')->with('object', $role)->with('readable',$readable);;
     }
 
     /**
@@ -83,7 +89,7 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role = Role::find($id);
-        return view('private.roles.edit', compact('role'));
+        return view('private.roles.edit')->with('object', $role);;
     }
 
     /**

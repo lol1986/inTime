@@ -12,4 +12,8 @@ class Company extends Model
     {
         return self::$printable;
     }
+
+    public function getClassName(){
+        return get_class($this);
+    } 
 }

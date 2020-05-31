@@ -1,4 +1,4 @@
 @php     
-$class =strtolower (explode("\\",$className)[1]).'s'; 
+$class =strtolower (explode("\\",$object[0]->getClassName())[1]).'s'; 
 @endphp
 @include('layouts.private.components.list')

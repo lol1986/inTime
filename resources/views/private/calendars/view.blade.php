@@ -1,5 +1,1 @@
-      @php       
-      $class ='calendars'; 
-      $object = $calendars;
-      @endphp
-      @include('layouts.private.components.list')
+@include ('layouts.private.crud.view')

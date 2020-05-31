@@ -86,8 +86,7 @@ class UserController extends Controller
         foreach ($print as $param){
             $readable[$param] = 'false';
         }
-        return view('private.users.show')->with('object', $user)->with('readable',$readable)
-        ->with('className',$this->className);;
+        return view('private.users.show')->with('object', $user)->with('readable',$readable);;
     }
 
     /**
@@ -100,8 +99,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $readable = User::getReadable();
-        return view('private.users.edit') ->with('object', $user)->with('readable',$readable)
-        ->with('className',$this->className);;
+        return view('private.users.edit') ->with('object', $user)->with('readable',$readable);;
     }
 
     /**

@@ -12,6 +12,7 @@
         @method('PATCH')
         @csrf
         @php
+          $className = $object->getClassName();
           $classObject = new $className;
           $params=$classObject::getPrintable();
         @endphp
