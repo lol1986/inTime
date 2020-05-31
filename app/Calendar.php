@@ -14,7 +14,7 @@ class Calendar extends Model
 
     protected static $readable = [];
 
-    protected static $storeValidations =['name' => ['max:255','unique:calendars']];
+    protected static $storeValidations =['required','name' => ['max:255','unique:calendars']];
 
     public static function getPrintable()
     {

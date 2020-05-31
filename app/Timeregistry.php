@@ -49,9 +49,9 @@ class Timeregistry extends Model
     
      public function getStoreValidations($id){
         $storeValidations =[
-            'user' => ['exists:users,id'],
-            'type' => ['in:in,out,pin,pout'],
-            'date'=> ['date_format:Y-m-d H:i:s']
+            'user' => ['required','exists:users,id'],
+            'type' => ['required','in:in,out,pin,pout'],
+            'date'=> ['required','date_format:Y-m-d H:i:s']
         ];
         return $storeValidations;
     }

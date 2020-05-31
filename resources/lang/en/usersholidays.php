@@ -7,11 +7,13 @@ return [
     | Users Language Lines
     |--------------------------------------------------------------------------
     |
-    | The following in the companies view
+    | The following in the holidays view
     */
-    'key'=> 'Company',
-    'companies'=> 'Companies',
-    'cif' => 'Cif',
-    'name' => 'Name',
-    'address' => 'Address'
+    'key'=> 'Holiday',
+    'usersholidays' => 'Holidays',
+    'user' => 'User',
+    'start'=> 'Start',
+    'end'=> 'End',
+    'days'=> 'Days',
+    'status'=> 'Status'
 ];

@@ -5,11 +5,11 @@ namespace App;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
-class Holiday extends Model
+class Usersholiday extends Model
 {
-    protected $fillable = ['calendar','date'];
+    protected $fillable = ['user','start','end','days','status','active'];
 
-    protected static $printable = ['calendar','date'];
+    protected static $printable = ['user','start','end','days','status'];
 
     protected static $updatable = ['date'];
 
@@ -17,7 +17,7 @@ class Holiday extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class)->withTimestamps();
+        return $this->belongsTo(User::class);
     }
 
     public static function getPrintable()
@@ -41,8 +41,11 @@ class Holiday extends Model
 
     public function getStoreValidations($id){
         $storeValidations =[
-            'calendar' => ['required','exists:calendars,id'],
-            'date'=> ['required','date_format:Y-m-d','unique:holidays,date,NULL,id,calendar,'.$id]
+            'user' => ['required','exists:users,id'],
+            'start'=> ['required','date_format:Y-m-d'],
+            'days'=> ['required','integer'],
+            'end'=> ['required','date_format:Y-m-d','after_or_equal:start'],
+            'status'=> ['required','in:peding,approved,denied']
         ];
         return $storeValidations;
     }
