@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 
-class UserController extends Controller
+class UserController extends CrudController
 {
    /**
      * Create a new controller instance.
@@ -23,27 +23,6 @@ class UserController extends Controller
         //$this->middleware('superadmin', ['only' => 'activate']);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $user = User::orderBy('active', 'desc')->get();
-        return view ('private.users.view')->with('object', $user)
-        ->with('className',$this->className);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view ('auth.register');
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -72,35 +51,6 @@ class UserController extends Controller
         return redirect('/users')->with('success', '¡Usuario guardado!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $user = User::find($id);
-        $print= User::getPrintable();
-        $readable=[];
-        foreach ($print as $param){
-            $readable[$param] = 'false';
-        }
-        return view('private.users.show')->with('object', $user)->with('readable',$readable);;
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $user = User::find($id);
-        $readable = User::getReadable();
-        return view('private.users.edit') ->with('object', $user)->with('readable',$readable);;
-    }
 
     /**
      * Update the specified resource in storage.
@@ -148,19 +98,4 @@ class UserController extends Controller
         }
         
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http$usuario->email\Response
-     */
-    public function destroy($id)
-    {
-        $usuario = User::find($id);
-        $usuario->active ='0';
-        $usuario->save();
-        return redirect('/users')->with('success', '¡Usuario desactivado!');
-    }
-
 }
