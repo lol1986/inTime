@@ -25,12 +25,12 @@
             @else
               <tr>
             @endif
-            @foreach ($object[0]->getPrintable() as $param)
+            @foreach ($item->getPrintable() as $param)
                 @if (substr($param, strlen($param)-3, strlen($param))=='_id')
                 @php
                   $str =substr($param,0,strlen($param)-3);
                 @endphp
-                <td>{{$object[0]->$str->name}}</td>
+                <td>{{$item->$str->name}}</td>
                 @else
                   <td>{{$item->getAttribute($param)}}</td>
                 @endif
