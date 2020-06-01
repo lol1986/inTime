@@ -6,13 +6,13 @@
     <div class="collapse show navbar-collapse" id="userMenu">
       <ul class="navbar-nav"> 
           <li class="nav-item active">
-              <a class="nav-link" href="#">Registro de jornada</a>
+              <a class="nav-link" href="/home">Registro de jornada</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="#">Solicitar vacaciones</a>
+              <a class="nav-link" href="/usersholidays/create">Solicitar vacaciones</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Gestionar ausencias</a>
+            <a class="nav-link" href="/leaves/create">Gestionar ausencias</a>
           </li>
       </ul>
     </div>

@@ -9,7 +9,7 @@
               <a class="nav-link" href={{route('users.index')}}>Gestionar empleados</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href={{route('holidays.index')}}>Gestionar vacaciones</a>
+            <a class="nav-link" href={{route('usersholidays.index')}}>Gestionar vacaciones</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href={{route('leaves.index')}}>Gestionar ausencias</a>
