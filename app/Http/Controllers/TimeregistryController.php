@@ -40,7 +40,12 @@ class TimeregistryController extends CrudController
         }
         $object->active = '1';
         $object->save();
-        return redirect('/'.$this->getClassAlias($this->regular))->with('success', 'store_success');
+        
+        if($request->get('name') && $request->get('name')=='home'){
+            return redirect('/home')->with('success', 'store_success');                
+        }else{
+            return redirect('/'.$this->getClassAlias($this->regular))->with('success', 'store_success');                
+        }
     }
 
 

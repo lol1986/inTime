@@ -10,7 +10,7 @@
         </div>
       @endif
       <p><a href="{{ route($class.'.create')}}" class='btn btn-primary'>{{__('actions.add')}}<img class="ml-2" width='15px' src="/images/add.png"></a></p>
-      <div class ='table-responsive'>
+      <div class ='table-responsive col-lg-11'>
         <table class='table table-striped'>
           <thead>
             

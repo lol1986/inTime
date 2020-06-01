@@ -13,5 +13,10 @@ return [
     'timeregistries' => 'Registros horarios',
     'user' => 'Usuario',
     'date'=> 'Fecha',
-    'type'=> 'Tipo'
+    'type'=> 'Tipo',
+    'start'=> 'Entrada',
+    'pause_start'=> 'Inicio pausa',
+    'pause_end'=> 'Fin pausa',
+    'end'=> 'Salida',
+
 ];

@@ -13,5 +13,9 @@ return [
     'timeregistries' => 'Time registries',
     'user' => 'User',
     'date'=> 'Date',
-    'type'=> 'Type'
+    'type'=> 'Type',
+    'start'=> 'Start',
+    'pause_start'=> 'Start pause',
+    'pause_end'=> 'End pause',
+    'end'=> 'End',
 ];

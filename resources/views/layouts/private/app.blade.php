@@ -5,7 +5,7 @@
     @include('partials.private.nav')
     <div class="row col-lg-12  col-md-12">
         @include('partials.private.leftmenu')
-        <main class="container col-lg-8 col-md-9">
+        <main class="container col-lg-9 col-md-9">
             @yield('content')
         </main>
     </div>
