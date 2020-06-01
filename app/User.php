@@ -16,11 +16,11 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['dni','company','name', 'email', 'password','active'];
+    protected $fillable = ['dni','company_id','name', 'email', 'password','active'];
 
-    protected static $printable = ['dni','company','name', 'email'];
+    protected static $printable = ['dni','company_id','name', 'email'];
 
-    protected static $updatable = ['dni','company','name', 'email'];
+    protected static $updatable = ['dni','company_id','name', 'email'];
 
     protected static $readable = [
         'dni' => 'false',

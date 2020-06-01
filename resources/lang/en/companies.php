@@ -9,7 +9,7 @@ return [
     |
     | The following in the companies view
     */
-    'companie_id'=> 'Company',
+    'company_id'=> 'Company',
     'key'=> 'Company',
     'companies'=> 'Companies',
     'cif' => 'Cif',

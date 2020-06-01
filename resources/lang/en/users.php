@@ -9,7 +9,7 @@ return [
     |
     | The following in the users view
     */
-    'companie_id'=> 'Company',
+    'company_id'=> 'Company',
     'leave_id'=> 'Leave',
     'role_id'=> 'Role',
     'key' => 'User',

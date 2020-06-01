@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
             'name' => "Usuario superadmin",
             'email' => 'superadmin@gmail.com',
             'password' => Hash::make('11111111A'),
-            'companie_id'=>'1',
+            'company_id'=>'1',
             'calendar_id'=>'1',
             'active'=>'1'
         ]);
@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
             'name' => "Usuario administrador",
             'email' => 'admin@gmail.com',
             'password' => Hash::make('11111111B'),
-            'companie_id'=>'1',
+            'company_id'=>'1',
             'calendar_id'=>'1',
             'active'=>'1'
         ]);
@@ -66,7 +66,7 @@ class DatabaseSeeder extends Seeder
             'name' => "Usuario genérico",
             'email' => 'user@gmail.com',
             'password' => Hash::make('11111111C'),
-            'companie_id'=>'1',
+            'company_id'=>'1',
             'calendar_id'=>'2',
             'active'=>'1'
         ]);
