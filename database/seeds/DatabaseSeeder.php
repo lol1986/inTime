@@ -149,51 +149,115 @@ class DatabaseSeeder extends Seeder
             'active'=>'1'
         ]);
 
+
         DB::table('timeregistries')->insert([
             'user_id'=> "1",
+            'status'=> "open",
+            'active'=>'1'
+        ]);
+
+        DB::table('timeregistries')->insert([
+            'user_id'=> "1",
+            'status'=> "closed",
+            'active'=>'1'
+        ]);
+
+        DB::table('timeregistries')->insert([
+            'user_id'=> "1",
+            'status'=> "closed",
+            'active'=>'1'
+        ]);
+
+        DB::table('timeregistries')->insert([
+            'user_id'=> "1",
+            'status'=> "closed",
+            'active'=>'1'
+        ]);
+
+
+        DB::table('timeregistries')->insert([
+            'user_id'=> "2",
+            'status'=> "open",
+            'active'=>'1'
+        ]);
+
+        DB::table('timeregistries')->insert([
+            'user_id'=> "2",
+            'status'=> "closed",
+            'active'=>'1'
+        ]);
+
+        DB::table('timeregistries')->insert([
+            'user_id'=> "2",
+            'status'=> "closed",
+            'active'=>'1'
+        ]);
+
+        DB::table('timeregistries')->insert([
+            'user_id'=> "3",
+            'status'=> "open",
+            'active'=>'1'
+        ]);
+
+        DB::table('registryevents')->insert([
+            'timeregistry_id'=> "1",
+            'date'=> "2020-01-02 09:13:13",
+            'type'=> "pin",
+            'active'=>'1'
+        ]);
+
+        DB::table('registryevents')->insert([
+            'timeregistry_id'=> "1",
+            'date'=> "2020-01-02 09:55:24",
+            'type'=> "pout",
+            'active'=>'1'
+        ]);
+
+        DB::table('registryevents')->insert([
+            'timeregistry_id'=> "2",
             'date'=> "2020-01-01 08:10:04",
             'type'=> "in",
             'active'=>'1'
         ]);
 
-        DB::table('timeregistries')->insert([
-            'user_id'=> "1",
+        DB::table('registryevents')->insert([
+            'timeregistry_id'=> "2",
             'date'=> "2020-01-01 17:50:00",
             'type'=> "out",
             'active'=>'1'
         ]);
 
-        DB::table('timeregistries')->insert([
-            'user_id'=> "1",
+        DB::table('registryevents')->insert([
+            'timeregistry_id'=> "2",
             'date'=> "2020-01-01 09:15:00",
             'type'=> "pin",
             'active'=>'1'
         ]);
 
-        DB::table('timeregistries')->insert([
-            'user_id'=> "1",
+        DB::table('registryevents')->insert([
+            'timeregistry_id'=> "2",
             'date'=> "2020-01-01 10:02:53",
             'type'=> "pout",
             'active'=>'1'
         ]);
 
 
-        DB::table('timeregistries')->insert([
-            'user_id'=> "1",
+        DB::table('registryevents')->insert([
+            'timeregistry_id'=> "3",
             'date'=> now(),
             'type'=> "in",
             'active'=>'1'
         ]);
 
-        DB::table('timeregistries')->insert([
-            'user_id'=> "1",
+        DB::table('registryevents')->insert([
+            'timeregistry_id'=> "3",
             'date'=> "2020-01-02 09:13:13",
             'type'=> "pin",
             'active'=>'1'
         ]);
 
-        DB::table('timeregistries')->insert([
-            'user_id'=> "1",
+        DB::table('registryevents')->insert([
+            'timeregistry_id'=> "3",
             'date'=> "2020-01-02 09:55:24",
             'type'=> "pout",
             'active'=>'1'

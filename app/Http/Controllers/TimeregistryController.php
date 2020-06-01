@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Timeregistry;
 use App\User;
 use Auth; 
+use DB;
 
 class TimeregistryController extends CrudController
 {
@@ -34,7 +35,7 @@ class TimeregistryController extends CrudController
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-       
+
         $currentClass = $this->getCurrentClass();
         $object = new $currentClass;
         $params=$object->getFillable();
@@ -45,7 +46,33 @@ class TimeregistryController extends CrudController
         }
         
         $object->active = '1';
-        $object->save();
+      //  $object->save();
+       
+        switch($request->get('type')){
+
+            case 'in':
+                DB::beginTransaction();
+                    DB::insert('insert into users (id, name) values (?, ?)', [1, 'Dayle']);
+                DB::commit();
+            break;
+
+            case 'out':
+
+
+            break;
+
+            case 'pin':
+
+
+            break;
+
+            case 'pout':
+
+
+            break;
+
+        }
+        
         
         if($request->get('name') && $request->get('name')=='home'){
             return redirect('/home')->with('success', 'store_success');                
