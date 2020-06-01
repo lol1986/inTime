@@ -9,6 +9,9 @@ return [
     |
     | The following in the users view
     */
+    'companie_id'=> 'Company',
+    'leave_id'=> 'Leave',
+    'role_id'=> 'Role',
     'key' => 'User',
     'users' => 'Users',
     'company' => 'Company',

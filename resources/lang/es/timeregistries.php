@@ -9,6 +9,7 @@ return [
     |
     | The following in the holidays view
     */
+    'user_id'=> 'Usuario',
     'key'=> 'Registro horario',
     'timeregistries' => 'Registros horarios',
     'user' => 'Usuario',

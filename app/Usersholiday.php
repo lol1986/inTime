@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Usersholiday extends Model
 {
-    protected $fillable = ['user','start','end','days','status','active'];
+    protected $fillable = ['user_id','start','end','days','status','active'];
 
-    protected static $printable = ['user','start','end','days','status'];
+    protected static $printable = ['user_id','start','end','days','status'];
 
     protected static $updatable = ['date'];
 

@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Role;
+use App\{Role,Leave,Userholiday,Timeregistry};
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -52,9 +52,40 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
     public function roles()
     {
         return $this->belongsToMany(Role::class)->withTimestamps();
+    }
+
+    public function timeregistry()
+    {
+        return $this->hasMany(Timeregistry::class)->withTimestamps();
+    }
+
+    public function leaves()
+    {
+        return $this->hasMany(Leave::class)->withTimestamps();
+    }
+
+    public function Holidays()
+    {
+        return $this->hasMany(Userholiday::class)->withTimestamps();
+    }
+
+    public function hasRole($exist)
+    {
+        $roles = $this->roles();
+        
+        foreach ($roles->get() as $rol){
+            if($rol->name == $exist){
+                return $rol = true;
+            }
+        }
     }
 
     public function timeregistries()

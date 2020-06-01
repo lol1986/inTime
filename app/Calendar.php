@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\{Holiday};
 
 class Calendar extends Model
 {
@@ -29,6 +30,11 @@ class Calendar extends Model
     public static function getUpdatable()
     {
         return self::$updatable;
+    }
+    
+    public function holiday()
+    {
+        return $this->hasMany(Holiday::class)->withTimestamps();
     }
 
     public function getClassName(){

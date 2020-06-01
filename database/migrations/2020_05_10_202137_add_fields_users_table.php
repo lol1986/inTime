@@ -15,8 +15,8 @@ class AddFieldsUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('dni')->unique();
-            $table->unsignedBigInteger('company')->unsigned();
-            $table->foreign('company')->references('id')->on('companies');
+            $table->unsignedBigInteger('companie_id')->unsigned();
+            $table->foreign('companie_id')->references('id')->on('companies');
         });
     }
 

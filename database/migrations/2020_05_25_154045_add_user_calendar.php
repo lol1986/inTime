@@ -14,8 +14,8 @@ class AddUserCalendar extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('calendar')->unsigned();
-            $table->foreign('calendar')->references('id')->on('calendars');
+            $table->unsignedBigInteger('calendar_id')->unsigned();
+            $table->foreign('calendar_id')->references('id')->on('calendars');
         });
     }
 

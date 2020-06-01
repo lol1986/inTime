@@ -2,16 +2,16 @@
 
 namespace App;
 
-use App\User;
+use App\{User};
 use Illuminate\Database\Eloquent\Model;
 
 class Timeregistry extends Model
 {
-    protected $fillable = ['user','date','type'];
+    protected $fillable = ['user_id','date','type'];
 
-    protected static $printable = ['user','date','type'];
+    protected static $printable = ['user_id','date','type'];
 
-    protected static $updatable = ['user','date','type'];
+    protected static $updatable = ['user_id','date','type'];
 
     protected static $readable = [];
 
@@ -19,6 +19,10 @@ class Timeregistry extends Model
    // {
      //   return $this->belongsTo('App\User', 'user');
    // }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 
     public static function getPrintable()
     {
@@ -49,7 +53,7 @@ class Timeregistry extends Model
     
      public function getStoreValidations($id){
         $storeValidations =[
-            'user' => ['required','exists:users,id'],
+            'user_id' => ['required','exists:users,id'],
             'type' => ['required','in:in,out,pin,pout'],
             'date'=> ['required','date_format:Y-m-d H:i:s']
         ];

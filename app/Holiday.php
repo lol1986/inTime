@@ -2,22 +2,22 @@
 
 namespace App;
 
-use App\User;
+use App\{Calendar};
 use Illuminate\Database\Eloquent\Model;
 
 class Holiday extends Model
 {
-    protected $fillable = ['calendar','date'];
+    protected $fillable = ['calendar_id','date'];
 
-    protected static $printable = ['calendar','date'];
+    protected static $printable = ['calendar_id','date'];
 
     protected static $updatable = ['date'];
 
     protected static $readable = [];
 
-    public function user()
+    public function calendar()
     {
-        return $this->belongsTo(User::class)->withTimestamps();
+        return $this->belongsTo(Calendar::class);
     }
 
     public static function getPrintable()

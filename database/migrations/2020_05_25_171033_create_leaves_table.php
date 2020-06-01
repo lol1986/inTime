@@ -15,14 +15,14 @@ class CreateLeavesTable extends Migration
     {
         Schema::create('leaves', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user')->unsigned();
+            $table->unsignedBigInteger('user_id')->unsigned();
             $table->date('start');
             $table->date('end');
             $table->integer('days');
             $table->string('attachment')->nullable();
             $table->string('active');
             $table->timestamps();
-            $table->foreign('user')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

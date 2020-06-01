@@ -2,16 +2,16 @@
 
 namespace App;
 
-use App\User;
+use App\{User};
 use Illuminate\Database\Eloquent\Model;
 
 class Leave extends Model
 {
-    protected $fillable = ['user','start','end','days'];
+    protected $fillable = ['user_id','start','end','days'];
 
-    protected static $printable = ['user','start','end','days'];
+    protected static $printable = ['user_id','start','end','days'];
 
-    protected static $updatable = ['user','start','end','days'];
+    protected static $updatable = ['user_id','start','end','days'];
 
     protected static $readable = [];
 
@@ -19,7 +19,7 @@ class Leave extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class)->withTimestamps();
+        return $this->belongsTo(User::class);
     }
 
     public static function getPrintable()

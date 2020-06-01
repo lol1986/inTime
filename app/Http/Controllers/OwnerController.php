@@ -7,7 +7,7 @@ use App\Timeregistry;
 use App\User;
 use Auth; 
 
-class TimeregistryController extends CrudController
+class OwnerController extends CrudController
 {
     /**
      * Create a new controller instance.
@@ -34,16 +34,13 @@ class TimeregistryController extends CrudController
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-       
         $currentClass = $this->getCurrentClass();
         $object = new $currentClass;
         $params=$object->getFillable();
-        
         $request->validate($object->getStoreValidations($request->get('id')));
         foreach ($params as $param){
             $object->$param =  $request->get($param);
         }
-        
         $object->active = '1';
         $object->save();
         
@@ -51,6 +48,25 @@ class TimeregistryController extends CrudController
             return redirect('/home')->with('success', 'store_success');                
         }else{
             return redirect('/'.$this->getClassAlias($this->regular))->with('success', 'store_success');                
+        }
+        
+    }
+
+
+    public function index()
+    {
+        $currentClass = $this->getCurrentClass();
+        $userId = Auth::user()->id;
+       // dd($userId);
+        $user = Auth::user();
+        if($user->hasRole('user')){
+            $object = $currentClass::orderBy('active', 'desc')->where('user', '=',$userId)->paginate(10);
+            return view ('private.'.$this->getClassAlias($this->regular).'.view')->with('object', $object)
+            ->with('className',$this->className)->with('class',$this->getClassAlias($this->regular));
+        }else{
+            $object = $currentClass::orderBy('active', 'desc')->paginate(10);
+            return view ('private.'.$this->getClassAlias($this->regular).'.view')->with('object', $object)
+            ->with('className',$this->className)->with('class',$this->getClassAlias($this->regular));
         }
         
     }

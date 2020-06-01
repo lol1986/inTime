@@ -15,12 +15,12 @@ class CreateTimeregistriesTable extends Migration
     {
         Schema::create('timeregistries', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user')->unsigned();
+            $table->unsignedBigInteger('user_id')->unsigned();
             $table->dateTime('date');
             $table->enum('type',['in','out','pin','pout']);
             $table->timestamps();
             $table->string('active');
-            $table->foreign('user')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -15,11 +15,11 @@ class CreateHolidaysTable extends Migration
     {
         Schema::create('holidays', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('calendar')->unsigned();
+            $table->unsignedBigInteger('calendar_id')->unsigned();
             $table->date('date');
             $table->string('active');
             $table->timestamps();
-            $table->foreign('calendar')->references('id')->on('calendars');
+            $table->foreign('calendar_id')->references('id')->on('calendars');
         });
     }
 

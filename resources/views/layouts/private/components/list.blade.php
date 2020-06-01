@@ -25,9 +25,16 @@
             @else
               <tr>
             @endif
-              @for($i=0; $i<count($object[0]->getPrintable()); $i++)
-              <td>{{$item->getAttribute($object[0]->getPrintable()[$i])}}</td>
-              @endfor
+            @foreach ($object[0]->getPrintable() as $param)
+                @if (substr($param, strlen($param)-3, strlen($param))=='_id')
+                @php
+                  $str =substr($param,0,strlen($param)-3);
+                @endphp
+                <td>{{$object[0]->$str->name}}</td>
+                @else
+                  <td>{{$item->getAttribute($param)}}</td>
+                @endif
+            @endforeach
               <td>
                 <div class ="row justify-content-lg-end pr-4">
                   <a href="{{ route($class.'.show', $item->id)}}" class='btn btn-primary'><img width='15px' src="/images/info.png"></a>

@@ -9,6 +9,7 @@ return [
     |
     | The following in the holidays view
     */
+    'user_id'=> 'Usuario',
     'key'=> 'Vacaciones',
     'usersholidays' => 'Vacaciones',
     'user' => 'Usuario',

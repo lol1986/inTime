@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\{User};
 use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
@@ -24,6 +24,11 @@ class Company extends Model
     public static function getReadable()
     {
         return self::$readable;
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class)->withTimestamps();
     }
 
     public static function getUpdatable()

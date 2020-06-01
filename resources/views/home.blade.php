@@ -25,7 +25,7 @@
                     <div class="p-2">
                     <form method="POST" action="{{ route('timeregistries.store')}}">
                         @csrf
-                        <input type="hidden" name="user" value="{{Auth::user()->id}}">
+                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <input type="hidden" name="date" value="{{now()}}">
                         <input type="hidden" name="type" value="in">
                         <input type="hidden" name="name" value="home">
@@ -39,7 +39,7 @@
                      <div class="p-2">
                     <form method="POST" action="{{ route('timeregistries.store')}}">
                         @csrf
-                        <input type="hidden" name="user" value="{{Auth::user()->id}}">
+                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <input type="hidden" name="date" value="{{now()}}">
                         <input type="hidden" name="type" value="pin">
                         <input type="hidden" name="name" value="home">
@@ -53,7 +53,7 @@
                     <div class="p-2">
                     <form method="POST" action="{{ route('timeregistries.store')}}">
                         @csrf
-                        <input type="hidden" name="user" value="{{Auth::user()->id}}">
+                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <input type="hidden" name="date" value="{{now()}}">
                         <input type="hidden" name="type" value="pout">
                         <input type="hidden" name="name" value="home">
@@ -67,7 +67,7 @@
                     <div class="p-2">
                     <form method="POST" action="{{ route('timeregistries.store')}}">
                         @csrf
-                        <input type="hidden" name="user" value="{{Auth::user()->id}}">
+                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <input type="hidden" name="date" value="{{now()}}">
                         <input type="hidden" name="type" value="out">
                         <input type="hidden" name="name" value="home">
