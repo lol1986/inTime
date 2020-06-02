@@ -1,9 +1,9 @@
 <nav class="navbar-light bg-light p-0">
   <a class="navbar-brand" href="#">Menú Superadmin</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#adminMenu" aria-controls="adminMenu" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#superadminMenu" aria-controls="superadminMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
   </button>
-    <div class="collapse show navbar-collapse" id="superadminMenu">
+    <div class="collapse navbar-collapse" id="superadminMenu">
       <ul class="navbar-nav">
          <li class="nav-item">
               <a class="nav-link" href={{route('companies.index')}}>{{ __('menu.companies') }}</a>
