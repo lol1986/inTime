@@ -21,6 +21,7 @@ class TimeregistryController extends CrudController
         $this->regular = false;
        // $this->middleware('user');
         $this->middleware('auth');
+        $this->middleware('user');
         $this->middleware('superadmin', ['only' => 'update']);
         $this->middleware('superadmin', ['only' => 'destroy']);
       //  $this->middleware('admin', ['only' => ['index','show']]);

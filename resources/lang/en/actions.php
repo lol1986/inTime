@@ -17,5 +17,6 @@ return [
     'update_success' => ' successfully updated!',
     'store_success' => ' successfully created!',
     'activate_success' => ' successfully reactivated!',
-    'deactivate_success' => ' successfully deleted!'
+    'deactivate_success' => ' successfully deleted!',
+    'not_exists'=> 'There is no '
 ];

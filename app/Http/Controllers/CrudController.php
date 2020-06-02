@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\{User,Role,Company,Calendar,Holiday,Leave};
+use Auth;
 
 abstract class CrudController extends Controller
 {
@@ -27,7 +28,18 @@ abstract class CrudController extends Controller
     public function index()
     {
         $currentClass = $this->getCurrentClass();
-        $object = $currentClass::orderBy('active', 'desc')->paginate(5);
+       
+        if(Auth::user()->role->id=='3'){
+            $object = $currentClass::orderBy('active', 'desc')->where('user_id',Auth::user()->id)->paginate(5);
+        }
+        else{
+            $object = $currentClass::orderBy('active', 'desc')->paginate(5);
+        }
+        //if(Auth::user()->role->id){
+//
+  //      }
+        
+
         return view ('private.'.$this->getClassAlias($this->regular).'.view')->with('object', $object)
         ->with('className',$this->className)->with('class',$this->getClassAlias($this->regular));
     }
