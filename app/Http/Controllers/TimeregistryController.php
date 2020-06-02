@@ -53,7 +53,6 @@ class TimeregistryController extends CrudController
        
         switch($request->get('type')){
 
-            //falta validar que el último está cerrado
             case 'in':
                 DB::beginTransaction();
                     $lastRegistry=DB::select('select status from timeregistries where id=(select max(id) as id from timeregistries group by user_id having user_id= ?)', [Auth::user()->id]);
@@ -67,7 +66,6 @@ class TimeregistryController extends CrudController
                 DB::commit();
             break;
 
-            //falta validar que el último está abierto
             case 'out':
                 DB::beginTransaction();
                     $lastRegistry=DB::select('select * from timeregistries where id=(select max(id) as id from timeregistries group by user_id having user_id= ?)', [Auth::user()->id]);
