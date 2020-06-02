@@ -20,5 +20,7 @@ return [
     'pause_end'=> 'End pause',
     'end'=> 'End',
     'already_opened'=> 'Current status is open',
-    'not_opened'=> 'There is no open registry'
+    'not_opened'=> 'There is no open registry',
+    'already_paused'=> 'Already paused',
+    'not_paused'=> 'Not paused',
 ];

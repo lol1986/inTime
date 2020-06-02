@@ -70,11 +70,17 @@ class TimeregistryController extends CrudController
             //falta validar que el último está abierto
             case 'out':
                 DB::beginTransaction();
-                    $lastRegistry=DB::select('select status from timeregistries where id=(select max(id) as id from timeregistries group by user_id having user_id= ?)', [Auth::user()->id]);
+                    $lastRegistry=DB::select('select * from timeregistries where id=(select max(id) as id from timeregistries group by user_id having user_id= ?)', [Auth::user()->id]);
                     if($lastRegistry[0]->status=='open'){
-                        $currentid=DB::select('select max(id) as id from timeregistries group by user_id having user_id= ?', [Auth::user()->id]);
-                        DB::insert('insert into registryevents (timeregistry_id, type, date, active) values (?, ?, ?, ?)', [$currentid[0]->id, $type ,$date,'1']);
-                        DB::update('update timeregistries set status = ? where id = ?', ['closed',$currentid[0]->id]);
+                        $lastevent =DB::select('Select * from registryevents where id =(Select max(id) from registryevents where timeregistry_id =?)',[$lastRegistry[0]->id]);
+                            if($lastevent[0]->type=='pin'){
+                                return redirect('/home')->with('error', 'exists_pause');        
+                            }
+                            else{
+                                $currentid=DB::select('select max(id) as id from timeregistries group by user_id having user_id= ?', [Auth::user()->id]);
+                                DB::insert('insert into registryevents (timeregistry_id, type, date, active) values (?, ?, ?, ?)', [$currentid[0]->id, $type ,$date,'1']);
+                                DB::update('update timeregistries set status = ? where id = ?', ['closed',$currentid[0]->id]);
+                            }    
                     }else{
                         return redirect('/home')->with('error', 'not_opened');
                     }
@@ -84,31 +90,38 @@ class TimeregistryController extends CrudController
 
             case 'pin':
                 $lastRegistry=DB::select('select * from timeregistries where id=(select max(id) as id from timeregistries group by user_id having user_id= ?)', [Auth::user()->id]);
-                
                 if($lastRegistry[0]->status=='open'){
-                DB::beginTransaction();
-                    $currentid=DB::select('select max(id) as id from timeregistries group by user_id having user_id= ?', [Auth::user()->id]);
-                    $lastEvent=DB::select('select max(id) as event from timeregistries group by user_id having user_id= ?', [Auth::user()->id]);
-                    DB::insert('insert into registryevents (timeregistry_id, type, date, active) values (?, ?, ?, ?)', [$currentid[0]->id, $type ,$date,'1']);
-                }else{
-                    return redirect('/home')->with('error', 'not_opened');
-                }
+                    $lastevent =DB::select('Select * from registryevents where id =(Select max(id) from registryevents where timeregistry_id =?)',[$lastRegistry[0]->id]);
+                    if($lastevent[0]->type=='pout' || $lastevent[0]->type=='in'){
+                        DB::beginTransaction();
+                        $currentid=DB::select('select max(id) as id from timeregistries group by user_id having user_id= ?', [Auth::user()->id]);
+                        DB::insert('insert into registryevents (timeregistry_id, type, date, active) values (?, ?, ?, ?)', [$currentid[0]->id, $type ,$date,'1']);
+                         }else{
+                            return redirect('/home')->with('error', 'already_paused');
+                         }
+                    }
+                    else{
+                        return redirect('/home')->with('error', 'not_opened');
+                    }
                 DB::commit();
-
             break;
 
             case 'pout':
-                $lastRegistry=DB::select('select status from timeregistries where id=(select max(id) as id from timeregistries group by user_id having user_id= ?)', [Auth::user()->id]);
+                $lastRegistry=DB::select('select * from timeregistries where id=(select max(id) as id from timeregistries group by user_id having user_id= ?)', [Auth::user()->id]);
                 if($lastRegistry[0]->status=='open'){
-                DB::beginTransaction();
-                    $currentid=DB::select('select max(id) as id from timeregistries group by user_id having user_id= ?', [Auth::user()->id]);
-                    $lastEvent=DB::select('select max(id) as event from timeregistries group by user_id having user_id= ?', [Auth::user()->id]);
-                    DB::insert('insert into registryevents (timeregistry_id, type, date, active) values (?, ?, ?, ?)', [$currentid[0]->id, $type ,$date,'1']);
-                }else{
-                    return redirect('/home')->with('error', 'not_opened');
-                }
+                    $lastevent =DB::select('Select * from registryevents where id =(Select max(id) from registryevents where timeregistry_id =?)',[$lastRegistry[0]->id]);
+                    if($lastevent[0]->type=='pin'){
+                        DB::beginTransaction();
+                        $currentid=DB::select('select max(id) as id from timeregistries group by user_id having user_id= ?', [Auth::user()->id]);
+                        DB::insert('insert into registryevents (timeregistry_id, type, date, active) values (?, ?, ?, ?)', [$currentid[0]->id, $type ,$date,'1']);
+                         }else{
+                            return redirect('/home')->with('error', 'not_paused');
+                         }
+                    }
+                    else{
+                        return redirect('/home')->with('error', 'not_opened');
+                    }
                 DB::commit();
-
             break;
 
         }
