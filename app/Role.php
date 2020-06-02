@@ -15,7 +15,7 @@ class Role extends Model
 
     protected static $readable = [];
 
-    protected static $storeValidations =['required','name' => ['max:255','unique:roles']];
+    protected static $storeValidations =['name' => ['required','max:255','unique:roles']];
 
     public function users()
     {

@@ -45,7 +45,7 @@ class Usersholiday extends Model
             'start'=> ['required','date_format:Y-m-d'],
             'days'=> ['required','integer'],
             'end'=> ['required','date_format:Y-m-d','after_or_equal:start'],
-            'status'=> ['required','in:peding,approved,denied']
+            'status'=> ['required','in:pending,approved,denied']
         ];
         return $storeValidations;
     }

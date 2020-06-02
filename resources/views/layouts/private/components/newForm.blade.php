@@ -1,4 +1,7 @@
 @extends('layouts.private.app')
+@php
+//dd($object->name);
+@endphp
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-12">
