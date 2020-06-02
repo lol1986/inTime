@@ -18,17 +18,9 @@ class IsUser
      */
     public function handle($request, Closure $next)
     {
-       $roles = $request->user()->roles()->get();
-       $validRole = false;
+        $role = $request->user()->role()->get();
 
-       foreach ($roles as $rol)
-        {
-            if($rol->name == 'user'){
-                $validRole = true;
-            }
-        }
-        
-        if (!$validRole){
+        if (!$role=='3'){
             return redirect('/unauthorized');
         }
        

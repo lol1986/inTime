@@ -18,19 +18,9 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-       // dd($request);
-       //dd(Role::where('name', 'admin')->get()[0]->name);
-       $roles = $request->user()->roles()->get();
-       $validRole = false;
+       $role = $request->user()->role()->get();
 
-       foreach ($roles as $rol)
-        {
-            if($rol->name == 'superadmin' || $rol->name =='admin'){
-                $validRole = true;
-            }
-        }
-
-        if (!$validRole){
+        if (!$role=='2'){
             return redirect('/unauthorized');
         }
 

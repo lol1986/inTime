@@ -19,21 +19,12 @@ class Superadmin
      */
     public function handle($request, Closure $next)
     {
-       // dd($request);
-       //dd(Role::where('name', 'admin')->get()[0]->name);
-       $roles = $request->user()->roles()->get();
-       $validRole = false;
+ 
+       $role = $request->user()->role()->get();
 
-       foreach ($roles as $rol)
-        {
-            if($rol->name == 'superadmin'){
-                $validRole = true;
-            }
-        }
-
-        if (!$validRole){
-            return redirect('/unauthorized');
-        }
+       if (!$role=='1'){
+           return redirect('/unauthorized');
+       }
 
         return $next($request);
     }

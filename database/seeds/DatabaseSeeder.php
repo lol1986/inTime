@@ -48,7 +48,8 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('11111111A'),
             'company_id'=>'1',
             'calendar_id'=>'1',
-            'active'=>'1'
+            'active'=>'1',
+            'role_id'=>'1'
         ]);
 
         DB::table('users')->insert([
@@ -58,7 +59,8 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('11111111B'),
             'company_id'=>'1',
             'calendar_id'=>'1',
-            'active'=>'1'
+            'active'=>'1',
+            'role_id'=>'2'
         ]);
         
         DB::table('users')->insert([
@@ -68,7 +70,8 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('11111111C'),
             'company_id'=>'1',
             'calendar_id'=>'2',
-            'active'=>'1'
+            'active'=>'1',
+            'role_id'=>'3'
         ]);
 
         DB::table('roles')->insert([
@@ -84,21 +87,6 @@ class DatabaseSeeder extends Seeder
         DB::table('roles')->insert([
             'name'=> "user",
             'active'=>'1'
-        ]);
-
-        DB::table('role_user')->insert([
-            'user_id'=> "1",
-            'role_id'=> "1",
-        ]);
-
-        DB::table('role_user')->insert([
-            'user_id'=> "2",
-            'role_id'=> "2",
-        ]);
-
-        DB::table('role_user')->insert([
-            'user_id'=> "3",
-            'role_id'=> "3",
         ]);
 
         DB::table('holidays')->insert([

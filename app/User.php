@@ -16,11 +16,11 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['dni','company_id','name', 'email', 'password','active'];
+    protected $fillable = ['dni','company_id','name', 'email', 'password','active','role_id'];
 
-    protected static $printable = ['dni','company_id','name', 'email'];
+    protected static $printable = ['dni','company_id','name', 'email','role_id'];
 
-    protected static $updatable = ['dni','company_id','name', 'email'];
+    protected static $updatable = ['dni','company_id','name', 'email','role_id'];
 
     protected static $readable = [
         'dni' => 'false',
@@ -57,9 +57,9 @@ class User extends Authenticatable
         return $this->belongsTo(Company::class);
     }
 
-    public function roles()
+    public function role()
     {
-        return $this->belongsToMany(Role::class)->withTimestamps();
+        return $this->belongsTo(Role::class);
     }
 
     public function timeregistry()
@@ -75,17 +75,6 @@ class User extends Authenticatable
     public function Holidays()
     {
         return $this->hasMany(Userholiday::class)->withTimestamps();
-    }
-
-    public function hasRole($exist)
-    {
-        $roles = $this->roles();
-        
-        foreach ($roles->get() as $rol){
-            if($rol->name == $exist){
-                return $rol = true;
-            }
-        }
     }
 
     public function timeregistries()
