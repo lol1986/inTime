@@ -20,11 +20,11 @@ class Superadmin
     public function handle($request, Closure $next)
     {
  
-       $role = $request->user()->role()->get();
+       $role = $request->user()->role->id;
 
-       if (!$role=='1'){
-           return redirect('/unauthorized');
-       }
+       if ($role!='1'){
+        return redirect('/unauthorized');
+    }
 
         return $next($request);
     }

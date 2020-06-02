@@ -18,9 +18,9 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-       $role = $request->user()->role()->get();
+       $role = $request->user()->role->id;
 
-        if (!$role=='2'){
+        if ($role!='2' && $role!='1'){
             return redirect('/unauthorized');
         }
 

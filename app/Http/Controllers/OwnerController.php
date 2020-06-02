@@ -22,8 +22,6 @@ class OwnerController extends CrudController
         $this->middleware('auth');
         $this->middleware('superadmin', ['only' => 'update']);
         $this->middleware('superadmin', ['only' => 'destroy']);
-      //  $this->middleware('admin', ['only' => ['index','show']]);
-        //$this->middleware('superadmin', ['only' => 'activate']);
     }
 
     

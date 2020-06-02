@@ -19,8 +19,6 @@ class LeaveController extends CrudController
         $this->middleware('auth');
         $this->middleware('superadmin', ['only' => 'update']);
         $this->middleware('superadmin', ['only' => 'destroy']);
-        $this->middleware('admin', ['only' => 'show']);
-        //$this->middleware('superadmin', ['only' => 'activate']);
     }
 
 }
