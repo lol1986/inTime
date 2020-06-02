@@ -19,5 +19,7 @@ return [
     'pause_start'=> 'Inicio pausa',
     'pause_end'=> 'Fin pausa',
     'end'=> 'Salida',
+    'already_opened'=> 'El registro actual ya está abierto',
+    'not_opened'=> 'No hay ningún registro abierto'
 
 ];

@@ -41,6 +41,9 @@ class TimeregistryController extends CrudController
         $params=$object->getFillable();
         
         $request->validate($object->getStoreValidations($request->get('id')));
+        $date=$request->get('date');
+        $type=$request->get('type');
+
         foreach ($params as $param){
             $object->$param =  $request->get($param);
         }
@@ -52,32 +55,64 @@ class TimeregistryController extends CrudController
 
             case 'in':
                 DB::beginTransaction();
-                    DB::insert('insert into users (id, name) values (?, ?)', [1, 'Dayle']);
+                    $lastRegistry=DB::select('select * from timeregistries where id=(select max(id) as id from timeregistries group by user_id having user_id= ?)', [Auth::user()->id]);
+                    if($lastRegistry[0]->status=='closed'){
+                        DB::insert('insert into timeregistries (user_id, status, active) values (?, ?, ?)', [Auth::user()->id, 'open','1']);
+                        $currentid=$lastRegistry[0]->id;
+                        DB::insert('insert into registryevents (timeregistry_id, type, date, active) values (?, ?, ?, ?)', [$currentid, $type ,$date,'1']);
+                    }else{
+                        return redirect('/home')->with('error', 'already_opened');
+                    }
                 DB::commit();
             break;
 
             case 'out':
-
-
+                DB::beginTransaction();
+                    $lastRegistry=DB::select('select * from timeregistries where id=(select max(id) as id from timeregistries group by user_id having user_id= ?)', [Auth::user()->id]);
+                    if($lastRegistry[0]->status=='open'){
+                        $currentid=$lastRegistry[0]->id;
+                        DB::insert('insert into registryevents (timeregistry_id, type, date, active) values (?, ?, ?, ?)', [$currentid, $type ,$date,'1']);
+                        DB::update('update timeregistries set status = ? where id = ?', ['closed',$currentid]);
+                    }else{
+                        return redirect('/home')->with('error', 'not_opened');
+                    }
+                DB::commit();    
             break;
 
+            //Falta validar que el ultimo evento es pout
             case 'pin':
-
-
+                $lastRegistry=DB::select('select * from timeregistries where id=(select max(id) as id from timeregistries group by user_id having user_id= ?)', [Auth::user()->id]);
+                
+                if($lastRegistry[0]->status=='open'){
+                DB::beginTransaction();
+                    $currentid=$lastRegistry[0]->id;
+                    $lastEvent=DB::select('select max(id) as event from timeregistries group by user_id having user_id= ?', [Auth::user()->id]);
+                    DB::insert('insert into registryevents (timeregistry_id, type, date, active) values (?, ?, ?, ?)', [$currentid, $type ,$date,'1']);
+                }else{
+                    return redirect('/home')->with('error', 'not_opened');
+                }
+                DB::commit();
             break;
 
+            //Falta validar que el ultimo evento es pin
             case 'pout':
-
-
+                $lastRegistry=DB::select('select * from timeregistries where id=(select max(id) as id from timeregistries group by user_id having user_id= ?)', [Auth::user()->id]);
+                if($lastRegistry[0]->status=='open'){
+                DB::beginTransaction();
+                    $currentid=$lastRegistry[0]->id;
+                    $lastEvent=DB::select('select max(id) as event from timeregistries group by user_id having user_id= ?', [Auth::user()->id]);
+                    DB::insert('insert into registryevents (timeregistry_id, type, date, active) values (?, ?, ?, ?)', [$currentid, $type ,$date,'1']);
+                }else{
+                    return redirect('/home')->with('error', 'not_opened');
+                }
+                DB::commit();
             break;
-
         }
-        
-        
+         
         if($request->get('name') && $request->get('name')=='home'){
             return redirect('/home')->with('success', 'store_success');                
         }else{
-            return redirect('/'.$this->getClassAlias($this->regular))->with('success', 'store_success');                
+            return redirect('/'.$this->getClassAlias($this->regular))->with('success', 'update_success');                
         }
         
     }

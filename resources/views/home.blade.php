@@ -20,6 +20,13 @@
                         }}
                     </div>
                   @endif
+                  @if(session()->get('error'))
+                    <div class='alert alert-danger'>
+                      {{ 
+                        __('timeregistries.'.session()->get('error')) 
+                        }}
+                    </div>
+                  @endif
                     <div class="d-flex flex-column">
                     
                     <div class="p-2">
