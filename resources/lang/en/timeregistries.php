@@ -23,4 +23,5 @@ return [
     'not_opened'=> 'There is no open registry',
     'already_paused'=> 'Already paused',
     'not_paused'=> 'Not paused',
+    'exists_pause'=> 'Please, close pause before close the registry',
 ];

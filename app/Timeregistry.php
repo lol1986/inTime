@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Timeregistry extends Model
 {
-    protected $fillable = ['user_id','date','type'];
+    protected $fillable = ['user_id','status'];
 
-    protected static $printable = ['user_id','date','type'];
+    protected static $printable = ['user_id','status'];
 
-    protected static $updatable = ['user_id','date','type'];
+    protected static $updatable = ['status'];
 
     protected static $readable = [];
 
