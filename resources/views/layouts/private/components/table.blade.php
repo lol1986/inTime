@@ -24,7 +24,7 @@
             @endforeach
             <td>
             <div class ="justify-content-end">
-                <div class= "ml-2 mr-2 row flex-nowrap">
+                <div class= "ml-2 mr-2 row">
                     <a href="{{ route($class.'.show', $item->id)}}" class='btn btn-primary'><img width='14px' src="/images/info.png"></a>
                     <a href="{{ route($class.'.edit', $item->id)}}" class='btn btn-warning'><img width='14px' src="/images/edit.png"></a>
                     <form action="{{ route($class.'.destroy', $item->id)}}" method='post'>
