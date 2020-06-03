@@ -1,4 +1,2 @@
-@php
-//dd($this);
- @endphp   
-@include('layouts.private.components.list')
+@extends('layouts.private.app')
+@include('layouts.private.pane.view')
