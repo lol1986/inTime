@@ -1,3 +1,4 @@
+ <div class ="table-responsive">   
     <table class='table table-striped table-bordered'>
         <thead>
         @for($i=0; $i<count($object[0]->getPrintable()); $i++)
@@ -39,4 +40,5 @@
         @endforeach
         </tbody>
     </table>
+</div>
     {{$object->links()}}
