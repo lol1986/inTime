@@ -7,7 +7,7 @@ use App\{Holiday};
 
 class Calendar extends Model
 {
-    protected static $printable = ['name'];
+    protected static $printable = ['id','name'];
 
     protected $fillable = ['name'];
 

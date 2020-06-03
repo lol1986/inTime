@@ -16,6 +16,7 @@ return [
     'date'=> 'Fecha',
     'type'=> 'Tipo',
     'start'=> 'Entrada',
+    'status'=> 'Estado',
     'pause_start'=> 'Inicio pausa',
     'pause_end'=> 'Fin pausa',
     'end'=> 'Salida',

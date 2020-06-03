@@ -9,8 +9,9 @@ return [
     |
     | The following in the calendars view
     */
+    'id' => 'Id',
     'key'=> 'Calendar',
     'calendars'=> 'Calendars',
     'name'=> 'Name',
-    'id' => 'Id',
+    
 ];

@@ -9,7 +9,7 @@ class Role extends Model
 {
     protected $fillable = ['name','active'];
 
-    protected static $printable = ['name'];
+    protected static $printable = ['id','name'];
 
     protected static $updatable = ['name'];
 

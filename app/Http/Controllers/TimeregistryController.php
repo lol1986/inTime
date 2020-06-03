@@ -58,7 +58,7 @@ class TimeregistryController extends CrudController
                 DB::beginTransaction();
                     $lastRegistry=DB::select('select status from timeregistries where id=(select max(id) as id from timeregistries group by user_id having user_id= ?)', [Auth::user()->id]);
                     if($lastRegistry[0]->status=='closed'){
-                        DB::insert('insert into timeregistries (user_id, status, active) values (?, ?, ?)', [Auth::user()->id, 'open','1']);
+                        DB::insert('insert into timeregistries (user_id, status, date, active) values (?, ?, ?, ?)', [Auth::user()->id, 'open',now(),'1']);
                         $currentid=DB::select('select max(id) as id from timeregistries group by user_id having user_id= ?', [Auth::user()->id]);
                         DB::insert('insert into registryevents (timeregistry_id, type, date, active) values (?, ?, ?, ?)', [$currentid[0]->id, $type ,$date,'1']);
                     }else{

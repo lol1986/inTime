@@ -9,7 +9,7 @@ class Timeregistry extends Model
 {
     protected $fillable = ['user_id','status'];
 
-    protected static $printable = ['user_id','status'];
+    protected static $printable = ['user_id','date','status'];
 
     protected static $updatable = ['status'];
 

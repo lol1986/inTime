@@ -141,24 +141,28 @@ class DatabaseSeeder extends Seeder
         DB::table('timeregistries')->insert([
             'user_id'=> "1",
             'status'=> "open",
+            'date'=> now(),
             'active'=>'1'
         ]);
 
         DB::table('timeregistries')->insert([
             'user_id'=> "1",
             'status'=> "closed",
+            'date'=> now(),
             'active'=>'1'
         ]);
 
         DB::table('timeregistries')->insert([
             'user_id'=> "1",
             'status'=> "closed",
+            'date'=> now(),
             'active'=>'1'
         ]);
 
         DB::table('timeregistries')->insert([
             'user_id'=> "1",
             'status'=> "closed",
+            'date'=> now(),
             'active'=>'1'
         ]);
 
@@ -166,24 +170,28 @@ class DatabaseSeeder extends Seeder
         DB::table('timeregistries')->insert([
             'user_id'=> "2",
             'status'=> "open",
+            'date'=> now(),
             'active'=>'1'
         ]);
 
         DB::table('timeregistries')->insert([
             'user_id'=> "2",
             'status'=> "closed",
+            'date'=> now(),
             'active'=>'1'
         ]);
 
         DB::table('timeregistries')->insert([
             'user_id'=> "2",
             'status'=> "closed",
+            'date'=> now(),
             'active'=>'1'
         ]);
 
         DB::table('timeregistries')->insert([
             'user_id'=> "3",
             'status'=> "open",
+            'date'=> now(),
             'active'=>'1'
         ]);
 
