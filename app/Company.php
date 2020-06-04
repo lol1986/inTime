@@ -14,7 +14,11 @@ class Company extends Model
 
     protected static $readable = [];
 
-   // protected static $storeValidations =['name' => ['max:255','unique:companies']];
+    protected static $storeValidations =[
+        'name' => ['required', 'max:255','unique:companies'],
+        'address'=>['required', 'max:255'],
+        'cif'=>['required', 'max:255','regex:/^[a-zA-Z]{1}\d{7}[a-zA-Z0-9]{1}$/']
+    ];
 
     public static function getPrintable()
     {

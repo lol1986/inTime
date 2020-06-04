@@ -1,5 +1,5 @@
 
-    @if($object->getCollection()->count()=='0')
+   @if($object->getCollection()->count()=='0')
         <div class='alert alert-danger'>
             {{ 
                 __('actions.not_exists').

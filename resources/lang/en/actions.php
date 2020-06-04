@@ -19,5 +19,6 @@ return [
     'activate_success' => ' successfully reactivated!',
     'deactivate_success' => ' successfully deleted!',
     'not_exists'=> 'There is no ',
-    'index'=> 'List of '
+    'index'=> 'List of ',
+    'edit'=> 'Edit '
 ];

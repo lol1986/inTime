@@ -1,28 +1,34 @@
 @extends('layouts.private.app')
 @section('content')
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-          <h1 class='display-3'>{{__($class.'.'.$class)}}</h1>
+    <div class="row">
+        <div class="col-md-12 offset-2">
       <form method="POST" action="{{ route($class.'.update', $object->id)}}">
         @method('PATCH')
         @csrf
         @php
           $className = $object->getClassName();
           $classObject = new $className;
-          $params=$classObject::getPrintable();
+          $item=$classObject::getPrintable();
         @endphp
-        @foreach($params as $param)
-          <div class="form-group row">
-            <label for="{{$param}}" class="col-md-4 col-form-label text-md-right">{{ __($class.'.'.$param) }}</label>
-            <div class="col-md-6">
-              <input id={{$param}} @if ($readable[$param] ?? ''=='false') readonly="readonly" @endif type="text" class="form-control @error($param) is-invalid @enderror" name="{{$param}}" value="{{ $object->$param }}" required autocomplete="{{$param}}" autofocus>
-                @error($param)
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                @enderror
-            </div>
+        @foreach($item as $param)
+          <label for="{{$param}}" class="col-md-4 col-form-label text-md-left">{{ __($class.'.'.$param) }}</label>
+          <div class="col-md-6">
+            <div class="form-group row"> 
+              @if(substr($param, strlen($param)-3, strlen($param))=='_id')
+                @php
+                  $str =substr($param,0,strlen($param)-3);
+                @endphp
+                <input id={{$param}} readonly="readonly" type="text" class="form-control" name="{{$param}}" value="{{ $object->$str->name }}" required autocomplete="{{$param}}" autofocus>
+              @else
+                <input id={{$param}} @if ($readable[$param] ?? ''=='false') readonly="readonly" @endif type="text" class="form-control @error($param) is-invalid @enderror" name="{{$param}}" value="{{ $object->$param }}" required autocomplete="{{$param}}" autofocus>
+              @endif
+              @error($param)
+                <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+                </span>
+              @enderror
           </div>
+         </div>
         @endforeach
         <input id="action" name="action" type="hidden" value="update">
         @include('layouts.private.components.submit')
