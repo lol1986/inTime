@@ -17,8 +17,7 @@ class CompanyController extends CrudController
         $this->className = get_class(new Company());
         $this->regular = false;
         $this->middleware('auth');
-        $this->middleware('superadmin');
-        //$this->middleware('superadmin', ['only' => 'activate']);
+        $this->middleware('superadmin', ['only' => ['activate','destroy','edit','create']]);
     }
 
 }

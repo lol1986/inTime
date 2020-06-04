@@ -23,7 +23,8 @@ class Superadmin
        $role = $request->user()->role->id;
 
        if ($role!='1'){
-        return redirect('/unauthorized');
+        $previous=$request->session()->all()['_previous']['url'];
+        return redirect($previous)->with('error','unauthorized');
     }
 
         return $next($request);

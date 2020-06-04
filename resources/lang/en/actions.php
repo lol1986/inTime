@@ -20,5 +20,6 @@ return [
     'deactivate_success' => ' successfully deleted!',
     'not_exists'=> 'There is no ',
     'index'=> 'List of ',
-    'edit'=> 'Edit '
+    'edit'=> 'Edit ',
+    'unauthorized'=>'You do not have permission to permform this action'
 ];

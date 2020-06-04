@@ -20,5 +20,6 @@ return [
     'deactivate_success' => ' eliminado/a correctamente.',
     'not_exists'=> 'No hay ',
     'index'=> 'Lista de ',
-    'edit'=> 'Editar '
+    'edit'=> 'Editar ',
+    'unauthorized'=>'No tiene permisos para realizar la acción'
 ];

@@ -25,4 +25,5 @@ return [
     'already_paused'=> 'Ya se inició una pausa',
     'not_paused'=> 'No hay pausa iniciada',
     'exists_pause'=> 'Por favor, cierre la pausa antes de cerrar el registro',
+    'unauthorized'=>'No tiene permisos para realizar la acción'
 ];

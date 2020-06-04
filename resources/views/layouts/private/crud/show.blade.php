@@ -1,1 +1,2 @@
-@include('layouts.private.components.form')
+@extends('layouts.private.app')
+@include('layouts.private.pane.show')
