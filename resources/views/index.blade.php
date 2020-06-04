@@ -12,7 +12,7 @@
             <button class="btn btn-success">SOLICITAR INFORMACIÓN</button>
           </div>
           <div class="col-lg-6">
-            <img class="img-fluid" src="images/logo.png">
+            <img class="img-fluid border border-primary rounded" src="images/screen.png">
           </div>
         </div>
       </div>

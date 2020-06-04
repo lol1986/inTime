@@ -16,8 +16,6 @@
             <h1>InTime -Software de registro horario </h1>
           </div>
         </div>
-        
-         
       </div>
   </div>
 </div>
