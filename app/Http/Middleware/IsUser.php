@@ -21,7 +21,8 @@ class IsUser
         $role = $request->user()->role()->get();
 
         if (!$role=='3'){
-            return redirect('/unauthorized');
+            $previous=$request->session()->all()['_previous']['url'];
+            return redirect($previous)->with('error','unauthorized');
         }
        
         return $next($request);
