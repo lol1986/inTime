@@ -1,4 +1,2 @@
-@extends('layouts.private.components.newForm')
-@section('buttons')
-    @include('layouts.private.components.submit')
-@endsection
+@extends('layouts.private.app')
+@include('layouts.private.pane.create')

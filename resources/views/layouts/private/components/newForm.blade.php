@@ -1,11 +1,5 @@
-@extends('layouts.private.app')
-@php
-//dd($object->name);
-@endphp
-@section('content')
-    <div class="row justify-content-center">
+ <div class="row justify-content-center">
         <div class="col-md-12">
-          <h1 class='display-3'>{{__($class.'.'.$class)}}</h1>
       @if(session()->get('success'))
         <div class='alert alert-success'>
           {{ session()->get('success') }}
@@ -17,7 +11,7 @@
           $className = $object->getClassName();
           $classObject = new $className;
           $params=$classObject->getFillable();
-        @endphp->
+        @endphp
         @foreach($params as $param)
           <div class="form-group row">
             <label for="{{$param}}" class="col-md-4 col-form-label text-md-right">{{ __($class.'.'.$param) }}</label>
@@ -31,7 +25,6 @@
             </div>
           </div>
         @endforeach
-        @yield('buttons')
+        @include('layouts.private.components.submit')
       </form>          
    </div>
-@endsection

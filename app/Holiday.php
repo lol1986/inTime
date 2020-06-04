@@ -41,8 +41,8 @@ class Holiday extends Model
 
     public function getStoreValidations($id){
         $storeValidations =[
-            'calendar' => ['required','exists:calendars,id'],
-            'date'=> ['required','date_format:Y-m-d','unique:holidays,date,NULL,id,calendar,'.$id]
+            'calendar_id' => ['required','exists:calendars,id'],
+            'date'=> ['required','after:'.date_create('now')->format('Y-m-d'),'date_format:Y-m-d','unique:holidays,date,NULL,id,calendar_id,'.$id]
         ];
         return $storeValidations;
     }

@@ -14,6 +14,9 @@
           <li class="nav-item">
             <a class="nav-link" href={{route('calendars.index')}}>{{ __('menu.calendars') }}</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href={{route('holidays.index')}}>{{ __('menu.holidays') }}</a>
+          </li>
       </ul>
     </div>
   </nav>

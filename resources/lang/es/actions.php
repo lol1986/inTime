@@ -8,6 +8,7 @@ return [
     |--------------------------------------------------------------------------
     */
     'registered' => ' registrado correctamente',
+    'create' => 'Crear',
     'add' => 'Añadir',
     'save' => 'Guardar',
     'show' => 'Mostrar',

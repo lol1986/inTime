@@ -7,6 +7,7 @@ return [
     | Common actions Language Lines
     |--------------------------------------------------------------------------
     */
+    'create' => 'Create',
     'registered' => ' successfully registered',
     'add' => 'Add',
     'save' => 'Save',

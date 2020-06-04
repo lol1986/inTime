@@ -1,8 +1,7 @@
 @extends('layouts.private.app')
 @php
 //dd($success);
-//dd(session()->get('class'));
-@endphp   
+//dd(session()->get('class')); 
 @endphp
 @section('content')
 <div class="container">
