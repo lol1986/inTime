@@ -71,12 +71,12 @@ class RegisterController extends Controller
             'dni' => $data['dni'],
             'name' => $data['name'],
             'email' => $data['email'],
-            'company'=>'1',
+            'company_id'=>'1',
+            'calendar_id'=>'1',
+            'role_id'=>'3',
             'active'=>'1',
             'password' => Hash::make($data['password']),
         ]);
-
-        $user->roles()->attach(Role::where('name', 'user')->first());
         return $user;
     }
 }

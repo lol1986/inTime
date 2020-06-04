@@ -54,7 +54,7 @@ abstract class CrudController extends Controller
         $currentClass = $this->getCurrentClass();
         $object = new $currentClass;
         return view ('private.'.$this->getClassAlias($this->regular).'.create')->with('object', $object)
-        ->with('class',$this->getClassAlias($this->regular));;
+        ->with('class',$this->getClassAlias($this->regular))->with('action',__FUNCTION__);
     }
 
      /**
@@ -135,7 +135,7 @@ abstract class CrudController extends Controller
             $readable[$param] = 'false';
         }
         return view('private.'.$this->getClassAlias($this->regular).'.show')
-        ->with('object', $object)->with('readable',$readable) ->with('class',$this->getClassAlias($this->regular));;
+        ->with('object', $object)->with('readable',$readable) ->with('class',$this->getClassAlias($this->regular))->with('action',__FUNCTION__);
     }
 
     /**
@@ -150,7 +150,7 @@ abstract class CrudController extends Controller
         $object = $currentClass::find($id);
         $readable = $currentClass::getReadable();
         return view('private.'.$this->getClassAlias($this->regular).'.edit') 
-        ->with('object', $object)->with('readable',$readable)->with('class',$this->getClassAlias($this->regular));;
+        ->with('object', $object)->with('readable',$readable)->with('class',$this->getClassAlias($this->regular))->with('action',__FUNCTION__);
     }
 
     /**

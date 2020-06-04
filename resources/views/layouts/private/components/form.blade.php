@@ -25,7 +25,7 @@
           </div>
         @endforeach
         <input id="action" name="action" type="hidden" value="update">
-        @yield('buttons')
+        @include('layouts.private.components.submit')
       </form>          
    </div>
 @endsection
