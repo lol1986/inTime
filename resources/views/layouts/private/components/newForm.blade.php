@@ -16,8 +16,8 @@
         @php
           $className = $object->getClassName();
           $classObject = new $className;
-          $params=$classObject::getPrintable();
-        @endphp
+          $params=$classObject->getFillable();
+        @endphp->
         @foreach($params as $param)
           <div class="form-group row">
             <label for="{{$param}}" class="col-md-4 col-form-label text-md-right">{{ __($class.'.'.$param) }}</label>

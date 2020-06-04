@@ -1,12 +1,16 @@
 @extends('layouts.private.app')
-
+@php
+//dd($success);
+//dd(session()->get('class'));
+@endphp   
+@endphp
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('auth.register') }}</div>
-
+                @include('layouts.private.components.isSuccess')
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf

@@ -5,7 +5,7 @@
         <div class="p-2">
           <div class="">
             <div>
-              <img class="bt-logo" src="images/logo120.png">
+              <img class="bt-logo" src="{{URL::asset('/images/logo120.png')}}">
               <h5>InTime ®</h5>
             </div>
           </div>   

@@ -17,6 +17,8 @@
                   $str =substr($param,0,strlen($param)-3);
                 @endphp
                 <input id={{$param}} readonly="readonly" type="text" class="form-control" name="{{$param}}" value="{{ $object->$str->name }}" required autocomplete="{{$param}}" autofocus>
+              @elseif($param=='id')
+                <input id={{$param}} readonly="readonly" type="text" class="form-control" name="{{$param}}" value="{{ $object->$param }}" required autocomplete="{{$param}}" autofocus>
               @else
                 <input id={{$param}} @if ($readable[$param] ?? ''=='false') readonly="readonly" @endif type="text" class="form-control @error($param) is-invalid @enderror" name="{{$param}}" value="{{ $object->$param }}" required autocomplete="{{$param}}" autofocus>
               @endif

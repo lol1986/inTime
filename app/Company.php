@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-    protected static $printable = ['cif','name','address'];
+    protected static $printable = ['id','cif','name','address'];
 
     protected $fillable = ['cif','name','address'];
 

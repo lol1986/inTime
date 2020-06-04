@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    protected $fillable = ['name','active'];
+    protected $fillable = ['name'];
 
     protected static $printable = ['id','name'];
 
-    protected static $updatable = ['name'];
+    protected static $updatable = ['id','name'];
 
     protected static $readable = [];
 

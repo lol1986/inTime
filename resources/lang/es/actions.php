@@ -7,6 +7,7 @@ return [
     | Common actions Language Lines
     |--------------------------------------------------------------------------
     */
+    'registered' => ' registrado correctamente',
     'add' => 'Añadir',
     'save' => 'Guardar',
     'show' => 'Mostrar',

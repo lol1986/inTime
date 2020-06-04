@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Holiday extends Model
 {
-    protected $fillable = ['calendar_id','date'];
+    protected $fillable = ['date'];
 
     protected static $printable = ['calendar_id','date'];
 
