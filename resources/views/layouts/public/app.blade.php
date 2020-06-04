@@ -3,7 +3,7 @@
     @include('partials.public.header')
 <body>
     @include('partials.public.nav')
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     @include ('partials.public.footer')

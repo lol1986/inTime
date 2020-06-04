@@ -41,7 +41,7 @@ abstract class CrudController extends Controller
         
 
         return view ('private.'.$this->getClassAlias($this->regular).'.view')->with('object', $object)
-        ->with('className',$this->className)->with('class',$this->getClassAlias($this->regular));
+        ->with('className',$this->className)->with('class',$this->getClassAlias($this->regular))->with('action',__FUNCTION__);
     }
 
     /**

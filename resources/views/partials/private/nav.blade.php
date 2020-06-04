@@ -15,7 +15,7 @@
   </div>
 </div>
 
-<nav class="navbar navbar-expand navbar-light bg-light">
+<nav class="navbar navbar-expand navbar-dark bg-dark">
     <div class="navbar-collapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">

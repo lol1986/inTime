@@ -1,4 +1,4 @@
- <div class ="table-responsive">   
+ <div class ="table-responsive p-1">   
     <table class='table table-striped table-bordered'>
         <thead>
         @for($i=0; $i<count($object[0]->getPrintable()); $i++)

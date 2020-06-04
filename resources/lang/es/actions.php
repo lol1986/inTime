@@ -18,5 +18,6 @@ return [
     'store_success' => ' creado/a correctamente.',
     'activate_success' => ' reactivado/a correctamente.',
     'deactivate_success' => ' eliminado/a correctamente.',
-    'not_exists'=> 'No hay '
+    'not_exists'=> 'No hay ',
+    'index'=> 'Lista de '
 ];
