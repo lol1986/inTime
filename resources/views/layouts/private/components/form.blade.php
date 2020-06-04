@@ -1,5 +1,3 @@
-@extends('layouts.private.app')
-@section('content')
     <div class="row">
         <div class="col-md-12 offset-2">
       <form method="POST" action="{{ route($class.'.update', $object->id)}}">
@@ -34,4 +32,3 @@
         @include('layouts.private.components.submit')
       </form>          
    </div>
-@endsection

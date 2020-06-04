@@ -1,17 +1,24 @@
 
 <div class="text-center">
-  <div class='overlay'>
-    <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
+    <div class="container d-flex justify-content-around align-items-center">
+      <div class="d-flex">
+        <div class="p-2">
+          <div class="">
+            <div>
+              <img class="bt-logo" src="images/logo120.png">
+              <h5>InTime ®</h5>
+            </div>
+          </div>   
+        </div>
+      </div> 
+        <div class="d-flex">
+          <div class="p-2">
             <h1>InTime -Software de registro horario </h1>
           </div>
-          <div class="col-lg-6">
-            <img class="img-fluid" src="img/logo.png">
-          </div>
         </div>
+        
+         
       </div>
-    </div>
   </div>
 </div>
 
