@@ -16,7 +16,11 @@
           <div class="form-group row">
             <label for="{{$param}}" class="col-md-4 col-form-label text-md-right">{{ __($class.'.'.$param) }}</label>
             <div class="col-md-6">
-              <input id={{$param}} @if ($readable[$param] ?? ''=='false') readonly="readonly" @endif type="text" class="form-control @error($param) is-invalid @enderror" name="{{$param}}" value="{{ $object->$param }}" required autocomplete="{{$param}}" autofocus>
+              @if(substr($param, strlen($param)-3, strlen($param))=='_id')
+                @include('layouts.private.components.select')
+              @else
+                <input id={{$param}} @if ($readable[$param] ?? ''=='false') readonly="readonly" @endif type="text" class="form-control @error($param) is-invalid @enderror" name="{{$param}}" value="{{ $object->$param }}" required autocomplete="{{$param}}" autofocus>
+              @endif  
                 @error($param)
                   <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

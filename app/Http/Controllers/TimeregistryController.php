@@ -128,7 +128,7 @@ class TimeregistryController extends CrudController
         if($request->get('name') && $request->get('name')=='home'){
             return redirect('/home')->with('success', 'store_success');                
         }else{
-            return redirect('/'.$this->getClassAlias($this->regular))->with('success', 'update_success');                
+            return redirect('/'.$currentClass::getAlias())->with('success', 'update_success');                
         }
         
     }

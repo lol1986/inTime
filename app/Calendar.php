@@ -11,11 +11,17 @@ class Calendar extends Model
 
     protected $fillable = ['name'];
 
+    protected static $alias = 'calendars';
+
     protected static $updatable =['name'];
 
     protected static $readable = [];
 
     protected static $storeValidations =['name' => ['required','max:255','unique:calendars']];
+
+    public static function getAlias(){
+        return self::$alias;
+    }
 
     public static function getPrintable()
     {

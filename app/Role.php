@@ -11,11 +11,17 @@ class Role extends Model
 
     protected static $printable = ['id','name'];
 
+    protected static $alias = 'roles';
+
     protected static $updatable = ['id','name'];
 
     protected static $readable = [];
 
     protected static $storeValidations =['name' => ['required','max:255','unique:roles']];
+
+    public static function getAlias(){
+        return self::$alias;    
+    }
 
     public function users()
     {

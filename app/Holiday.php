@@ -7,13 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Holiday extends Model
 {
-    protected $fillable = ['date'];
+    protected $fillable = ['calendar_id','date'];
+    
+    protected static $alias = 'holidays';
 
     protected static $printable = ['calendar_id','date'];
 
     protected static $updatable = ['date'];
 
     protected static $readable = [];
+
+
+    public static function getAlias(){
+        return self::$alias;
+    }
 
     public function calendar()
     {

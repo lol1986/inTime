@@ -45,7 +45,7 @@ class OwnerController extends CrudController
         if($request->get('name') && $request->get('name')=='home'){
             return redirect('/home')->with('success', 'store_success');                
         }else{
-            return redirect('/'.$this->getClassAlias($this->regular))->with('success', 'store_success');                
+            return redirect('/'.$currentClass::getAlias())->with('success', 'store_success');                
         }
         
     }
@@ -59,12 +59,12 @@ class OwnerController extends CrudController
         $user = Auth::user();
        // if($user->hasRole('user')){
             $object = $currentClass::orderBy('active', 'desc')->where('user_id', '=',$userId)->paginate(10);
-            return view ('private.'.$this->getClassAlias($this->regular).'.view')->with('object', $object)
-            ->with('className',$this->className)->with('class',$this->getClassAlias($this->regular));
+            return view ('private.'.$currentClass::getAlias().'.view')->with('object', $object)
+            ->with('className',$this->className)->with('class',$currentClass::getAlias());
       //  }else{
       //      $object = $currentClass::orderBy('active', 'desc')->paginate(10);
-      //      return view ('private.'.$this->getClassAlias($this->regular).'.view')->with('object', $object)
-      //      ->with('className',$this->className)->with('class',$this->getClassAlias($this->regular));
+      //      return view ('private.'.$currentClass::getAlias().'.view')->with('object', $object)
+      //      ->with('className',$this->className)->with('class',$currentClass::getAlias());
       //  }
         
     }

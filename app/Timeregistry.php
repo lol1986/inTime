@@ -11,6 +11,8 @@ class Timeregistry extends Model
 
     protected static $printable = ['user_id','date','status'];
 
+    protected static $alias = 'timeregistries';
+
     protected static $updatable = ['status'];
 
     protected static $readable = [];
@@ -19,6 +21,9 @@ class Timeregistry extends Model
    // {
      //   return $this->belongsTo('App\User', 'user');
    // }
+    public static function getAlias(){
+        return self::$alias;        
+    }
 
     public function user(){
         return $this->belongsTo(User::class);

@@ -13,7 +13,13 @@ class Usersholiday extends Model
 
     protected static $updatable = ['date'];
 
+    protected static $alias = 'usersholidays';
+
     protected static $readable = [];
+
+    public static function getAlias(){
+        return self::$alias;        
+    }
 
     public function user()
     {

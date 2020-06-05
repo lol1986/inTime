@@ -33,6 +33,12 @@ Route::get('/unauthorized', function () {
     return view('private.unauthorized');
 })->name('unauthorized')->middleware('auth');;
 
+//Custom
+Route::get('companies/all', 'CompanyController@all');
+Route::get('calendars/all', 'CalendarController@all');
+Route::get('roles/all', 'RoleController@all');
+
+//Resources
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('users', 'UserController');

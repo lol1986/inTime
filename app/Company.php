@@ -10,15 +10,17 @@ class Company extends Model
 
     protected $fillable = ['cif','name','address'];
 
-    protected static $updatable = ['name','address'];
-
-    protected static $readable = [];
+    protected static $alias = 'companies';
 
     protected static $storeValidations =[
         'name' => ['required', 'max:255','unique:companies'],
         'address'=>['required', 'max:255'],
         'cif'=>['required', 'max:255','regex:/^[a-zA-Z]{1}\d{7}[a-zA-Z0-9]{1}$/']
     ];
+
+    public static function getAlias(){
+        return self::$alias;
+    }
 
     public static function getPrintable()
     {

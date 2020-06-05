@@ -20,6 +20,8 @@ class User extends Authenticatable
 
     protected static $printable = ['dni','company_id','name', 'email','role_id'];
 
+    protected static $alias = 'users';
+
     protected static $updatable = ['dni','company_id','name', 'email','role_id'];
 
     protected static $readable = [
@@ -51,6 +53,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function getAlias(){
+        return self::$alias;        
+    }
 
     public function company()
     {

@@ -37,7 +37,7 @@ class HolidayController extends CrudController
         }
         $object->active = '1';
         $object->save();
-        return redirect('/'.$this->getClassAlias($this->regular))->with('success', 'store_success');
+        return redirect('/'.$currentClass::getAlias())->with('success', 'store_success');
     }
 
 }

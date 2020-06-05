@@ -11,11 +11,16 @@ class Leave extends Model
 
     protected static $printable = ['user_id','start','end','days'];
 
+    protected static $alias = 'leaves';
+
     protected static $updatable = ['user_id','start','end','days'];
 
     protected static $readable = [];
 
 //    protected static $storeValidations =['name' => ['max:255','unique:roles']];
+    public static function getAlias(){
+        return self::$alias;    
+    }
 
     public function user()
     {
