@@ -1,7 +1,5 @@
 @php
 $paramName= substr($param, 0, strlen($param)-3);
-//dd($parents[$paramName][0]->id);
-
 @endphp
 <div>
     <div>

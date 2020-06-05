@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\{User,Role,Company,Calendar,Holiday,Leave};
 use Auth;
 use DB;
+use App\Filter;
 
 abstract class CrudController extends Controller
 {
@@ -13,6 +14,7 @@ abstract class CrudController extends Controller
         return $this->className;
     }
 
+    
     /**
      * Display a listing of the resource.
      *
@@ -20,14 +22,19 @@ abstract class CrudController extends Controller
      */
     public function index()
     {
+     //   $object = $currentClass
+    // dd($request->all());
+   
         $currentClass = $this->getCurrentClass();
+        $object = new $currentClass;
+       // $filter = new Filter ($object);
+       // $filter->filter();
         if(Auth::user()->role->id=='3'){
             $object = $currentClass::orderBy('active', 'desc')->where('user_id',Auth::user()->id)->paginate(5);
         }
         else{
             $object = $currentClass::orderBy('active', 'desc')->paginate(5);
         }
-
         return view ('private.'.$currentClass::getAlias().'.view')->with('object', $object)
         ->with('className',$this->className)->with('class',$currentClass::getAlias())->with('action',__FUNCTION__);
     }
@@ -136,7 +143,7 @@ abstract class CrudController extends Controller
             $readable[$param] = 'false';
         }
         return view('private.'.$currentClass::getAlias().'.show')
-        ->with('object', $object)->with('readable',$readable) ->with('class',$currentClass::getAlias())->with('action',__FUNCTION__);
+        ->with('object', $object)->with('readable',$readable)->with('class',$currentClass::getAlias())->with('action',__FUNCTION__);
     }
 
     /**
@@ -167,6 +174,36 @@ abstract class CrudController extends Controller
         $object->active ='0';
         $object->save();
         return redirect('/'.$currentClass::getAlias())->with('success', 'deactivate_success');
+    }
+    
+    public function filter(Request $request){
+        unset($request['_token']);
+        
+        //dd('asd');
+        $currentClass = $this->getCurrentClass();
+        $object = new $currentClass;
+        $queryParams = $request->all();
+        $query = $currentClass::orderBy('active', 'desc');
+
+        if(Auth::user()->role->id=='3'){
+            $query = $object->where('user_id',Auth::user()->id)->paginate(5);
+        }
+
+        foreach($object->getPrintable() as $printableParam){
+            foreach($queryParams as $queryParam){
+                if (array_key_exists($printableParam,$queryParams)){
+                    $query->where($printableParam,$queryParams[$printableParam]);
+                }
+            }
+        }
+        
+        //foreach($request as $param){
+        //    if($param)
+       // }
+        dd($query->paginate(5));    
+        //dd($object->getPrintable());
+        return view('private.'.$currentClass::getAlias().'.view')->with('class',$currentClass::getAlias()) 
+        ->with('object', $object)->with('action',__FUNCTION__);
     }
 
 }

@@ -33,16 +33,12 @@ Route::get('/unauthorized', function () {
     return view('private.unauthorized');
 })->name('unauthorized')->middleware('auth');;
 
-//Custom
-Route::get('companies/all', 'CompanyController@all');
-Route::get('calendars/all', 'CalendarController@all');
-Route::get('roles/all', 'RoleController@all');
-
 //Resources
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/users/filter', 'UserController@filter')->name('users.filter');
 Route::resource('users', 'UserController');
-Route::resource('tests', 'TestController');
+
 Route::resource('roles', 'RoleController');
 Route::resource('companies', 'CompanyController');
 Route::resource('calendars', 'CalendarController');
@@ -50,3 +46,4 @@ Route::resource('holidays', 'HolidayController');
 Route::resource('leaves', 'LeaveController');
 Route::resource('timeregistries', 'TimeregistryController');
 Route::resource('usersholidays', 'UsersholidayController');
+

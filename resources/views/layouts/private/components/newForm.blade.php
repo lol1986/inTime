@@ -10,7 +10,7 @@
         @foreach($params as $param)
         <div class="col-md-6">
           <div class="form-group row">
-            <label for="{{$param}}" class="col-md-4 col-form-label text-md-right">{{ __($class.'.'.$param) }}</label>
+            <label for="{{$param}}" class="col-md-4 col-form-label text-md-left">{{ __($class.'.'.$param) }}</label>
               @if(substr($param, strlen($param)-3, strlen($param))=='_id')
                 @include('layouts.private.components.select')
               @else

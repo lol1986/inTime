@@ -23,5 +23,6 @@ return [
     'not_exists'=> 'There is no ',
     'index'=> 'List of ',
     'edit'=> 'Edit ',
-    'unauthorized'=>'You do not have permission to permform this action'
+    'unauthorized'=>'You do not have permission to permform this action',
+    'filter'=> 'Filter'
 ];
