@@ -6,9 +6,9 @@
 <div class="col-11">    
     <div class="card">
         <div class="card-header">
-            {{__('actions.filter')}}
+            <button>{{__('actions.filter')}}</button>
         </div>
-        <div class="card-body offset-xl-2 col-xl-8">
+        <div class="card-body offset-xl-2 col-xl-8" style="display: none;">
             <div class="col-10 container-fluid">
                 <form method="POST" action="{{ route($class.'.filter')}}">
                     @csrf
@@ -24,3 +24,11 @@
         </div>  
     </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+      $("button").click(function(){
+        $(".card-body").toggle();
+      });
+    });
+</script>

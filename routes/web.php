@@ -38,12 +38,18 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/users/filter', 'UserController@filter')->name('users.filter');
 Route::resource('users', 'UserController');
-
+Route::post('/roles/filter', 'RoleController@filter')->name('roles.filter');
 Route::resource('roles', 'RoleController');
+Route::post('/companies/filter', 'CompanyController@filter')->name('companies.filter');
 Route::resource('companies', 'CompanyController');
+Route::post('/calendars/filter', 'CalendarController@filter')->name('calendars.filter');
 Route::resource('calendars', 'CalendarController');
+Route::post('/holidays/filter', 'HolidayController@filter')->name('holidays.filter');
 Route::resource('holidays', 'HolidayController');
+Route::post('/leaves/filter', 'LeaveController@filter')->name('leaves.filter');
 Route::resource('leaves', 'LeaveController');
+Route::post('/timeregistries/filter', 'TimeregistryController@filter')->name('timeregistries.filter');
 Route::resource('timeregistries', 'TimeregistryController');
+Route::post('/usersholidays/filter', 'UsersholidayController@filter')->name('usersholidays.filter');
 Route::resource('usersholidays', 'UsersholidayController');
 

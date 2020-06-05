@@ -179,29 +179,28 @@ abstract class CrudController extends Controller
     public function filter(Request $request){
         unset($request['_token']);
         
-        //dd('asd');
         $currentClass = $this->getCurrentClass();
         $object = new $currentClass;
+        $queryKeys = array_keys ($request->all());
         $queryParams = $request->all();
+
         $query = $currentClass::orderBy('active', 'desc');
 
         if(Auth::user()->role->id=='3'){
             $query = $object->where('user_id',Auth::user()->id)->paginate(5);
         }
 
-        foreach($object->getPrintable() as $printableParam){
-            foreach($queryParams as $queryParam){
-                if (array_key_exists($printableParam,$queryParams)){
-                    $query->where($printableParam,$queryParams[$printableParam]);
+        foreach($queryKeys as $paramKey){
+            //Si el parametro no es nulo
+            if($queryParams[$paramKey]){
+                //Si existe en los parámetros definidos como mostrables para la clase
+                if (in_array($paramKey,$object->getPrintable())){
+                    $query=$query->where($paramKey,$queryParams[$paramKey]);
                 }
             }
         }
-        
-        //foreach($request as $param){
-        //    if($param)
-       // }
-        dd($query->paginate(5));    
-        //dd($object->getPrintable());
+
+        $object = $query->paginate(5);
         return view('private.'.$currentClass::getAlias().'.view')->with('class',$currentClass::getAlias()) 
         ->with('object', $object)->with('action',__FUNCTION__);
     }
