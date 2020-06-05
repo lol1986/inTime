@@ -10,6 +10,8 @@ class Company extends Model
 
     protected $fillable = ['cif','name','address'];
 
+    protected static $readable = ['cif','name','address'];
+
     protected static $alias = 'companies';
 
     protected static $storeValidations =[

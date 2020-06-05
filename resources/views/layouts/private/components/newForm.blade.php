@@ -1,10 +1,5 @@
- <div class="row justify-content-center">
-        <div class="col-md-12">
-      @if(session()->get('success'))
-        <div class='alert alert-success'>
-          {{ session()->get('success') }}
-        </div>
-      @endif
+ <div class="row">
+    <div class="col-md-10 offset-2">
       <form method="POST" action="{{ route($class.'.store')}}">
         @csrf
         @php
@@ -13,9 +8,9 @@
           $params=$classObject->getFillable();
         @endphp
         @foreach($params as $param)
+        <div class="col-md-6">
           <div class="form-group row">
             <label for="{{$param}}" class="col-md-4 col-form-label text-md-right">{{ __($class.'.'.$param) }}</label>
-            <div class="col-md-6">
               @if(substr($param, strlen($param)-3, strlen($param))=='_id')
                 @include('layouts.private.components.select')
               @else
@@ -32,3 +27,4 @@
         @include('layouts.private.components.submit')
       </form>          
    </div>
+  </div>
