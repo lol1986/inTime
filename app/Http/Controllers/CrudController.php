@@ -195,7 +195,7 @@ abstract class CrudController extends Controller
             if($queryParams[$paramKey]){
                 //Si existe en los parámetros definidos como mostrables para la clase
                 if (in_array($paramKey,$object->getPrintable())){
-                    $query=$query->where($paramKey,$queryParams[$paramKey]);
+                    $query=$query->where($paramKey,'LIKE','%'.$queryParams[$paramKey].'%');
                 }
             }
         }
