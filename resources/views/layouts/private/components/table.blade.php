@@ -1,3 +1,7 @@
+@php
+//dd($emptyobject->getPrintable());
+@endphp 
+ 
  <div class ="table-responsive p-1">   
     <table class='table table-striped table-bordered'>
         <thead>
@@ -8,13 +12,16 @@
         </thead>
         <tbody>
         @if($object->getCollection()->count()=='0')
-            <div class='alert alert-danger'>
-                {{ 
-                    __('actions.not_exists').
-                    __($class.'.'.$class)
-                }}
-            </div>  
+        <tr class='alert alert-danger'>
+                <td colspan={{count($emptyobject->getPrintable())+1}}>
+                    {{ 
+                        __('actions.not_exists').
+                        __($class.'.'.$class)
+                    }}
+                </td>
+            </tr>  
          @else
+         
             @foreach($object as $item)
                 @if ($item->active !="1")
                 <tr class ='table-danger'>
