@@ -1,7 +1,9 @@
     @php
     //$paramName= substr($param, 0, strlen($param)-3);
     //dd($item->getPrintable());
-    $item=$object[0];
+ //   $item=$object[0];
+    //dd($emptyobject);
+   // dd($item);
     @endphp
 <div class="col-11">    
     <div class="card">
@@ -13,12 +15,21 @@
                 <form method="POST" action="{{ route($class.'.filter')}}">
                     @csrf
                     <div class="form-group">
-                        @foreach ($item->getPrintable() as $param)
+                        @foreach ($emptyobject->getPrintable() as $param)
                             <label for="{{$param}}" class="col-md-4 col-form-label text-md-left">{{ __($class.'.'.$param) }}</label>
                             <input id={{$param}} type="text" class="form-control" name="{{$param}}" value="" autocomplete="{{$param}}" autofocus>
                         @endforeach 
                     </div>   
-                    @include('layouts.private.components.submit')     
+                    <div class="form-group row mb-0  text-right mr-3">
+                        <div class="col-md-11">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('actions.filter') }}
+                            </button>
+                            <button type="submit" class="btn btn-warning">
+                                {{ __('actions.reset') }}
+                            </button>
+                         </div>
+                    </div>
                 </form>    
             </div>
         </div>  

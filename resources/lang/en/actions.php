@@ -9,6 +9,8 @@ return [
     */
     'create' => 'Create',
     'registered' => ' successfully registered',
+    'reset' => 'Reset',
+    'create' => 'Save',
     'add' => 'Add',
     'save' => 'Save',
     'show' => 'Show',

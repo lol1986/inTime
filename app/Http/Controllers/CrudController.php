@@ -25,7 +25,10 @@ abstract class CrudController extends Controller
      //   $object = $currentClass
     // dd($request->all());
    
+   
+
         $currentClass = $this->getCurrentClass();
+        $emptyobject = new $currentClass;
         $object = new $currentClass;
        // $filter = new Filter ($object);
        // $filter->filter();
@@ -35,7 +38,7 @@ abstract class CrudController extends Controller
         else{
             $object = $currentClass::orderBy('active', 'desc')->paginate(5);
         }
-        return view ('private.'.$currentClass::getAlias().'.view')->with('object', $object)
+        return view ('private.'.$currentClass::getAlias().'.view')->with('object', $object)->with('emptyobject',$emptyobject)
         ->with('className',$this->className)->with('class',$currentClass::getAlias())->with('action',__FUNCTION__);
     }
 
@@ -180,6 +183,7 @@ abstract class CrudController extends Controller
         unset($request['_token']);
         
         $currentClass = $this->getCurrentClass();
+        $emptyobject = new $currentClass;
         $object = new $currentClass;
         $queryKeys = array_keys ($request->all());
         $queryParams = $request->all();
@@ -199,10 +203,9 @@ abstract class CrudController extends Controller
                 }
             }
         }
-
         $object = $query->paginate(5);
         return view('private.'.$currentClass::getAlias().'.view')->with('class',$currentClass::getAlias()) 
-        ->with('object', $object)->with('action',__FUNCTION__);
+        ->with('object', $object) ->with('emptyobject', $emptyobject)->with('action',__FUNCTION__);
     }
 
 }
