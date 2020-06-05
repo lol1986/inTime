@@ -1,10 +1,3 @@
-    @php
-    //$paramName= substr($param, 0, strlen($param)-3);
-    //dd($item->getPrintable());
- //   $item=$object[0];
-    //dd($emptyobject);
-   // dd($item);
-    @endphp
 <div class="col-11">    
     <div class="card">
         <div class="card-header">
@@ -42,4 +35,31 @@
         $(".card-body").toggle();
       });
     });
+</script>
+
+<script type="text/javascript">
+/* 
+Para hacer la llamada en Ajax hay que serializar a JSON el objeto 
+$.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $(".btn-submit").click(function(e){
+        e.preventDefault();
+        var name = $("input[name=id]").val();
+        var password = $("input[name=name]").val();
+        var email = $("input[name=email]").val();
+
+        $.ajax({
+           type:'POST',
+           url:'/users/filter',
+           data:{id:id, name:name, email:email},
+           success:function(data){
+              alert(data.success);
+           }
+        });
+	});*/
+
 </script>
