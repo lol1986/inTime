@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\{Role,Leave,Userholiday,Timeregistry};
+use App\{Role,Leave,Usersholiday,Timeregistry};
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -16,7 +16,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['dni','company_id','calendar_id','name', 'email', 'password','role_id','active'];
+    protected $fillable = ['dni','holidays','pending','company_id','calendar_id','name', 'email', 'password','role_id','active','company'];
 
     protected static $printable = ['dni','company_id','name', 'email','role_id'];
 
@@ -63,29 +63,30 @@ class User extends Authenticatable
         return $this->belongsTo(Company::class);
     }
 
+    
+    public function calendar()
+    {
+        return $this->belongsTo(Calendar::class);
+    }
+
     public function role()
     {
         return $this->belongsTo(Role::class);
     }
 
-    public function timeregistry()
-    {
-        return $this->hasMany(Timeregistry::class)->withTimestamps();
-    }
-
     public function leaves()
     {
-        return $this->hasMany(Leave::class)->withTimestamps();
+        return $this->hasMany(Leave::class);
     }
 
-    public function Holidays()
+    public function usersholidays()
     {
-        return $this->hasMany(Userholiday::class)->withTimestamps();
+        return $this->hasMany(Usersholiday::class);
     }
 
     public function timeregistries()
     {
-        return $this->hasMany('App\Timeregistry', 'id', 'user');
+        return $this->hasMany(Timeregistry::class);;
     }
 
     public static function getPrintable()
@@ -109,6 +110,10 @@ class User extends Authenticatable
 
     public function getStoreValidations(){
         return $storeValidations;
+    }
+    
+    public function getHidden(){
+        return $this->hidden;
     }
     
     

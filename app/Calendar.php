@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\{Holiday};
+use App\{Holiday,User};
 
 class Calendar extends Model
 {
@@ -41,6 +41,11 @@ class Calendar extends Model
     public function holiday()
     {
         return $this->hasMany(Holiday::class)->withTimestamps();
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class)->withTimestamps();
     }
 
     public function getClassName(){

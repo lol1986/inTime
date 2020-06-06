@@ -13,5 +13,7 @@ return [
     'companies'=> 'Empresas',
     'cif' => 'Cif',
     'name' => 'Nombre',
-    'address' => 'Dirección'
+    'address' => 'Dirección',
+    'holidays' => 'Vacaciones(días)',
+    'calendar' => 'Oficina'
 ];

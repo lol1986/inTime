@@ -1,7 +1,7 @@
 <div class="col-11">    
     <div class="card">
         <div class="card-header">
-            <button>{{__('actions.filter')}}</button>
+            <button id="filter-toggle">{{__('actions.filter')}}</button>
         </div>
         <div class="card-body offset-xl-2 col-xl-8" style="display: none;">
             <div class="col-10 container-fluid">
@@ -31,7 +31,7 @@
 
 <script>
     $(document).ready(function(){
-      $("button").click(function(){
+      $("#filter-toggle").click(function(){
         $(".card-body").toggle();
       });
     });

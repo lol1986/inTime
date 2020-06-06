@@ -2,14 +2,12 @@
 
 namespace App;
 
-use App\{User};
+use App\{Timeregistry};
 use Illuminate\Database\Eloquent\Model;
 
-class Timeregistry extends Model
+class Registryevent extends Model
 {
     protected $fillable = ['user_id','status'];
-    
-    protected $hidden = ['updated_at','created_at'];
 
     protected static $printable = ['user_id','date','status'];
 
@@ -19,25 +17,9 @@ class Timeregistry extends Model
 
     protected static $readable = [];
 
-   // public function user()
-   // {
-     //   return $this->belongsTo('App\User', 'user');
-   // }
+
     public static function getAlias(){
         return self::$alias;        
-    }
-
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
-
-    public function registryevents(){
-        return $this->hasMany(Registryevent::class);
-    }
-
-    public function getHidden()
-    {
-        return $this->hidden;
     }
 
     public static function getPrintable()
@@ -59,6 +41,10 @@ class Timeregistry extends Model
         return get_class($this);
     } 
 
+    public function timeregistry(){
+        return $this->belongsTo(Timeregistry::class);
+    }
+
     public function getUpdateValidations(){
 
         $updateValidations=[
@@ -69,9 +55,9 @@ class Timeregistry extends Model
     
      public function getStoreValidations($id){
         $storeValidations =[
-            'user_id' => ['required','exists:users,id'],
-            'type' => ['required','in:in,out,pin,pout'],
-            'date'=> ['required','date_format:Y-m-d H:i:s']
+     //       'user_id' => ['required','exists:users,id'],
+     //       'type' => ['required','in:in,out,pin,pout'],
+    //        'date'=> ['required','date_format:Y-m-d H:i:s']
         ];
         return $storeValidations;
     }

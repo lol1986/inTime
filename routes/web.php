@@ -36,6 +36,7 @@ Route::get('/unauthorized', function () {
 //Resources
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/reports/user/{id}','UserController@status')->name('users.status');
 Route::post('/users/filter', 'UserController@filter')->name('users.filter');
 Route::resource('users', 'UserController');
 Route::post('/roles/filter', 'RoleController@filter')->name('roles.filter');

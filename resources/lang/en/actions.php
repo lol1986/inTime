@@ -9,6 +9,7 @@ return [
     */
     'create' => 'Create',
     'registered' => ' successfully registered',
+    'export'=> 'Export',
     'reset' => 'Reset',
     'create' => 'Save',
     'add' => 'Add',

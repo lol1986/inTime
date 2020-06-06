@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             'cif'=> "B0457760",
             'name'=>'BSD',
             'address'=>'Avenida del piloto',
+            'holidays'=>'30',
             'active'=>'1'
         ]);
 
@@ -38,6 +39,7 @@ class DatabaseSeeder extends Seeder
             'cif'=> "B0455560",
             'name'=>'BSD2',
             'address'=>'Avenida del segundo piloto',
+            'holidays'=>'30',
             'active'=>'1'
         ]);
 
@@ -48,6 +50,8 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('11111111A'),
             'company_id'=>'1',
             'calendar_id'=>'1',
+            'holidays'=>'30',
+            'pending'=>'0',
             'active'=>'1',
             'role_id'=>'1'
         ]);
@@ -59,6 +63,8 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('11111111B'),
             'company_id'=>'1',
             'calendar_id'=>'1',
+            'holidays'=>'30',
+            'pending'=>'0',
             'active'=>'1',
             'role_id'=>'2'
         ]);
@@ -70,6 +76,8 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('11111111C'),
             'company_id'=>'1',
             'calendar_id'=>'2',
+            'holidays'=>'30',
+            'pending'=>'0',
             'active'=>'1',
             'role_id'=>'3'
         ]);

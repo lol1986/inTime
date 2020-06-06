@@ -14,5 +14,7 @@ return [
     'companies'=> 'Companies',
     'cif' => 'Cif',
     'name' => 'Name',
-    'address' => 'Address'
+    'address' => 'Address',
+    'holidays' => 'Holidays(days)',
+    'calendar' => 'Calendar'
 ];

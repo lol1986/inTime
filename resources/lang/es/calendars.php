@@ -10,7 +10,7 @@ return [
     | The following in the users view
     */
     
-    'key'=> 'Calendario',
+    'key'=> 'Oficina',
     'calendars'=> 'Calendarios',
     'name'=> 'Nombre',
     'id' => 'Id',

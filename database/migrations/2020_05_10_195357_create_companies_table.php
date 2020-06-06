@@ -19,6 +19,7 @@ class CreateCompaniesTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('active');
+            $table->string('holidays');
             $table->timestamps();
         });
     }

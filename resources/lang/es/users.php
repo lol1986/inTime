@@ -16,4 +16,6 @@ return [
     'name' => 'Nombre',
     'password' => 'Password',
     'email' => 'Email',
+    'holidays'=> 'Vacaciones (días)',
+    'pending'=> 'Días pendientes',
 ];

@@ -77,6 +77,8 @@ class RegisterController extends Controller
             'calendar_id'=>'1',
             'role_id'=>'3',
             'active'=>'1',
+            'holidays'=>'30',
+            'pending'=>'0',
             'password' => Hash::make($data['password']),
         ]);
         return $user;

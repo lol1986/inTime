@@ -8,6 +8,7 @@ return [
     |--------------------------------------------------------------------------
     */
     'registered' => ' registrado correctamente',
+    'export'=> 'Exportar',
     'reset' => 'Reset',
     'create' => 'Añadir',
     'add' => 'Añadir',
