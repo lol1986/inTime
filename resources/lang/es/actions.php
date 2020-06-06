@@ -8,6 +8,8 @@ return [
     |--------------------------------------------------------------------------
     */
     'registered' => ' registrado correctamente',
+    'approve' => 'Aprobar',
+    'deny' => 'Denegar',
     'export'=> 'Exportar',
     'reset' => 'Reset',
     'create' => 'Añadir',

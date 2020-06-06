@@ -9,6 +9,8 @@ return [
     */
     'create' => 'Create',
     'registered' => ' successfully registered',
+    'approve' => 'Allow',
+    'deny' => 'Deny',
     'export'=> 'Export',
     'reset' => 'Reset',
     'create' => 'Save',
