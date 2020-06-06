@@ -1,3 +1,4 @@
+@if(Auth::user()->role->id=='1' || Auth::user()->role->id=='2' || Auth::user()->role->id=='3')
 <nav class="navbar-light bg-light p-0">
     <a class="navbar-brand" href="#">Menú usuario</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#userMenu" aria-controls="userMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,3 +18,4 @@
       </ul>
     </div>
 </nav>
+@endif
