@@ -18,7 +18,7 @@ class CreateTimeregistriesTable extends Migration
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->enum('status',['open','closed']);
             $table->timestamps();
-            $table->date('date');
+            $table->datetime('date');
             $table->string('active');
             $table->foreign('user_id')->references('id')->on('users');
         });
