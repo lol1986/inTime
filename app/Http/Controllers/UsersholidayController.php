@@ -43,8 +43,7 @@ class UsersholidayController extends CrudController
         $object->status = 'pending';
 
         if(Auth::user()->role->id =='3'){
-            //$request->user_id=Auth::user()->id;
-            $request->merge(['user_id' => Auth::user()->id]);
+            $request->merge(['user_id' => Auth::user()->id]);  
         }
 
         $request->validate($object->getStoreValidations($request->user_id));

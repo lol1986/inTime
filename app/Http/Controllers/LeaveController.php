@@ -53,4 +53,29 @@ class LeaveController extends CrudController
         ->with('class',$currentClass::getAlias())->with('readable',$readable);
     }
 
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request){
+        $currentClass = $this->getCurrentClass();
+        $object = new $currentClass;
+
+        if(Auth::user()->role->id =='3'){
+            $request->merge(['user_id' => Auth::user()->id]);
+            
+        }
+        
+        $request->validate($currentClass::getStoreValidations());
+        $params=$object->getFillable();
+        foreach ($params as $param){
+            $object->$param =  $request->get($param);
+        }
+        $object->active = '1';
+        $object->save();
+        return redirect('/'.$currentClass::getAlias())->with('success', 'store_success');
+    }
 }
