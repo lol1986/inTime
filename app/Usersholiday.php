@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Usersholiday extends Model
 {
-    protected $fillable = ['user_id','start','end','days','status','active'];
+    protected $fillable = ['user_id','start','end','days'];
 
     protected static $printable = ['user_id','start','end','days','status'];
 
@@ -45,13 +45,12 @@ class Usersholiday extends Model
         return get_class($this);
     } 
 
-    public function getStoreValidations($id){
+    public function getStoreValidations(){
         $storeValidations =[
-            'user' => ['required','exists:users,id'],
-            'start'=> ['required','date_format:Y-m-d'],
+            'user_id' => ['required','exists:users,id'],
             'days'=> ['required','integer'],
-            'end'=> ['required','date_format:Y-m-d','after_or_equal:start'],
-            'status'=> ['required','in:pending,approved,denied']
+            'start'=> ['required','date_format:Y-m-d','after:today'],
+            'end'=> ['required','date_format:Y-m-d','after:start'],
         ];
         return $storeValidations;
     }

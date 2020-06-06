@@ -31,14 +31,19 @@ class UsersholidayController extends CrudController
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
+      
+        
         $currentClass = $this->getCurrentClass();
         $object = new $currentClass;
         $params=$object->getFillable();
-        $request->validate($object->getStoreValidations($request->get('id')));
+        $request->validate($object->getStoreValidations($request->get('user_id')));
         foreach ($params as $param){
             $object->$param =  $request->get($param);
         }
         $object->active = '1';
+        $object->status = 'pending';
+      //  dd($object);
+      //  dd($object);
         $object->save();
         return redirect('/'.$currentClass::getAlias())->with('success', 'store_success');
     }

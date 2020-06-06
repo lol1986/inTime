@@ -25,6 +25,9 @@ return [
     'already_paused'=> 'Already paused',
     'not_paused'=> 'Not paused',
     'exists_pause'=> 'Please, close pause before close the registry',
-    'unauthorized'=> 'You do not have permission to permform this action'
-    
+    'unauthorized'=> 'You do not have permission to permform this action',
+    'in'=>'Start',
+    'out'=>'End',
+    'pin'=>'Start pause',
+    'pout'=>'End pause',
 ];

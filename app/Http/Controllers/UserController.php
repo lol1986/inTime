@@ -84,15 +84,13 @@ class UserController extends CrudController
         $header = view('partials.private.header')->render();
         $companyview = view('private.reports.printobject')
         ->with(['class'=>'companies','object'=>json_encode($userData),'emptyobject'=>$user]);
-       
+        $status=view('private.reports.userstatus')->with('object2',json_encode($events))->with('object',json_encode($userData))->with('class','users')->render();
+        $registries =view('private.reports.registries')->with('object2',json_encode($events))->with('object',json_encode($userData))->with('class','users')->render();
         $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML($header.view('private.reports.userstatus')->with('object2',json_encode($events))->with('object',json_encode($userData))->with('class','users')->render());
-     //  return $pdf->download('status.pdf');
+        $pdf->loadHTML($header.$status);
        // dd($leaves);
-        
-      //  $empresa = Company::orderBy('active','desc')->where('id','mec');
-       // dd($calendar);
-       return(view('private.reports.userstatus')->with('object',json_encode($userData))->with('object2',json_encode(json_encode($events))));
+       return $pdf->download('status.pdf');
+       //return(view('private.reports.registries')->with('object',json_encode($userData))->with('object2',json_encode(json_encode($events))));
     }
 
 }
