@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('companies')->insert([
             'cif'=> "B0457760",
-            'name'=>'BSD',
-            'address'=>'Avenida del piloto',
+            'name'=>'Empresa1',
+            'address'=>'Avenida número 1',
             'holidays'=>'30',
             'active'=>'1'
         ]);
@@ -35,13 +35,6 @@ class DatabaseSeeder extends Seeder
             'active'=>'1'
         ]);
 
-        DB::table('companies')->insert([
-            'cif'=> "B0455560",
-            'name'=>'BSD2',
-            'address'=>'Avenida del segundo piloto',
-            'holidays'=>'30',
-            'active'=>'1'
-        ]);
 
         DB::table('users')->insert([
             'dni'=> "11111111A",

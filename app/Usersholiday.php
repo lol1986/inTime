@@ -15,7 +15,7 @@ class Usersholiday extends Model
 
     protected static $alias = 'usersholidays';
 
-    protected static $readable = [];
+    protected static $readable = ['days'];
 
     public static function getAlias(){
         return self::$alias;        
