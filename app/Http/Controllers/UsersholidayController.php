@@ -32,11 +32,15 @@ class UsersholidayController extends CrudController
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-      
-        
         
         $currentClass = $this->getCurrentClass();
         $object = new $currentClass;
+
+        $currentdays= DB::select('select holidays from users where id= ?',[Auth::user()->id]);
+        if($request->get('days')>$currentdays[0]->holidays){
+            return redirect('/'.$currentClass::getAlias().'/create')->with('error', 'days_error');
+        }
+      
         $params=$object->getFillable();
         $object->user_id = Auth::user()->id;
         $object->active = '1';
@@ -53,12 +57,18 @@ class UsersholidayController extends CrudController
 
         $start=$object->start;
         $start=date('Y-m-d', strtotime($start));
-        $epoch=strtotime($start."+ 2 days");
+        $epoch=strtotime($start."+ ". $object->days." days");
         $end = new DateTime("@$epoch");
         $end=$end->format('Y-m-d');
         $object->end=$end;
         $object->save();
-        return redirect('/'.$currentClass::getAlias())->with('success', 'store_success');
+
+        if(Auth::user()->role->id =='3'){
+            return redirect('/'.$currentClass::getAlias().'/create')->with('success', 'store_success');
+        }else{
+            return redirect('/'.$currentClass::getAlias())->with('success', 'store_success');
+        }
+        
     }
 
      /**

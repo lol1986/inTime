@@ -26,5 +26,6 @@ return [
     'index'=> 'Lista de ',
     'edit'=> 'Editar ',
     'unauthorized'=>'No tiene permisos para realizar la acción',
-    'filter'=> 'Filtrar'
+    'filter'=> 'Filtrar',
+    'days_error' => 'No tiene días suficientes disponibles',
 ];

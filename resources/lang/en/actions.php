@@ -27,5 +27,6 @@ return [
     'index'=> 'List of ',
     'edit'=> 'Edit ',
     'unauthorized'=>'You do not have permission to permform this action',
-    'filter'=> 'Filter'
+    'filter'=> 'Filter',
+    'days_error' => 'There is no enough days available',
 ];

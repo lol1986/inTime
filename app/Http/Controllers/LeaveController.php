@@ -48,9 +48,11 @@ class LeaveController extends CrudController
             $readable=['user_id'=>'false'];
         }
         
-        return view ('private.'.$currentClass::getAlias().'.create')
-        ->with(['object' => $object,'action' => __FUNCTION__,'parents'=> $aObject])
-        ->with('class',$currentClass::getAlias())->with('readable',$readable);
+        if(Auth::user()->role->id =='3'){
+            return redirect('/'.$currentClass::getAlias().'/create')->with('success', 'store_success');
+        }else{
+            return redirect('/'.$currentClass::getAlias())->with('success', 'store_success');
+        }
     }
 
 
@@ -68,12 +70,19 @@ class LeaveController extends CrudController
             $request->merge(['user_id' => Auth::user()->id]);
             
         }
-        
+
         $request->validate($currentClass::getStoreValidations());
         $params=$object->getFillable();
         foreach ($params as $param){
             $object->$param =  $request->get($param);
         }
+
+        $start=$object->start;
+        $start=date('Y-m-d', strtotime($start));
+        $epoch=strtotime($start."+ ". $object->days." days");
+        $end = new DateTime("@$epoch");
+        $end=$end->format('Y-m-d');
+        $object->end=$end;
         $object->active = '1';
         $object->save();
         return redirect('/'.$currentClass::getAlias())->with('success', 'store_success');
