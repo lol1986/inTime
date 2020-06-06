@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Usersholiday extends Model
 {
-    protected $fillable = ['user_id','start','end','days'];
+    protected $fillable = ['user_id','start','days','end'];
 
     protected static $printable = ['user_id','start','end','days','status'];
 
@@ -15,7 +15,7 @@ class Usersholiday extends Model
 
     protected static $alias = 'usersholidays';
 
-    protected static $readable = ['days'];
+    protected static $readable = ['end'=>'false'];
 
     public static function getAlias(){
         return self::$alias;        

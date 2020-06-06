@@ -41,6 +41,8 @@ class UsersholidayController extends CrudController
         $object->user_id = Auth::user()->id;
         $object->active = '1';
         $object->status = 'pending';
+        $object->end = '';
+        dd($object->start);
       //  dd($object);
         $request->validate($object->getStoreValidations($request->get('user_id')));
         foreach ($params as $param){
@@ -61,7 +63,7 @@ class UsersholidayController extends CrudController
         $object = new $currentClass;
         $aObject = [];
         $params=$object->getFillable();
-        $readable = [];
+        $readable=$object->getReadable();
 
         foreach($params as $param){
             if(substr($param, strlen($param)-3, strlen($param))=='_id'){
@@ -71,9 +73,10 @@ class UsersholidayController extends CrudController
                 $aObject += [$str=>$all];
             }
         }
-        
+
+    
         if(Auth::user()->role->id =='3'){
-            $readable=['user_id'=>'false'];
+            $readable ["user_id"] = "false";
         }
         
         return view ('private.'.$currentClass::getAlias().'.create')
