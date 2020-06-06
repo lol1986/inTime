@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Usersholiday;
-use Auth;
-use DB;
+use Auth, DB, Datetime;
 
 class UsersholidayController extends CrudController
 {
@@ -35,19 +34,30 @@ class UsersholidayController extends CrudController
     public function store(Request $request){
       
         
+        
         $currentClass = $this->getCurrentClass();
         $object = new $currentClass;
         $params=$object->getFillable();
         $object->user_id = Auth::user()->id;
         $object->active = '1';
         $object->status = 'pending';
-        $object->end = '';
-        dd($object->start);
-      //  dd($object);
-        $request->validate($object->getStoreValidations($request->get('user_id')));
+
+        if(Auth::user()->role->id =='3'){
+            //$request->user_id=Auth::user()->id;
+            $request->merge(['user_id' => Auth::user()->id]);
+        }
+
+        $request->validate($object->getStoreValidations($request->user_id));
         foreach ($params as $param){
             $object->$param =  $request->get($param);
         }
+
+        $start=$object->start;
+        $start=date('Y-m-d', strtotime($start));
+        $epoch=strtotime($start."+ 2 days");
+        $end = new DateTime("@$epoch");
+        $end=$end->format('Y-m-d');
+        $object->end=$end;
         $object->save();
         return redirect('/'.$currentClass::getAlias())->with('success', 'store_success');
     }
@@ -78,7 +88,7 @@ class UsersholidayController extends CrudController
         if(Auth::user()->role->id =='3'){
             $readable ["user_id"] = "false";
         }
-        
+
         return view ('private.'.$currentClass::getAlias().'.create')
         ->with(['object' => $object,'action' => __FUNCTION__,'parents'=> $aObject])->with('readable',$readable)
         ->with('class',$currentClass::getAlias());

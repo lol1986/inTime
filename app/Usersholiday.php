@@ -50,7 +50,7 @@ class Usersholiday extends Model
             'user_id' => ['required','exists:users,id'],
             'days'=> ['required','integer'],
             'start'=> ['required','date_format:Y-m-d','after:today'],
-            'end'=> ['required','date_format:Y-m-d','after:start'],
+            //'end'=> ['required','date_format:Y-m-d','after:start'],
         ];
         return $storeValidations;
     }
