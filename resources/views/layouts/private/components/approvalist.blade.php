@@ -10,12 +10,12 @@
         <form action="{{ route($class.'.approve', $id)}}" method='post'>
             @csrf
             <button href="{{ route($class.'.approve')}}" class='btn btn-warning'>{{__('actions.approve')}}</button>
-            <input type="hidden" id="id" name="id" value="">
+            <input type="hidden" id="id_a" name="id" value="">
         </form> 
         <form action="{{ route($class.'.deny', $id)}}" method='post'>
             @csrf
             <button href="{{ route($class.'.deny')}}" class='btn btn-danger'>{{__('actions.deny')}}</button>
-            <input type="hidden" id="id" name="id" value="">
+            <input type="hidden" id="id_b" name="id" value="">
         </form>       
     </div>
     @include('layouts.private.components.table')
@@ -25,7 +25,8 @@ $(document).ready(function(){
     $('#table').on('click', 'tr', function(event) {
       $(this).addClass('table-warning').siblings().removeClass('table-warning');
       var value = $(".table-warning td:first-child").text();
-      $("#id").val(value);
+      $("#id_a").val(value);
+      $("#id_b").val(value);
     });
 });    
 </script>

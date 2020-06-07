@@ -8,6 +8,10 @@ return [
     |--------------------------------------------------------------------------
     */
     'registered' => ' registrado correctamente',
+    'approve_error' => 'Esta petición ya ha sido denegada',
+    'approve_success' => 'Petición aprobada correctamente',
+    'deny_error' => 'Esta petición ya ha sido aprobada',
+    'deny_success' => ' .Petición rechazada correctamente',
     'approve' => 'Aprobar',
     'deny' => 'Denegar',
     'export'=> 'Exportar',

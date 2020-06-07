@@ -103,4 +103,22 @@ class UsersholidayController extends CrudController
         ->with('class',$currentClass::getAlias());
     }
 
+    public function deny(Request $request){
+        $currentClass = $this->getCurrentClass();
+        if(DB::select('select status from usersholidays where id = ?',[$request->get('id')])[0]->status=='approved'){
+            return redirect('/'.$currentClass::getAlias())->with('error', 'deny_error')->with('class',$currentClass::getAlias());;
+        }
+        DB::update('update usersholidays set status = ? where id = ?', ['denied',$request->get('id')]);
+        return redirect('/'.$currentClass::getAlias())->with('success', 'deny_success')->with('class',$currentClass::getAlias());;
+    }
+
+    public function approve(Request $request){
+        $currentClass = $this->getCurrentClass();
+        if(DB::select('select status from usersholidays where id = ?',[$request->get('id')])[0]->status=='denied'){
+            return redirect('/'.$currentClass::getAlias())->with('error', 'approve_error')->with('class',$currentClass::getAlias());;
+        }
+        DB::update('update usersholidays set status = ? where id = ?', ['approved',$request->get('id')]);
+        return redirect('/'.$currentClass::getAlias())->with('success', 'approve_success')->with('class',$currentClass::getAlias());;
+    }
+
 }
