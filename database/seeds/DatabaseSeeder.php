@@ -35,6 +35,24 @@ class DatabaseSeeder extends Seeder
             'active'=>'1'
         ]);
 
+        DB::table('holidays')->insert([
+            'calendar_id'=> "1",
+            'date'=> "2020-01-06",
+            'active'=>'1'
+        ]);
+
+        DB::table('holidays')->insert([
+            'calendar_id'=> "1",
+            'date'=> "2020-12-25",
+            'active'=>'1'
+        ]);
+
+        DB::table('holidays')->insert([
+            'calendar_id'=> "1",
+            'date'=> "2020-06-25",
+            'active'=>'1'
+        ]);
+
 
         DB::table('users')->insert([
             'dni'=> "11111111A",
@@ -92,20 +110,20 @@ class DatabaseSeeder extends Seeder
 
         DB::table('holidays')->insert([
             'calendar_id'=> "1",
-            'date'=> "2020-01-01",
+            'date'=> "2020-08-01",
             'active'=>'1'
         ]);
 
         DB::table('holidays')->insert([
             'calendar_id'=> "2",
-            'date'=> "2020-01-05",
+            'date'=> "2020-10-05",
             'active'=>'1'
         ]);
 
         DB::table('usersholidays')->insert([
             'user_id'=> "1",
             'start'=> "2020-01-01",
-            'end'=> "2020-01-05",
+            'end'=> "2020-10-06",
             'days'=> 5,
             'status'=> "pending",
             'active'=>'1'
@@ -113,8 +131,8 @@ class DatabaseSeeder extends Seeder
 
         DB::table('usersholidays')->insert([
             'user_id'=> "1",
-            'start'=> "2020-01-01",
-            'end'=> "2020-01-05",
+            'start'=> "2020-10-06",
+            'end'=> "2020-10-10",
             'days'=> 5,
             'status'=> "approved",
             'active'=>'1'
@@ -122,10 +140,19 @@ class DatabaseSeeder extends Seeder
 
         DB::table('usersholidays')->insert([
             'user_id'=> "1",
-            'start'=> "2020-01-01",
-            'end'=> "2020-01-05",
-            'days'=> 5,
+            'start'=> "2020-08-31",
+            'end'=> "2020-09-05",
+            'days'=> 6,
             'status'=> "denied",
+            'active'=>'1'
+        ]);
+
+        DB::table('usersholidays')->insert([
+            'user_id'=> "1",
+            'start'=> "2020-05-31",
+            'end'=> "2020-09-05",
+            'days'=> 6,
+            'status'=> "pending",
             'active'=>'1'
         ]);
 
@@ -196,44 +223,51 @@ class DatabaseSeeder extends Seeder
             'active'=>'1'
         ]);
 
+        DB::table('timeregistries')->insert([
+            'user_id'=> "3",
+            'status'=> "closed",
+            'date'=> now(),
+            'active'=>'1'
+        ]);
+
         DB::table('registryevents')->insert([
             'timeregistry_id'=> "1",
-            'date'=> "2020-01-02 09:13:13",
+            'date'=> "2020-06-02 09:13:13",
             'type'=> "pin",
             'active'=>'1'
         ]);
 
         DB::table('registryevents')->insert([
             'timeregistry_id'=> "1",
-            'date'=> "2020-01-02 09:55:24",
+            'date'=> "2020-06-02 09:55:24",
             'type'=> "pout",
             'active'=>'1'
         ]);
 
         DB::table('registryevents')->insert([
             'timeregistry_id'=> "2",
-            'date'=> "2020-01-01 08:10:04",
+            'date'=> "2020-06-01 08:10:04",
             'type'=> "in",
             'active'=>'1'
         ]);
 
         DB::table('registryevents')->insert([
             'timeregistry_id'=> "2",
-            'date'=> "2020-01-01 17:50:00",
+            'date'=> "2020-06-01 17:50:00",
             'type'=> "out",
             'active'=>'1'
         ]);
 
         DB::table('registryevents')->insert([
             'timeregistry_id'=> "2",
-            'date'=> "2020-01-01 09:15:00",
+            'date'=> "2020-06-01 09:15:00",
             'type'=> "pin",
             'active'=>'1'
         ]);
 
         DB::table('registryevents')->insert([
             'timeregistry_id'=> "2",
-            'date'=> "2020-01-01 10:02:53",
+            'date'=> "2020-06-01 10:02:53",
             'type'=> "pout",
             'active'=>'1'
         ]);
@@ -259,6 +293,15 @@ class DatabaseSeeder extends Seeder
             'type'=> "pout",
             'active'=>'1'
         ]);
+
+
+        DB::table('registryevents')->insert([
+            'timeregistry_id'=> "3",
+            'date'=> "2020-01-02 19:55:24",
+            'type'=> "out",
+            'active'=>'1'
+        ]);
+        
 
     }
 }
