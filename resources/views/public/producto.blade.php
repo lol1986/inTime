@@ -9,10 +9,10 @@
             <p>InTime le permite gestionar de forma sencilla el control del registro horario de su
             empresa</p>
             <p>¿Aún no lo tienes?</p>
-            <button class="btn btn-success">SOLICITAR INFORMACIÓN</button>
+              <a class="btn btn-primary" href="{{route('contacto')}}">SOLICITAR INFORMACIÓN</a>
           </div>
           <div class="col-lg-6">
-            <img class="img-fluid" src="img/logo.png">
+            <img class="img-fluid border border-primary rounded" src="images/screen.png">
           </div>
         </div>
       </div>
@@ -24,7 +24,10 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-4">
-        <img src="img/logo.png" class="logo">
+        <div class="justify-content-left d-flex align-items-center row">
+          <img src="images/1_sm.png" class="logo">
+          <h2>Planificación</h2>
+        </div>
         <p>Intime le permite gestionar de forma sencilla la siguiente información de su empresa:
         	<ul>
         		<li>Datos de empleados</li>
@@ -36,7 +39,10 @@
     	</p>
       </div>
       <div class="col-lg-4">
-        <img src="img/logo1.png" class="logo">
+        <div class="justify-content-left d-flex align-items-center row">
+          <img src="images/6_sm.png" class="logo">
+          <h2>Control</h2>
+        </div>
         <p>Gracias a inTime además de lo anterior podrá:
         	<ul>
         		<li>Tener centralizado de forma sencilla datos de los empleados de su empresa</li>
@@ -46,7 +52,10 @@
         </p>
       </div>
       <div class="col-lg-4">
-        <img src="img/logo3.png" class="logo">
+        <div class="justify-content-left d-flex align-items-center row">
+          <img src="images/2_sm.png" class="logo">
+          <h2>Productividad</h2>
+        </div>
         <p>¿Quieres conocer más?</p>
       </div>
     </div>
@@ -64,8 +73,9 @@
           <li><i class="fas fa-check"></i> Planificación</li>
         </ul>
       </div>
-      <div class="col-lg-4 offset-lg-2">
-        <img class="bt-logo" src="img/btlogo.png">
+      <div class="col-lg-4 offset-lg-2 justify-content-left d-flex align-items-center row">
+        <img class="bt-logo" src="images/logo300.png">
+        <h5>InTime ®</h5>
       </div>
     </div>
   </div>

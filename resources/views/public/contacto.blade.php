@@ -44,7 +44,7 @@
               <label class="form-check-label" for="privacidad">He leído y acepto la política de privacidad</label>
             </div>
           </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
       </div>
     </div>

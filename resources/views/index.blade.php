@@ -9,7 +9,7 @@
             <p>InTime le permite gestionar de forma sencilla el control del registro horario de su
             empresa</p>
             <p>¿Aún no lo tienes?</p>
-            <button class="btn btn-success">SOLICITAR INFORMACIÓN</button>
+              <a class="btn btn-primary" href="{{route('contacto')}}">SOLICITAR INFORMACIÓN</a>
           </div>
           <div class="col-lg-6">
             <img class="img-fluid border border-primary rounded" src="images/screen.png">
