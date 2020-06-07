@@ -45,14 +45,12 @@ class LeaveController extends CrudController
         }
 
         if(Auth::user()->role->id =='3'){
-            $readable=['user_id'=>'false'];
+            $readable ["user_id"] = "false";
         }
-        
-        if(Auth::user()->role->id =='3'){
-            return redirect('/'.$currentClass::getAlias().'/create')->with('success', 'store_success');
-        }else{
-            return redirect('/'.$currentClass::getAlias())->with('success', 'store_success');
-        }
+
+        return view ('private.'.$currentClass::getAlias().'.create')
+        ->with(['object' => $object,'action' => __FUNCTION__,'parents'=> $aObject])->with('readable',$readable)
+        ->with('class',$currentClass::getAlias());
     }
 
 
@@ -85,6 +83,11 @@ class LeaveController extends CrudController
         $object->end=$end;
         $object->active = '1';
         $object->save();
-        return redirect('/'.$currentClass::getAlias())->with('success', 'store_success');
+        
+        if(Auth::user()->role->id =='3'){
+            return redirect('/'.$currentClass::getAlias().'/create')->with('success', 'store_success');
+        }else{
+            return redirect('/'.$currentClass::getAlias())->with('success', 'store_success');
+        }
     }
 }

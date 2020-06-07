@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Leave extends Model
 {
-    protected $fillable = ['user_id','start','end','days'];
+    protected $fillable = ['user_id','start','days','end'];
 
     protected static $printable = ['user_id','start','end','days'];
 
@@ -15,7 +15,7 @@ class Leave extends Model
 
     protected static $updatable = ['user_id','start','end','days'];
 
-    protected static $readable = [];
+    protected static $readable = ['end'=>'false','id'=>'false'];
 
 //    protected static $storeValidations =['name' => ['max:255','unique:roles']];
     public static function getAlias(){
@@ -46,8 +46,14 @@ class Leave extends Model
         return get_class($this);
     } 
 
-    public static function getStoreValidations(){
-        return self::$storeValidations;
+    public function getStoreValidations(){
+        $storeValidations =[
+            'user_id' => ['required','exists:users,id'],
+            'days'=> ['required','integer'],
+            'start'=> ['required','date_format:Y-m-d','after:today'],
+            //'end'=> ['required','date_format:Y-m-d','after:start'],
+        ];
+        return $storeValidations;
     }
 
     public function getUpdateValidations(){
