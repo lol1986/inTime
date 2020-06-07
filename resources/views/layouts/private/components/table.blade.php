@@ -1,9 +1,6 @@
-@php
-//dd($emptyobject->getPrintable());
-@endphp 
  
  <div class ="table-responsive p-1">   
-    <table class='table table-striped table-bordered'>
+    <table id="table" class='table table-striped table-bordered'>
         <thead>
         @for($i=0; $i<count($emptyobject->getPrintable()); $i++)
             <th>{{__($class.'.'.$emptyobject->getPrintable()[$i])}}</th>
@@ -29,6 +26,7 @@
                 <tr>
                 @endif
                 @foreach ($item->getPrintable() as $param)
+                
                 @if (substr($param, strlen($param)-3, strlen($param))=='_id')
                     @php
                     $str =substr($param,0,strlen($param)-3);

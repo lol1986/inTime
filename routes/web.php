@@ -52,5 +52,7 @@ Route::resource('leaves', 'LeaveController');
 Route::post('/timeregistries/filter', 'TimeregistryController@filter')->name('timeregistries.filter');
 Route::resource('timeregistries', 'TimeregistryController');
 Route::post('/usersholidays/filter', 'UsersholidayController@filter')->name('usersholidays.filter');
+Route::post('/usersholidays/approve/', 'UsersholidayController@approve')->name('usersholidays.approve');
+Route::post('/usersholidays/deny/', 'UsersholidayController@deny')->name('usersholidays.deny');
 Route::resource('usersholidays', 'UsersholidayController');
 

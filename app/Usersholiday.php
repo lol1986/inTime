@@ -9,13 +9,13 @@ class Usersholiday extends Model
 {
     protected $fillable = ['user_id','start','days','end'];
 
-    protected static $printable = ['user_id','start','end','days','status'];
+    protected static $printable = ['id','user_id','start','end','days','status'];
 
     protected static $updatable = ['date'];
 
     protected static $alias = 'usersholidays';
 
-    protected static $readable = ['end'=>'false'];
+    protected static $readable = ['end'=>'false','id'=>'false'];
 
     public static function getAlias(){
         return self::$alias;        
