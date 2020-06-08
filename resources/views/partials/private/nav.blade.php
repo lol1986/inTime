@@ -2,7 +2,7 @@
     <div class="navbar-collapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-         <a class="nav-link">Bienvenido <b>{{Auth::user()->name}}</b></a>
+         <a class="nav-link"> Bienvenid@ <b>{{Auth::user()->name}}</b></a>
         </li>    
       </ul>
       <ul class="navbar-nav">        

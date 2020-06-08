@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">Registro jornada</div>
+            <div class="card-header">Registro de jornada</div>
                 <div class ="col-xl-10 mt-2 offset-xl-1 border border-primary">{{__('home.lastentry')}} {{__('home.'.$lastEvent[0]->status)}} {{$lastEvent[0]->date}}</div>
                 <div class="card-body offset-xl-2 col-xl-8 pr-5 pl-5 pt-2">
                     @if (session('status'))
