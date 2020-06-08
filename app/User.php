@@ -118,9 +118,8 @@ class User extends Authenticatable
     
     
     public function getUpdateValidations(){
-
        $updateValidations=[
-           'company'=> ['required','exists:companies,id','integer'],
+           'company_id'=> ['required','exists:companies,id','integer'],
            'name' => ['required', 'string', 'max:255'],
            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'. $this->id],
            'active'=>['in:1,0'],
