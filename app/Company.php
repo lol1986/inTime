@@ -8,7 +8,7 @@ class Company extends Model
 {
     protected static $printable = ['id','cif','name','address'];
 
-    protected $fillable = ['cif','name','address'];
+    protected $fillable = ['cif','name','address','holidays'];
 
     protected static $readable = ['cif','name','address'];
 
@@ -17,7 +17,8 @@ class Company extends Model
     protected static $storeValidations =[
         'name' => ['required', 'max:255','unique:companies'],
         'address'=>['required', 'max:255'],
-        'cif'=>['required', 'max:255','regex:/^[a-zA-Z]{1}\d{7}[a-zA-Z0-9]{1}$/']
+        'cif'=>['required', 'max:255','regex:/^[a-zA-Z]{1}\d{7}[a-zA-Z0-9]{1}$/'],
+        'holidays'=>['required', 'integer']
     ];
 
     public static function getAlias(){
