@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-    protected static $printable = ['id','cif','name','address'];
+    protected static $printable = ['id','cif','name','address','holidays'];
 
     protected $fillable = ['cif','name','address','holidays'];
+    protected static $updatable =['cif','name','address','holidays'];
 
     protected static $readable = ['cif','name','address'];
 
@@ -54,9 +55,11 @@ class Company extends Model
     }
 
     public function getUpdateValidations(){
-
         $updateValidations=[
- //           'name' => ['required', 'string', 'max:255','unique:companies,name,'. $this->id]
+            'name' => ['required', 'string', 'max:255','unique:companies,name,'. $this->id],
+            'address'=>['required', 'max:255'],
+            'cif'=>['required', 'max:255','regex:/^[a-zA-Z]{1}\d{7}[a-zA-Z0-9]{1}$/'],
+            'holidays'=>['required', 'integer']
         ];
          return $updateValidations;
      }
