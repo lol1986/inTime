@@ -57,7 +57,8 @@ class Holiday extends Model
     public function getUpdateValidations(){
 
         $updateValidations=[
-//            'name' => ['required', 'string', 'max:255','unique:roles,name,'. $this->id]
+            'calendar_id' => ['required','exists:calendars,id'],
+            'date'=> ['required','after:'.date_create('now')->format('Y-m-d'),'date_format:Y-m-d','unique:holidays,date,NULL,id,calendar_id,'.$id]
         ];
          return $updateValidations;
      }

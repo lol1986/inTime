@@ -17,7 +17,9 @@ class Calendar extends Model
 
     protected static $readable = [];
 
-    protected static $storeValidations =['name' => ['required','max:255','unique:calendars']];
+    protected static $storeValidations =[
+        'name' => ['required','max:255','unique:calendars']
+    ];
 
     public static function getAlias(){
         return self::$alias;
