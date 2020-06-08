@@ -22,11 +22,6 @@ abstract class CrudController extends Controller
      */
     public function index()
     {
-     //   $object = $currentClass
-    // dd($request->all());
-   
-   
-
         $currentClass = $this->getCurrentClass();
         $emptyobject = new $currentClass;
         $object = new $currentClass;
@@ -102,8 +97,7 @@ abstract class CrudController extends Controller
         switch ($action){
             case 'update':
                 $object = $currentClass::find($id);
-
-                $request->validate($object->getUpdateValidations());
+                $request->validate($object->getUpdateValidations($id));
                 $params=$object->getUpdatable();
                 foreach ($params as $param){
                     $object->$param =  $request->get($param);

@@ -11,7 +11,7 @@ class Holiday extends Model
     
     protected static $alias = 'holidays';
 
-    protected static $printable = ['calendar_id','date'];
+    protected static $printable = ['id','calendar_id','date'];
 
     protected static $updatable = ['date'];
 
@@ -54,7 +54,7 @@ class Holiday extends Model
         return $storeValidations;
     }
 
-    public function getUpdateValidations(){
+    public function getUpdateValidations($id){
 
         $updateValidations=[
             'calendar_id' => ['required','exists:calendars,id'],
