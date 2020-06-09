@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Leave extends Model
 {
-    protected $fillable = ['user_id','start','days','end'];
+    protected $fillable = ['user_id','start','days'];
 
-    protected static $printable = ['user_id','start','end','days'];
+    protected static $printable = ['user_id','start','days'];
 
     protected static $alias = 'leaves';
 
@@ -48,10 +48,9 @@ class Leave extends Model
 
     public function getStoreValidations(){
         $storeValidations =[
-            'user_id' => ['required','exists:users,id'],
+            'user_id' => ['required','not_in:0','exists:users,id'],
             'days'=> ['required','integer'],
-            'start'=> ['required','date_format:Y-m-d','after:today'],
-            //'end'=> ['required','date_format:Y-m-d','after:start'],
+            'start'=> ['required','date_format:Y-m-d'],
         ];
         return $storeValidations;
     }
@@ -59,7 +58,10 @@ class Leave extends Model
     public function getUpdateValidations(){
 
         $updateValidations=[
-  //          'name' => ['required', 'string', 'max:255','unique:roles,name,'. $this->id]
+            'user_id' => ['required','not_in:0','exists:users,id'],
+            'days'=> ['required','integer'],
+            'start'=> ['required','date_format:Y-m-d']
+//          'name' => ['required', 'string', 'max:255','unique:roles,name,'. $this->id]
         ];
          return $updateValidations;
      }

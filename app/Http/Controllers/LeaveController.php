@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Leave;
-use Auth,DB;
+use Auth,DB,Datetime;
 
 class LeaveController extends CrudController
 {
@@ -69,7 +69,7 @@ class LeaveController extends CrudController
             
         }
 
-        $request->validate($currentClass::getStoreValidations());
+        $request->validate($object->getStoreValidations());
         $params=$object->getFillable();
         foreach ($params as $param){
             $object->$param =  $request->get($param);
