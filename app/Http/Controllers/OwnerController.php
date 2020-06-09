@@ -55,18 +55,11 @@ class OwnerController extends CrudController
     {
         $currentClass = $this->getCurrentClass();
         $userId = Auth::user()->id;
-       // dd($userId);
         $user = Auth::user();
-       // if($user->hasRole('user')){
             $object = $currentClass::orderBy('active', 'desc')->where('user_id', '=',$userId)->paginate(10);
             return view ('private.'.$currentClass::getAlias().'.view')->with('object', $object)
             ->with('className',$this->className)->with('class',$currentClass::getAlias());
-      //  }else{
-      //      $object = $currentClass::orderBy('active', 'desc')->paginate(10);
-      //      return view ('private.'.$currentClass::getAlias().'.view')->with('object', $object)
-      //      ->with('className',$this->className)->with('class',$currentClass::getAlias());
-      //  }
-        
+ 
     }
 
 }

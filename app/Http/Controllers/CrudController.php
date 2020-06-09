@@ -48,7 +48,6 @@ abstract class CrudController extends Controller
         $object = new $currentClass;
         $aObject = [];
         $params=$object->getFillable();
-
         foreach($params as $param){
             if(substr($param, strlen($param)-3, strlen($param))=='_id'){
                 $str = substr($param,0,strlen($param)-3);
@@ -57,7 +56,6 @@ abstract class CrudController extends Controller
                 $aObject += [$str=>$all];
             }
         }
-        
         return view ('private.'.$currentClass::getAlias().'.create')
         ->with(['object' => $object,'action' => __FUNCTION__,'parents'=> $aObject])
         ->with('class',$currentClass::getAlias());

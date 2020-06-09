@@ -46,8 +46,9 @@ class Usersholiday extends Model
     } 
 
     public function getStoreValidations(){
+      //  dd($this);
         $storeValidations =[
-            'user_id' => ['required','exists:users,id'],
+            'user_id' => ['required','not_in:0','exists:users,id'],
             'days'=> ['required','integer'],
             'start'=> ['required','date_format:Y-m-d','after:today'],
             //'end'=> ['required','date_format:Y-m-d','after:start'],
@@ -58,6 +59,9 @@ class Usersholiday extends Model
     public function getUpdateValidations(){
 
         $updateValidations=[
+            'user_id' => ['required','not_in:0','exists:users,id'],
+            'days'=> ['required','integer'],
+            'start'=> ['required','date_format:Y-m-d','after:today']
 //            'name' => ['required', 'string', 'max:255','unique:roles,name,'. $this->id]
         ];
          return $updateValidations;

@@ -31,8 +31,6 @@ class Filter extends Model
         $fields=substr($fields,0,strlen($fields)-2);
 
         $query= "select ".$fields." from ".$this->class->getAlias();
-       // dd($fields);
-        //DB::select($query);
 
     }
 
