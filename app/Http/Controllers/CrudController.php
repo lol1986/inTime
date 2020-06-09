@@ -51,7 +51,9 @@ abstract class CrudController extends Controller
         foreach($params as $param){
             if(substr($param, strlen($param)-3, strlen($param))=='_id'){
                 $str = substr($param,0,strlen($param)-3);
+                $str = ucfirst($str);
                 $parentClass='\\App\\'.$str;
+                $str = lcfirst($str);
                 $all=DB::select('select * from '.$parentClass::getAlias());
                 $aObject += [$str=>$all];
             }
